@@ -5,7 +5,7 @@ const UpCommingDeadEvents = () => {
   const todayMonth = new Date().getMonth() + 1;
   const [upComming, setUpcomming] = useState([]);
   useEffect(() => {
-    fetch("../../../Data.json")
+    fetch("https://api.npoint.io/67a83402c3b2c3f0595b")
       .then((res) => res.json())
       .then((data) => setUpcomming(data.villagersInfo));
   }, []);

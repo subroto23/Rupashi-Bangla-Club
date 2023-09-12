@@ -6,13 +6,10 @@ const TodaysEvents = () => {
   const today = `${todayDate.getDate()}/${todayDate.getMonth() + 1}`;
   const [villegersInfo, setVillagersInfo] = useState([]);
 
-  const loadData = async () => {
-    const response = await fetch("../../../Data.json");
-    const data = await response.json();
-    setVillagersInfo(data.villagersInfo);
-  };
   useEffect(() => {
-    loadData();
+    fetch("https://api.npoint.io/67a83402c3b2c3f0595b")
+      .then((res) => res.json())
+      .then((data) => setVillagersInfo(data.villagersInfo));
   }, []);
 
   const matchingValue = villegersInfo.filter((matchingDate) => {
