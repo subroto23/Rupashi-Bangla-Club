@@ -6,12 +6,7 @@ const UpCommingEvents = () => {
   const todayMonth = new Date().getMonth() + 1;
   const [upComming, setUpcomming] = useState([]);
   useEffect(() => {
-    fetch("../../../Data.json", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
+    fetch("../../../Data.json")
       .then((res) => res.json())
       .then((data) => setUpcomming(data.villagersInfo));
   }, []);

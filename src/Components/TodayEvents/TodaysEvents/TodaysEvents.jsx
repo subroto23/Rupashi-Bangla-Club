@@ -5,15 +5,14 @@ const TodaysEvents = () => {
   const todayDate = new Date();
   const today = `${todayDate.getDate()}/${todayDate.getMonth() + 1}`;
   const [villegersInfo, setVillagersInfo] = useState([]);
+
+  const loadData = async () => {
+    const response = await fetch("../../../Data.json");
+    const data = await response.json();
+    setVillagersInfo(data.villagersInfo);
+  };
   useEffect(() => {
-    fetch("../../../Data.json", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setVillagersInfo(data.villagersInfo));
+    loadData();
   }, []);
 
   const matchingValue = villegersInfo.filter((matchingDate) => {

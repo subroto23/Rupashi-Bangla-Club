@@ -1,10 +1,10 @@
-// import TodaysEvents from "./Components/TodayEvents/TodaysEvents/TodaysEvents";
+import TodaysEvents from "./Components/TodayEvents/TodaysEvents/TodaysEvents";
 import UpCommingEvents from "./Components/Upcomming Events/UpCommingEvents/UpCommingEvents";
 
 function App() {
   return (
     <>
-      {/* <TodaysEvents /> */}
+      <TodaysEvents />
       <UpCommingEvents />
     </>
   );
