@@ -5,7 +5,12 @@ const UpCommingDeadEvents = () => {
   const todayMonth = new Date().getMonth() + 1;
   const [upComming, setUpcomming] = useState([]);
   useEffect(() => {
-    fetch("../../../Data.json")
+    fetch("../../../Data.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
       .then((res) => res.json())
       .then((data) => setUpcomming(data.villagersInfo));
   }, []);
