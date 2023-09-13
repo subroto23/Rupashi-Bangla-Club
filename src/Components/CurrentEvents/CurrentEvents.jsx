@@ -35,7 +35,7 @@ const CurrentEvents = ({ matchingValue }) => {
       >
         {matchingValue.map((data, idx) => (
           <SwiperSlide key={idx}>
-            <h1 className="text-center">
+            <h1 className="text-center px-4">
               {data.isAlive
                 ? `আজ ${data.name} এর জন্মদিন `
                 : `আজ ${data.name} এর মৃত্যু বার্ষিকী  `}

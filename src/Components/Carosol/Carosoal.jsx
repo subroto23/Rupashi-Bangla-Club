@@ -16,9 +16,9 @@ const Carosoal = () => {
       >
         <div className="hero-overlay bg-opacity-60 bg-gray-800"></div>
         <div className="hero-content text-center text-neutral-content">
-          <div className="w-sm md:max-w-lg border-4 bg-red-600 opacity-80 p-4 md:px-2 md:py-6 rounded-md">
-            <h1 className="mb-5 md:text-5xl font-bold leading-normal">
-              দূর্গা পূজার আর মাত্র বাকিঃ_
+          <div className="w-sm md:max-w-lg border-4 bg-red-600 opacity-80 p-4 md:px-2 md:py-6 rounded-tl-sm rounded-tr-3xl rounded-bl-3xl rounded-br-sm">
+            <h1 className="mb-5 md:text-4xl font-bold leading-normal">
+              দূর্গা পূজার আর মাত্র বাকিঃ-
             </h1>
             <div className="flex justify-center">
               <div className="grid md:grid-cols-4 grid-cols-2 md:gap-5 gap-2 auto-cols-max">

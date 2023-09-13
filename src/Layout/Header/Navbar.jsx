@@ -149,7 +149,10 @@ function NavListMenu() {
         <Typography variant="h6" color="text-white" className="mb-1">
           {title}
         </Typography>
-        <Typography variant="small" className="font-normal text-lime-600">
+        <Typography
+          variant="small"
+          className="font-normal text-lime-600"
+        >
           {description}
         </Typography>
       </MenuItem>
@@ -199,7 +202,7 @@ function NavListMenu() {
         </MenuList>
       </Menu>
       <MenuItem className="flex items-center gap-2 text-white lg:hidden">
-        <Square3Stack3DIcon className="h-[18px] w-[18px] font-bold" /> অন্যান্য{" "}
+        <Square3Stack3DIcon className="h-[18px] font-bold" /> অন্যান্য{" "}
       </MenuItem>
       <ul className="ml-6 flex w-full flex-col gap-1 lg:hidden">
         {renderItems}
