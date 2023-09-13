@@ -1,13 +1,31 @@
 import PropTypes from "prop-types";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-cards";
+
+import "../../CurrentEvents/style.css";
+
+// import required modules
+import { EffectCards } from "swiper/modules";
 const UpcommingEvent = ({ upCommingData }) => {
   return (
     <div>
-      <h1 className="font-bold">এই মাসের জন্মদিনঃ-</h1>
-      {upCommingData.map((data) => (
-        <h1
-          key={Math.random()}
-        >{`${data.birthday} তারিখে ${data.name} এর জন্মদিন`}</h1>
-      ))}
+      <Swiper
+        effect={"cards"}
+        grabCursor={true}
+        modules={[EffectCards]}
+        className="mySwiper"
+      >
+        {upCommingData.map((data, idx) => (
+          <SwiperSlide key={idx}>
+            <h1 className="text-center p-4">
+              {`${data.birthday} তারিখে ${data.name} এর জন্মদিন`}
+            </h1>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 };

@@ -65,14 +65,14 @@ function ProfileMenu() {
         >
           <Avatar
             variant="circular"
-            size="sm"
+            size="lg"
             alt="tania andrew"
-            className="border border-gray-900 p-0.5"
+            className="border-2 border-y-light-blue-50 p-0.5"
             src="https://scontent.fjsr8-1.fna.fbcdn.net/v/t39.30808-6/325170633_738017507544156_780827080654787698_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=a2f6c7&_nc_ohc=qIs22aqkIn0AX8iKKkI&_nc_ht=scontent.fjsr8-1.fna&oh=00_AfCm3tB49EmsZHi2SSka6ZWh7HLi5_-YHimhqqZVjqAC4A&oe=6506143C"
           />
           <ChevronDownIcon
             strokeWidth={2.5}
-            className={`h-3 w-3 transition-transform text-white ${
+            className={`h-4 w-4 transition-transform text-white ${
               isMenuOpen ? "rotate-180" : ""
             }`}
           />
@@ -223,7 +223,7 @@ const navListItems = [
     icon: PersonIcon,
   },
   {
-    label: "আমাদে সেবাসমূহ",
+    label: "আমাদের সেবাসমূহ",
     icon: BookmarksIcon,
   },
 ];

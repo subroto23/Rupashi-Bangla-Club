@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import UpcommingEvent from "../UpCommingEvent/UpcommingEvent";
-import UpCommingDeadEvents from "./UpCommingDeadEvents";
 
 const UpCommingEvents = () => {
   const todayMonth = new Date().getMonth() + 1;
@@ -18,7 +17,6 @@ const UpCommingEvents = () => {
   return (
     <div>
       <UpcommingEvent key={Math.random()} upCommingData={upCammingData} />
-      <UpCommingDeadEvents />
     </div>
   );
 };

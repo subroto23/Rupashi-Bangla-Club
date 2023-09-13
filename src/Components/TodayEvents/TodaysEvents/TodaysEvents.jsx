@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import TodayEvent from "../TodayEvent/TodayEvent";
+import CurrentEvents from "../../CurrentEvents/CurrentEvents";
+// import CurrentEvents from "../../CurrentEvents/CurrentEvents";
 
 const TodaysEvents = () => {
   const todayDate = new Date();
@@ -7,7 +8,7 @@ const TodaysEvents = () => {
   const [villegersInfo, setVillagersInfo] = useState([]);
 
   useEffect(() => {
-    fetch("https://api.npoint.io/67a83402c3b2c3f0595b")
+    fetch("https://api.npoint.io/1dfe58d18e5039c270cf")
       .then((res) => res.json())
       .then((data) => setVillagersInfo(data.villagersInfo));
   }, []);
@@ -22,13 +23,10 @@ const TodaysEvents = () => {
     const DateOfBirth = `${birthDate}/${birthMonth}`;
     return DateOfBirth == today;
   });
-  return (
-    <div>
-      {matchingValue.map((villeger) => (
-        <TodayEvent key={villeger.id} villeger={{ villeger }} />
-      ))}
-    </div>
-  );
+  return <div>{<CurrentEvents matchingValue={matchingValue} />}</div>;
 };
-
+{
+  /* <TodayEvent key={villeger.id} villeger={{ villeger }} /> */
+  // <CurrentEvents key={villeger.id} villeger={{ villeger }} />
+}
 export default TodaysEvents;
