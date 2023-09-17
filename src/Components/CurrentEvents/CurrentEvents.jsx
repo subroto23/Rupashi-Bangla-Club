@@ -1,17 +1,3 @@
-// const CurrentEvents = () => {
-//   return (
-//     <div className=" container mx-auto lg:mt-20 my-12 text-center flex justify-center">
-//       <div className="rounded-full flex justify-center h-16 md:w-1/2 items-center">
-//         <h1 className="lg:text-3xl text-xl text-[#1f5ba4] font-extrabold">
-//           আজকের এই দিনে যা যা ঘটেছিলোঃ-
-//         </h1>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default CurrentEvents;
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import PropTypes from "prop-types";
 
@@ -37,8 +23,8 @@ const CurrentEvents = ({ matchingValue }) => {
           <SwiperSlide key={idx}>
             <h1 className="text-center px-4">
               {data.isAlive
-                ? `আজ ${data.name} এর জন্মদিন `
-                : `আজ ${data.name} এর মৃত্যু বার্ষিকী  `}
+                ? `আজ ${data?.name} এর জন্মদিন `
+                : `আজ ${data?.name} এর মৃত্যু বার্ষিকী  `}
             </h1>
           </SwiperSlide>
         ))}
@@ -47,6 +33,6 @@ const CurrentEvents = ({ matchingValue }) => {
   );
 };
 CurrentEvents.propTypes = {
-  villeger: PropTypes.any,
+  matchingValue: PropTypes.array,
 };
 export default CurrentEvents;

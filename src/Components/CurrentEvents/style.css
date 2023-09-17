@@ -52,3 +52,12 @@
 .swiper-slide:nth-child(10n) {
   background-color: rgb(54, 94, 77);
 }
+.swiper-slide:nth-child(11n) {
+  background-color: rgb(0, 68, 255);
+}
+.swiper-slide:nth-child(12n) {
+  background-color: rgb(54, 94, 77);
+}
+.swiper-slide:nth-child(13n) {
+  background-color: rgb(118, 163, 12);
+}

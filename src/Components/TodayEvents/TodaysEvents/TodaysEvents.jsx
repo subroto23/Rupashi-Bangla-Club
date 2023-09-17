@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CurrentEvents from "../../CurrentEvents/CurrentEvents";
+import NoMatchingEvent from "./NoMatchingEvent";
 // import CurrentEvents from "../../CurrentEvents/CurrentEvents";
 
 const TodaysEvents = () => {
@@ -8,25 +9,33 @@ const TodaysEvents = () => {
   const [villegersInfo, setVillagersInfo] = useState([]);
 
   useEffect(() => {
-    fetch("https://api.npoint.io/1dfe58d18e5039c270cf")
+    // "https://api.npoint.io/1dfe58d18e5039c270cf"
+    fetch("../../../../Data.json")
       .then((res) => res.json())
       .then((data) => setVillagersInfo(data.villagersInfo));
   }, []);
-
   const matchingValue = villegersInfo.filter((matchingDate) => {
     const birthDate =
-      matchingDate?.birthday.split("/")[0] ||
-      matchingDate?.deadDate.split("/")[0];
+      matchingDate.birthday.split("/")[0] ||
+      matchingDate.deadDate.split("/")[0];
     const birthMonth =
-      matchingDate?.birthday.split("/")[1] ||
-      matchingDate?.deadDate.split("/")[1];
+      matchingDate.birthday.split("/")[1] ||
+      matchingDate.deadDate.split("/")[1];
     const DateOfBirth = `${birthDate}/${birthMonth}`;
-    return DateOfBirth == today;
+    return DateOfBirth === today;
   });
-  return <div>{<CurrentEvents matchingValue={matchingValue} />}</div>;
+  if (!matchingValue.length == 0) {
+    return (
+      <div>
+        <CurrentEvents matchingValue={matchingValue} />
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <NoMatchingEvent NoValue={"দুঃখিত !! আজকের দিনের কোনো তথ্য নেই"} />
+      </div>
+    );
+  }
 };
-{
-  /* <TodayEvent key={villeger.id} villeger={{ villeger }} /> */
-  // <CurrentEvents key={villeger.id} villeger={{ villeger }} />
-}
 export default TodaysEvents;
