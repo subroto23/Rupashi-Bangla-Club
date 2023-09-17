@@ -25,7 +25,7 @@ const Navbar = () => {
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-rbcPrimary hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-primary hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
                   {open ? (
@@ -51,8 +51,8 @@ const Navbar = () => {
                         href={item.href}
                         className={classNames(
                           item.current
-                            ? "bg-rbcPrimary text-white hover:bg-rbc-900"
-                            : "text-gray-900 hover:bg-rbcPrimary hover:text-white",
+                            ? "bg-primary text-white hover:bg-rbc-900"
+                            : "text-gray-900 hover:bg-primary hover:text-white",
                           "rounded-md px-3 py-2 text-sm font-medium"
                         )}
                         aria-current={item.current ? "page" : undefined}
@@ -66,7 +66,7 @@ const Navbar = () => {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <button
                   type="button"
-                  className="relative rounded-full bg-rbcPrimary p-1 text-secoundry hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  className="relative rounded-full bg-primary p-1 text-white hover:text-white focus:outline-none hover:ring-4 hover:ring-white hover:ring-offset-4 hover:ring-offset-rbcPrimary "
                 >
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">View notifications</span>
@@ -114,7 +114,7 @@ const Navbar = () => {
                           <a
                             href="#"
                             className={classNames(
-                              active ? "bg-rbcPrimary" : "",
+                              active ? "bg-primary" : "",
                               "block px-4 py-2 text-sm text-gray-700"
                             )}
                           >
@@ -151,8 +151,8 @@ const Navbar = () => {
                   href={item.href}
                   className={classNames(
                     item.current
-                      ? "bg-rbcPrimary text-white"
-                      : "text-gray-700 hover:bg-rbcPrimary hover:text-white",
+                      ? "bg-primary text-white"
+                      : "text-gray-700 hover:bg-primary hover:text-white",
                     "block rounded-md px-3 py-2 text-base font-medium"
                   )}
                   aria-current={item.current ? "page" : undefined}

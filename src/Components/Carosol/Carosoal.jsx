@@ -7,52 +7,67 @@ const Carosoal = () => {
   countItDown(weddingDate, (date) => setCountingValue(date));
   return (
     <div className="">
-      <div
-        className="hero md:min-h-screen min-h-[70vh] bg-center"
-        style={{
-          backgroundImage:
-            "url(https://img.freepik.com/free-vector/navratri-durga-puja-festival-cultural-celebration-card-background_1035-24684.jpg?w=740&t=st=1694626310~exp=1694626910~hmac=c592d1341ad64d7b9c0f8e4d90b19df4d79fee420102b9238ded164a6f6719b0)",
-        }}
-      >
-        <div className="hero-overlay bg-opacity-60 bg-rbc-1000 "></div>
-        <div className="hero-content text-center text-neutral-content">
-          <div className="w-sm md:max-w-lg border-8 bg-indigo-500 opacity-80 border-info p-4 md:px-2 md:py-6 rounded-tl-sm rounded-tr-3xl rounded-bl-3xl rounded-br-sm">
-            <h1 className="mb-5 md:text-4xl font-bold leading-normal ">
-              দূর্গা পূজার আর মাত্র বাকিঃ-
-            </h1>
-            <div className="flex justify-center">
-              <div className="grid md:grid-cols-4 grid-cols-2 md:gap-5 gap-2 auto-cols-max">
-                <div className="flex flex-col justify-center items-center">
-                  <span className="countdown font-mono md:text-5xl">
-                    <span style={{ "--value": `${countingValue.days}` }}></span>
-                  </span>
-                  দিন
-                </div>
-                <div className="flex flex-col justify-center items-center">
-                  <span className="countdown font-mono md:text-5xl">
-                    <span
-                      style={{ "--value": `${countingValue.hours}` }}
-                    ></span>
-                  </span>
-                  ঘন্টা
-                </div>
-                <div className="flex flex-col justify-center items-center">
-                  <span className="countdown font-mono md:text-5xl">
-                    <span
-                      style={{ "--value": `${countingValue.minutes}` }}
-                    ></span>
-                  </span>
-                  মিনিট
-                </div>
-                <div className="flex flex-col justify-center items-center">
-                  <span className="countdown font-mono md:text-5xl">
-                    <span
-                      style={{ "--value": `${countingValue.seconds}` }}
-                    ></span>
-                  </span>
-                  সেকেন্ড
-                </div>
-              </div>
+      <div className="blur-[180px] h-32 to-purple-400 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600 "></div>
+      <div className="container mx-auto">
+        <div className="flex flex-col  items-center md:py-8 pt-1 justify-center">
+          <h1 className="text-gray-900 dark:text-white font-bold text-3xl md:text-6xl xl:text-7xl">
+            দূর্গা পূজার বাকি{" "}
+          </h1>
+          <div className="grid md:grid-cols-4 grid-cols-2 md:gap-12 gap-8 md:my-8 my-4 text-primary dark:text-white">
+            <div className="flex flex-col justify-center items-center">
+              <span className="countdown font-mono ">
+                <span
+                  className="text-5xl md:text-6xl xl:text-7xl"
+                  style={{ "--value": `${countingValue.days}` }}
+                ></span>
+              </span>
+              দিন
+            </div>
+
+            <div className="flex flex-col justify-center items-center">
+              <span className="countdown font-mono ">
+                <span
+                  className="text-5xl md:text-6xl xl:text-7xl"
+                  style={{ "--value": `${countingValue.hours}` }}
+                ></span>
+              </span>
+              ঘন্টা
+            </div>
+
+            <div className="flex flex-col justify-center items-center">
+              <span className="countdown font-mono ">
+                <span
+                  className="text-5xl md:text-6xl xl:text-7xl"
+                  style={{ "--value": `${countingValue.minutes}` }}
+                ></span>
+              </span>
+              মিনিট
+            </div>
+
+            <div className="flex flex-col justify-center items-center">
+              <span className="countdown font-mono ">
+                <span
+                  className="text-5xl md:text-6xl xl:text-7xl"
+                  style={{ "--value": `${countingValue.seconds}` }}
+                ></span>
+              </span>
+              সেকেন্ড
+            </div>
+          </div>
+          <div className="flex flex-col items-center w-4/5 text-center">
+            <p className="leading-10 mt-8 text-gray-700 dark:text-gray-300 text-xl md:text-center text-justify">
+              সাধারণত আশ্বিন মাসের শুক্ল পক্ষের ষষ্ঠ থেকে দশম দিন পর্যন্ত
+              শারদীয়া দুর্গাপূজা অনুষ্ঠিত হয়। এই পাঁচটি দিন যথাক্রমে
+              দুর্গাষষ্ঠী, দুর্গাসপ্তমী, মহাষ্টমী, মহানবমী ও বিজয়াদশমী নামে
+              পরিচিত।
+            </p>
+            <div className="flex md:gap-12 my-8 gap-4">
+              <button className="text-white bg-primary md:px-10 px-6 py-3 rounded-full hover:bg-indigo-900 hover:transition duration-300 font-semibold">
+                আয়োজন
+              </button>
+              <button className="md:px px-6  py-3 rounded-full hover:transition hover:duration-300 bg-purple-100 text-black font-semibold hover:bg-primary hover:text-white">
+                বিস্তারিত
+              </button>
             </div>
           </div>
         </div>

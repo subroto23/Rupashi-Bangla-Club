@@ -205,10 +205,20 @@ const DateTimeHtml = () => {
 
   const { dateBd, dateEn } = setDateEng(new Date());
   return (
-    <div className="flex justify-center flex-col md:leading-12 text-lg text-natural-500 font-bold  my-16 text-center ">
-      <h1>{`${dateBd.date} ${dateBd.month} ${dateBd.year} ,
-       ${dateBd.day} , ${dateBd.session}`}</h1>
-      <h1 className="text-center">{`${dateEn.date} ${dateEn.month} ${dateEn.year} , ${dateEn.day}`}</h1>
+    <div className="grid md:grid-cols-2 grid-col-1 gap-8 md:w-9/12 py-8 border-y-4  border-gray-100 dark:border-gray-800">
+      <div className="text-center">
+        <h6 className="text-lg font-semibold text-gray-700 dark:text-white">
+          আজ ইংরেজি তারিখ
+        </h6>
+        <p className="mt-2 text-gray-500">{`${dateEn.date} ${dateEn.month} ${dateEn.year} , ${dateEn.day}`}</p>
+      </div>
+      <div className="text-center">
+        <h6 className="text-lg font-semibold text-gray-700 dark:text-white">
+          আজ বাংলা তারিখ
+        </h6>
+        <p className="mt-2 text-gray-500">{`${dateBd.date} ${dateBd.month} ${dateBd.year} ,
+       ${dateBd.day} , ${dateBd.session}`}</p>
+      </div>
     </div>
   );
 };
