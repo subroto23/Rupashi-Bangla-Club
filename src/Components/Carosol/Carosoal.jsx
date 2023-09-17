@@ -6,7 +6,7 @@ const Carosoal = () => {
 
   countItDown(weddingDate, (date) => setCountingValue(date));
   return (
-    <div className="pt-[75px]">
+    <div className="">
       <div
         className="hero md:min-h-screen min-h-[70vh] bg-center"
         style={{
@@ -14,10 +14,10 @@ const Carosoal = () => {
             "url(https://img.freepik.com/free-vector/navratri-durga-puja-festival-cultural-celebration-card-background_1035-24684.jpg?w=740&t=st=1694626310~exp=1694626910~hmac=c592d1341ad64d7b9c0f8e4d90b19df4d79fee420102b9238ded164a6f6719b0)",
         }}
       >
-        <div className="hero-overlay bg-opacity-60 bg-gray-800"></div>
+        <div className="hero-overlay bg-opacity-60 bg-rbc-1000 "></div>
         <div className="hero-content text-center text-neutral-content">
-          <div className="w-sm md:max-w-lg border-4 bg-red-600 opacity-80 p-4 md:px-2 md:py-6 rounded-tl-sm rounded-tr-3xl rounded-bl-3xl rounded-br-sm">
-            <h1 className="mb-5 md:text-4xl font-bold leading-normal">
+          <div className="w-sm md:max-w-lg border-8 bg-indigo-500 opacity-80 border-info p-4 md:px-2 md:py-6 rounded-tl-sm rounded-tr-3xl rounded-bl-3xl rounded-br-sm">
+            <h1 className="mb-5 md:text-4xl font-bold leading-normal ">
               দূর্গা পূজার আর মাত্র বাকিঃ-
             </h1>
             <div className="flex justify-center">
@@ -26,7 +26,7 @@ const Carosoal = () => {
                   <span className="countdown font-mono md:text-5xl">
                     <span style={{ "--value": `${countingValue.days}` }}></span>
                   </span>
-                  days
+                  দিন
                 </div>
                 <div className="flex flex-col justify-center items-center">
                   <span className="countdown font-mono md:text-5xl">
@@ -34,7 +34,7 @@ const Carosoal = () => {
                       style={{ "--value": `${countingValue.hours}` }}
                     ></span>
                   </span>
-                  hours
+                  ঘন্টা
                 </div>
                 <div className="flex flex-col justify-center items-center">
                   <span className="countdown font-mono md:text-5xl">
@@ -42,7 +42,7 @@ const Carosoal = () => {
                       style={{ "--value": `${countingValue.minutes}` }}
                     ></span>
                   </span>
-                  min
+                  মিনিট
                 </div>
                 <div className="flex flex-col justify-center items-center">
                   <span className="countdown font-mono md:text-5xl">
@@ -50,7 +50,7 @@ const Carosoal = () => {
                       style={{ "--value": `${countingValue.seconds}` }}
                     ></span>
                   </span>
-                  sec
+                  সেকেন্ড
                 </div>
               </div>
             </div>

@@ -1,12 +1,11 @@
 import Carosoal from "./Components/Carosol/Carosoal";
-import { ComplexNavbar } from "./Layout/Header/Navbar";
-
 import EventsLayout from "./Components/Events/EventsLayout";
+import Navbar from "./Layout/Header/Navbar";
 
 function App() {
   return (
     <>
-      <ComplexNavbar />
+      <Navbar />
       <Carosoal />
       <EventsLayout />
     </>
