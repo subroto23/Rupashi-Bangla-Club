@@ -205,7 +205,7 @@ const DateTimeHtml = () => {
 
   const { dateBd, dateEn } = setDateEng(new Date());
   return (
-    <div className="grid md:grid-cols-2 grid-col-1 gap-8 md:w-9/12 py-8 border-y-4  border-gray-100 dark:border-gray-800">
+    <div className="grid md:grid-cols-2 grid-col-1 gap-8 md:w-9/12 py-8 border-y-4  border-gray-100 dark:border-gray-800 container mx-auto">
       <div className="text-center">
         <h6 className="text-lg font-semibold text-gray-700 dark:text-white">
           আজ ইংরেজি তারিখ
