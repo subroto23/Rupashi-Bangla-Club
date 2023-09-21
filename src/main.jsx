@@ -6,11 +6,18 @@ import { ThemeProvider } from "@material-tailwind/react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HeaderHeroSection from "./Pages/HederHeroSection/HeaderHeroSection";
 import ErrorPages from "./Components/ErrorPage/ErrorPages";
+import NewsViews from "./Components/NewsViewShow/NewsViews";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HeaderHeroSection />,
     errorElement: <ErrorPages />,
+  },
+  {
+    path: "/news/views/:id",
+    loader: ({ params }) =>
+      fetch(`https://api.npoint.io/07b1fa8c1567c93fd234/${Number(params.id)}`),
+    element: <NewsViews />,
   },
 ]);
 

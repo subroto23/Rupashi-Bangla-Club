@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "title": "Latest News 6",
     "source": "News Outlet 6",
     "timestamp": "2023-09-21T18:40:00Z",
@@ -7,6 +8,7 @@
     "link": "https://images.unsplash.com/photo-1579781354199-1ffd36bd7d30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80"
   },
   {
+    "id": 2,
     "title": "Important News 7",
     "source": "News Outlet 7",
     "timestamp": "2023-09-21T20:05:00Z",
@@ -14,6 +16,7 @@
     "link": "https://plus.unsplash.com/premium_photo-1672116453187-3aa64afe04ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
   },
   {
+    "id": 3,
     "title": "Top News 8",
     "source": "News Outlet 8",
     "timestamp": "2023-09-21T22:30:00Z",
@@ -21,6 +24,7 @@
     "link": "https://images.unsplash.com/photo-1466378743612-9da217f53e55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
   },
   {
+    "id": 4,
     "title": "Breaking News 9",
     "source": "News Outlet 9",
     "timestamp": "2023-09-21T23:55:00Z",
@@ -28,6 +32,7 @@
     "link": "https://plus.unsplash.com/premium_photo-1682513184135-b7b9b76fb4eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
   },
   {
+    "id": 5,
     "title": "Latest News 10",
     "source": "News Outlet",
     "timestamp": "2023-09-22T01:20:00Z",

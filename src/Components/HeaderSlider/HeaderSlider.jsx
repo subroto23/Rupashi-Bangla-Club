@@ -5,8 +5,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import "./HeaderSlider.module.css";
-
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { useEffect, useState } from "react";
@@ -19,7 +17,7 @@ const HeaderSlider = () => {
       .then((imageArr) => setImages(imageArr));
   }, []);
   return (
-    <div>
+    <div className="">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -32,13 +30,12 @@ const HeaderSlider = () => {
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
       >
         {images.map((imagesUrl, idx) => (
           <SwiperSlide key={idx}>
-            <div className="relative md:h-[500px] h-44 mt-16 group">
+            <div className="relative md:h-[80vh] h-44 mt-16 group">
               <div
-                className="relative h-full w-full object-container  contrast-100 bg-no-repeat bg-cover"
+                className="absolute h-full w-full object-container contrast-100 bg-no-repeat bg-cover"
                 style={{ backgroundImage: `url(${imagesUrl.image})` }}
                 alt="SliderImage"
               >
