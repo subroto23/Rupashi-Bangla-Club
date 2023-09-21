@@ -4,7 +4,7 @@ import HeroBigNews from "./HeroBigNews/HeroBigNews";
 const TopNews = () => {
   const [newsArr, setNewsArr] = useState([]);
   useEffect(() => {
-    fetch("../../../NewsDatas.json")
+    fetch("https://api.npoint.io/9e9fcadf9f4c38ad6d38")
       .then((res) => res.json())
       .then((data) => setNewsArr(data.reverse()));
   }, []);

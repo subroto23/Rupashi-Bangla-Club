@@ -8,7 +8,7 @@ const Carosoal = () => {
   return (
     <div>
       {/* <div className="blur-[150px] md:h-16 h-16 to-purple-400 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600 "></div> */}
-      <div className="container mx-auto bg-white">
+      <div className="container mx-auto">
         <div className="flex flex-col  items-center md:py-8 pt-1 justify-center my-12">
           <h1 className="text-gray-900 dark:text-white font-bold text-3xl md:text-6xl xl:text-7xl">
             দূর্গা পূজার বাকি

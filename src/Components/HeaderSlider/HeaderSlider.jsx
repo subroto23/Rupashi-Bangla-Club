@@ -14,7 +14,7 @@ import HeaderSliderOverlay from "../HeaderSliderOverLay/HeaderSliderOverlay";
 const HeaderSlider = () => {
   const [images, setImages] = useState([]);
   useEffect(() => {
-    fetch("../../../HeaderSlider.json")
+    fetch("https://api.npoint.io/b36d89e75c4e5f883241")
       .then((res) => res.json())
       .then((imageArr) => setImages(imageArr));
   }, []);
