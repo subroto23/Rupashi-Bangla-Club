@@ -7,11 +7,23 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HeaderHeroSection from "./Pages/HederHeroSection/HeaderHeroSection";
 import ErrorPages from "./Components/ErrorPage/ErrorPages";
 import NewsViews from "./Components/NewsViewShow/NewsViews";
+import Root from "./Components/Root/Root";
+import LogInForm from "./Components/LogInForm/LogInForm";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HeaderHeroSection />,
+    element: <Root />,
     errorElement: <ErrorPages />,
+    children: [
+      {
+        path: "/",
+        element: <HeaderHeroSection />,
+      },
+      {
+        path: "/login",
+        element: <LogInForm />,
+      },
+    ],
   },
   {
     path: "/news/views/:id",

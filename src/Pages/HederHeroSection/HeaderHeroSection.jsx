@@ -1,10 +1,9 @@
-import Carosoal from "../../Components/Carosol/Carosoal";
+// import Carosoal from "../../Components/Carosol/Carosoal";
 import Footer from "../../Components/Footer/Footer";
 import HeaderSlider from "../../Components/HeaderSlider/HeaderSlider";
 import TopNews from "../../Components/TopNews/TopNews";
 import Navbar from "../../Layout/Header/Navbar";
 import DateTimeHtml from "../../Services/DateTimeHtml";
-
 const HeaderHeroSection = () => {
   return (
     <div>
