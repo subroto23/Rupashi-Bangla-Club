@@ -190,7 +190,7 @@ const Footer = () => {
           <span>© {Year} কপিরাইট </span>
           <a
             className="font-semibold text-white dark:text-neutral-400"
-            href="https://tailwind-elements.com/"
+            href="https://rbcbd.vercel.app/"
           >
             রূপসী বাংলা ক্লাব
           </a>

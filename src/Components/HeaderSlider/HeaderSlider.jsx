@@ -25,19 +25,18 @@ const HeaderSlider = () => {
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="md:h-[80vh] h-[130px]"
       >
         {}
         <SwiperSlide>
           <img
-            className="w-full h-full"
-            src="https://media.istockphoto.com/id/1413205702/photo/abstract-blue-neon-stadium-background-illuminated-with-lamps-on-ground-science-product-and.jpg?s=1024x1024&w=is&k=20&c=Kumc_hLrWRf9qeWDh9xAsZAxT58ndvwawmPB_NorRLA="
+            className="w-full h-full cover"
+            src="https://icms-image.slatic.net/images/ims-web/76b78e2f-db47-46d4-a279-70679a36f2c9.jpg"
             alt=""
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
-            className="w-full h-full"
+            className="w-full h-full cover"
             src="https://icms-image.slatic.net/images/ims-web/5c3ea859-2ecd-4e85-bc10-68cfd2e56727.jpg"
             alt=""
           />

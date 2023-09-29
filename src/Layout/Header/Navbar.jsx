@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Menu from "./NavbarMenu";
 import { NavLink } from "react-router-dom";
+import GLogOut from "../../Components/GoogleLogIn/GLogOut";
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
@@ -40,7 +41,9 @@ const Navbar = () => {
                   <a>Settings</a>
                 </li>
                 <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
-                  <a>Logout</a>
+                  <a>
+                    <GLogOut />
+                  </a>
                 </li>
               </ul>
             )}
