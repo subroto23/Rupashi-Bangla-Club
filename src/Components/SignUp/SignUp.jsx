@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import Navbar from "../../Layout/Header/Navbar";
 import Footer from "../Footer/Footer";
-import Axios from "axios";
 const SignUp = () => {
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -9,18 +8,20 @@ const SignUp = () => {
     const email = e.target.email.value;
     const phone = e.target.phone.value;
     const dateOfBirth = e.target.date.value;
-    // const img = e.target.file.files[0];
-    const saveData = {
-      name,
-      email,
-      phone,
-      dateOfBirth,
-    };
-    Axios.post("https://rbcwebsite.onrender.com/api/users/directuser", {
-      saveData,
+    fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      body: JSON.stringify({
+        name,
+        email,
+        phone,
+        dateOfBirth,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
     })
       .then((result) => console.log(result))
-      .catch((error) => console.log(error));
+      .catch((err) => console.log(err));
   };
   return (
     <>
