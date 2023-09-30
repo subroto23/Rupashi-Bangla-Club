@@ -7,18 +7,24 @@ const SignUp = () => {
   const handleSignUp = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
+    const fathername = e.target.fathername.value;
+    const mothername = e.target.mothername.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
     const phone = e.target.phone.value;
     const dateOfBirth = e.target.date.value;
+    const dateOfDead = e.target.dead.value;
     fetch("https://rbcwebsite.onrender.com/api/users/directuser", {
       method: "POST",
       body: JSON.stringify({
         name,
+        fathername,
+        mothername,
         email,
         password,
         phone,
         dateOfBirth,
+        dateOfDead,
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -41,8 +47,7 @@ const SignUp = () => {
           <form onSubmit={handleSignUp}>
             <div className="mb-5">
               <label className="mb-3 block text-base font-bold text-[#07074D]">
-                সম্পূর্ন নাম লিখুন বাংলায়{" "}
-                <sup className="pl-2 text-red-600">*</sup>
+                সম্পূর্ন নাম লিখুন বাংলায় <sup className=" text-red-600">*</sup>
               </label>
               <input
                 type="text"
@@ -53,7 +58,29 @@ const SignUp = () => {
             </div>
             <div className="mb-5">
               <label className="mb-3 block text-base font-bold text-[#07074D]">
-                ই-মেইল লিখুন <sup className="pl-2 text-red-600">*</sup>
+                পিতার নাম লিখুন বাংলায় <sup className=" text-red-600">*</sup>
+              </label>
+              <input
+                type="text"
+                name="fathername"
+                placeholder="পিতার নাম"
+                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+              />
+            </div>
+            <div className="mb-5">
+              <label className="mb-3 block text-base font-bold text-[#07074D]">
+                মাতার নাম লিখুন বাংলায় <sup className=" text-red-600">*</sup>
+              </label>
+              <input
+                type="text"
+                name="mothername"
+                placeholder="মাতার নাম"
+                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+              />
+            </div>
+            <div className="mb-5">
+              <label className="mb-3 block text-base font-bold text-[#07074D]">
+                ই-মেইল লিখুন
               </label>
               <input
                 type="email"
@@ -64,7 +91,7 @@ const SignUp = () => {
             </div>
             <div className="mb-5">
               <label className="mb-3 block text-base font-bold text-[#07074D]">
-                পাসওয়ার্ড লিখুন <sup className="pl-2 text-red-600">*</sup>
+                পাসওয়ার্ড লিখুন
               </label>
               <input
                 type="password"
@@ -75,7 +102,7 @@ const SignUp = () => {
             </div>
             <div className="mb-5">
               <label className="mb-3 block text-base font-bold text-[#07074D]">
-                মোবাইল নাম্বার লিখুন <sup className="pl-2 text-red-600">*</sup>
+                মোবাইল নাম্বার লিখুন
               </label>
               <input
                 type="text"
@@ -88,7 +115,7 @@ const SignUp = () => {
               <div className="w-full px-3 sm:w-1/2">
                 <div className="mb-5">
                   <label className="mb-3 block text-base font-bold text-[#07074D]">
-                    জন্ম তারিখ <sup className="pl-2 text-red-600">*</sup>
+                    জন্ম তারিখ
                   </label>
                   <input
                     type="date"
@@ -115,7 +142,7 @@ const SignUp = () => {
                     </label>
                     <input
                       type="date"
-                      name="date"
+                      name="dead"
                       className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                     />
                   </div>
