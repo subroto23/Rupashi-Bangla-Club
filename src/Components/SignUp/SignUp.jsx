@@ -8,7 +8,7 @@ const SignUp = () => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
-    const password = e.target.password.value;
+    // const password = e.target.password.value;
     const phone = e.target.phone.value;
     const dateOfBirth = e.target.date.value;
     fetch("https://rbcwebsite.onrender.com/api/users/directuser", {
@@ -16,7 +16,7 @@ const SignUp = () => {
       body: JSON.stringify({
         name,
         email,
-        password,
+        // password,
         phone,
         dateOfBirth,
       }),
