@@ -10,17 +10,19 @@ const SignUp = () => {
     const password = e.target.password.value;
     const phone = e.target.phone.value;
     const dateOfBirth = e.target.date.value;
-    const img = e.target.file.files[0];
-    Axios.post("https://rbcwebsite.onrender.com/api/users/registation", {
+    // const img = e.target.file.files[0];
+    const saveData = {
       name,
       email,
       password,
       phone,
       dateOfBirth,
-      img,
+    };
+    Axios.post("https://rbcwebsite.onrender.com/api/users/registation", {
+      saveData,
     })
-      .then((result) => console.log(result.data))
-      .catch((error) => console.log(error.message));
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
   };
   return (
     <>
