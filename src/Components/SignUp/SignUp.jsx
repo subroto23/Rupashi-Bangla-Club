@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Navbar from "../../Layout/Header/Navbar";
 import Footer from "../Footer/Footer";
+import Axios from "axios";
 import { useState } from "react";
 const SignUp = () => {
   const [openBtn, setOpenBtn] = useState(false);
@@ -11,21 +12,23 @@ const SignUp = () => {
     const password = e.target.password.value;
     const phone = e.target.phone.value;
     const dateOfBirth = e.target.date.value;
-    fetch("https://rbcwebsite.onrender.com/api/users/directuser", {
-      method: "POST",
-      body: JSON.stringify({
-        name,
-        email,
-        password,
-        phone,
-        dateOfBirth,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
+    const newUser = JSON.stringify(name, email, password, phone, dateOfBirth);
+    // fetch("https://rbcwebsite.onrender.com/api/users/directuser", {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     name,
+    //     email,
+    //     password,
+    //     phone,
+    //     dateOfBirth,
+    //   }),
+    //   headers: {
+    //     "Content-type": "application/json; charset=UTF-8",
+    //   },
+    // })
+    Axios.post("https://rbcwebsite.onrender.com/api/users/directuser", newUser)
       .then((result) => console.log(result))
-      .catch((err) => console.log(err));
+      .catch((error) => console.log(error));
   };
   const handleChecked = (e) => {
     setOpenBtn(e.target.checked);
