@@ -7,14 +7,12 @@ const SignUp = () => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
-    const password = e.target.password.value;
     const phone = e.target.phone.value;
     const dateOfBirth = e.target.date.value;
     // const img = e.target.file.files[0];
     const saveData = {
       name,
       email,
-      password,
       phone,
       dateOfBirth,
     };
