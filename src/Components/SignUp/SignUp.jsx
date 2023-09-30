@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import Navbar from "../../Layout/Header/Navbar";
 import Footer from "../Footer/Footer";
+import { useState } from "react";
 const SignUp = () => {
+  const [openBtn, setOpenBtn] = useState(false);
   const handleSignUp = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
+    const password = e.target.password.value;
     const phone = e.target.phone.value;
     const dateOfBirth = e.target.date.value;
     fetch("https://rbcwebsite.onrender.com/api/users/directuser", {
@@ -13,6 +16,7 @@ const SignUp = () => {
       body: JSON.stringify({
         name,
         email,
+        password,
         phone,
         dateOfBirth,
       }),
@@ -22,6 +26,9 @@ const SignUp = () => {
     })
       .then((result) => console.log(result))
       .catch((err) => console.log(err));
+  };
+  const handleChecked = (e) => {
+    setOpenBtn(e.target.checked);
   };
   return (
     <>
@@ -88,10 +95,34 @@ const SignUp = () => {
                     className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                   />
                 </div>
+                <div className="mb-5 text-center">
+                  <input
+                    onClick={handleChecked}
+                    type="checkbox"
+                    name="checkbox"
+                    className="rounded-md border border-[#e0e0e0] bg-white text-base font-medium text-[#6B7280]   outline-none focus:border-[#6A64F1] focus:shadow-md"
+                  />
+                  <span className="mb-3 ml-3 text-base font-bold text-[#07074D]">
+                    অন্যের তথ্য হলে টিক দিন
+                  </span>
+                </div>
+
+                {openBtn && (
+                  <div className="mb-5">
+                    <label className="mb-3 block text-base font-bold text-[#07074D]">
+                      মৃত্যু বার্ষিকীর তারিখ
+                    </label>
+                    <input
+                      type="date"
+                      name="date"
+                      className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                    />
+                  </div>
+                )}
               </div>
               <div className="w-full px-3 sm:w-1/2"></div>
             </div>
-
+            {/* 
             <div className="mb-5">
               <label className="mb-3 block text-base font-bold text-[#07074D]">
                 আপনার ছবি সংযুক্ত করুন
@@ -101,7 +132,7 @@ const SignUp = () => {
                 name="file"
                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
               />
-            </div>
+            </div> */}
             <div className="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white  inline-block outline-none">
               <input type="submit" />
             </div>
