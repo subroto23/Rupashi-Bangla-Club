@@ -7,12 +7,14 @@ const SignUp = () => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
+    const password = e.target.password.value;
     const phone = e.target.phone.value;
     const dateOfBirth = e.target.date.value;
     const img = e.target.file.files[0];
     Axios.post("https://rbcwebsite.onrender.com/api/users/registation", {
       name,
       email,
+      password,
       phone,
       dateOfBirth,
       img,
@@ -48,6 +50,17 @@ const SignUp = () => {
                 type="email"
                 name="email"
                 placeholder="ই-মেইল লিখুন"
+                className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+              />
+            </div>
+            <div className="mb-5">
+              <label className="mb-3 block text-base font-bold text-[#07074D]">
+                পাসওয়ার্ড লিখুন
+              </label>
+              <input
+                type="password"
+                name="password"
+                placeholder="পাসওয়ার্ড"
                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
               />
             </div>
