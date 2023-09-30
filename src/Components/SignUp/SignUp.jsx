@@ -8,7 +8,7 @@ const SignUp = () => {
     const email = e.target.email.value;
     const phone = e.target.phone.value;
     const dateOfBirth = e.target.date.value;
-    fetch("https://jsonplaceholder.typicode.com/posts", {
+    fetch("https://rbcwebsite.onrender.com/api/users/directuser", {
       method: "POST",
       body: JSON.stringify({
         name,
