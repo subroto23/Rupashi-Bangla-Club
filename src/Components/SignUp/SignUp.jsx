@@ -14,12 +14,6 @@ const SignUp = () => {
     const phone = e.target.phone.value;
     let dateOfBirth = e.target.date.value;
     let dateOfDead = e.target.dead.value;
-    if (
-      typeof dateOfBirth === "undefined" ||
-      typeof dateOfDead === "undefined"
-    ) {
-      return (dateOfBirth = "পাওয়া যায় নি") || (dateOfDead = "পাওয়া যায় নি");
-    }
     fetch("https://rbcwebsite.onrender.com/api/users/directuser", {
       method: "POST",
       body: JSON.stringify({
