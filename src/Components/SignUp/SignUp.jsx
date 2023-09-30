@@ -26,10 +26,27 @@ const SignUp = () => {
     //     "Content-type": "application/json; charset=UTF-8",
     //   },
     // })
-    Axios.post("https://rbcwebsite.onrender.com/api/users/directuser", newUser)
+    let axiosConfig = {
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+        Accept: "Token",
+        "Access-Control-Allow-Origin": "*",
+      },
+    };
+    // Axios.post("https://rbcwebsite.onrender.com/api/users/directuser")
+    //   .then((result) => console.log(result))
+    //   .catch((error) => console.log(error));
+
+    Axios({
+      method: "post",
+      url: "url",
+      headers: axiosConfig,
+      data: newUser,
+    })
       .then((result) => console.log(result))
       .catch((error) => console.log(error));
   };
+
   const handleChecked = (e) => {
     setOpenBtn(e.target.checked);
   };
