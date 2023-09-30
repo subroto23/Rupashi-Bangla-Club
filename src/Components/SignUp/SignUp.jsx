@@ -13,13 +13,13 @@ const SignUp = () => {
     const dateOfBirth = e.target.date.value;
     fetch("https://rbcwebsite.onrender.com/api/users/directuser", {
       method: "POST",
-      body: {
+      body: JSON.stringify({
         name,
         email,
         password,
         phone,
         dateOfBirth,
-      },
+      }),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
