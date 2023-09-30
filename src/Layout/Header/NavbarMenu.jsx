@@ -22,6 +22,13 @@ const NavbarMenu = () => {
         গ্যালারী
       </NavLink>
       <NavLink
+        to="/signup"
+        href="#"
+        className="block md:inline-block px-3 py-2 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+      >
+        রেজিস্টেশন
+      </NavLink>
+      <NavLink
         to="/login"
         href="#"
         className="block md:inline-block px-3 py-2 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"

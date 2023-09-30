@@ -19,7 +19,7 @@ const GoogleLogIn = () => {
         onClick={handleGoogleLogin}
         className="text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca]"
       >
-        Continue With Google
+        গুগোলের মাধ্যমে লগইন করুন
       </button>
 
       {/* {gLoginUser && (

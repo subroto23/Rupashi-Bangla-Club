@@ -1,13 +1,22 @@
-import { Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import Navbar from "../../Layout/Header/Navbar";
 import Footer from "../Footer/Footer";
 import GoogleLogIn from "../GoogleLogIn/GoogleLogIn";
 import { TEInput, TERipple } from "tw-elements-react";
 import "tw-elements-react/dist/css/tw-elements-react.min.css";
 import { FaGoogle } from "react-icons/fa";
+import Axios from "axios";
 const LogInForm = () => {
   const handleLoginSubmit = (e) => {
     e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    Axios.post("https://rbcwebsite.onrender.com/auth/login", {
+      email,
+      password,
+    })
+      .then((result) => console.log(result))
+      .catch((error) => console.log(error));
   };
   return (
     <div>
@@ -27,15 +36,12 @@ const LogInForm = () => {
 
             {/* <!-- Right column container with form --> */}
             <div className="md:w-8/12 lg:ml-6 lg:w-5/12">
-              <form
-                onSubmit={handleLoginSubmit}
-                method="post"
-                action="https://rbcwebsite.onrender.com/auth/login"
-              >
+              <form onSubmit={handleLoginSubmit}>
                 {/* <!-- Email input --> */}
                 <TEInput
                   type="email"
-                  label="Email address"
+                  name="email"
+                  label="ই-মেইল লিখুন"
                   size="lg"
                   className="mb-6"
                 ></TEInput>
@@ -43,7 +49,8 @@ const LogInForm = () => {
                 {/* <!--Password input--> */}
                 <TEInput
                   type="password"
-                  label="Password"
+                  label="পাসওয়ার্ড লিখুন"
+                  name="password"
                   className="mb-6"
                   size="lg"
                 ></TEInput>
@@ -62,17 +69,18 @@ const LogInForm = () => {
                       className="inline-block pl-[0.15rem] hover:cursor-pointer"
                       htmlFor="exampleCheck3"
                     >
-                      Remember me
+                      পাসওয়ার্ড জমা রাখতে চাইলে
                     </label>
                   </div>
 
                   {/* <!-- Forgot password link --> */}
-                  <a
+                  <NavLink
+                    to="/forgot-password"
                     href="#!"
                     className="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
                   >
-                    Forgot password?
-                  </a>
+                    পাসওয়ার্ড ভুলে গেলে
+                  </NavLink>
                 </div>
 
                 {/* <!-- Submit button --> */}
@@ -82,14 +90,14 @@ const LogInForm = () => {
                     type="submit"
                     className="inline-block w-full rounded bg-primary px-7 pb-2.5 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
                   >
-                    Sign in
+                    লগইন করুন
                   </button>
                 </TERipple>
 
                 {/* <!-- Divider --> */}
                 <div className="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
                   <p className="mx-4 mb-0 text-center font-semibold dark:text-neutral-200">
-                    OR
+                    অথবা
                   </p>
                 </div>
 
@@ -109,7 +117,7 @@ const LogInForm = () => {
                   </div>
                 </TERipple>
                 <TERipple rippleColor="light" className="w-full">
-                  <a
+                  <Link
                     className="mb-3 flex w-full items-center justify-center rounded bg-primary px-7 pb-2.5 pt-3 text-center text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
                     style={{ backgroundColor: "#3b5998" }}
                     href="#!"
@@ -124,10 +132,25 @@ const LogInForm = () => {
                     >
                       <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
                     </svg>
-                    Continue with Facebook
-                  </a>
+                    ফেসবুকের মাধ্যমে লগইন করুন
+                  </Link>
                 </TERipple>
               </form>
+              <div className="text-center pt-6">
+                <Link
+                  to="/login"
+                  className="inline-block text-sm text-primary align-baseline hover:text-blue-800"
+                  href="#"
+                >
+                  আগে রেজিস্টেশন করা না থাকলে
+                  <Link
+                    to="/signup"
+                    className="text-red-600 font-extrabold pl-3"
+                  >
+                    এখানে ক্লিক করুন
+                  </Link>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

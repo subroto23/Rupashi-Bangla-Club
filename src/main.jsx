@@ -9,6 +9,7 @@ import ErrorPages from "./Components/ErrorPage/ErrorPages";
 import NewsViews from "./Components/NewsViewShow/NewsViews";
 import Root from "./Components/Root/Root";
 import LogInForm from "./Components/LogInForm/LogInForm";
+import SignUp from "./Components/SignUp/SignUp";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <LogInForm />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
       },
     ],
   },
