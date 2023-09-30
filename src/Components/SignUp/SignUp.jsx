@@ -23,7 +23,9 @@ const SignUp = () => {
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
-    });
+    })
+      .then((result) => console.log(result))
+      .catch((err) => console.log(err));
   };
   const handleChecked = (e) => {
     setOpenBtn(e.target.checked);
