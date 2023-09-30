@@ -41,7 +41,8 @@ const SignUp = () => {
           <form onSubmit={handleSignUp}>
             <div className="mb-5">
               <label className="mb-3 block text-base font-bold text-[#07074D]">
-                সম্পূর্ন নাম লিখুন বাংলায়
+                সম্পূর্ন নাম লিখুন বাংলায়{" "}
+                <sup className="pl-2 text-red-600">*</sup>
               </label>
               <input
                 type="text"
@@ -52,7 +53,7 @@ const SignUp = () => {
             </div>
             <div className="mb-5">
               <label className="mb-3 block text-base font-bold text-[#07074D]">
-                ই-মেইল লিখুন
+                ই-মেইল লিখুন <sup className="pl-2 text-red-600">*</sup>
               </label>
               <input
                 type="email"
@@ -63,7 +64,7 @@ const SignUp = () => {
             </div>
             <div className="mb-5">
               <label className="mb-3 block text-base font-bold text-[#07074D]">
-                পাসওয়ার্ড লিখুন
+                পাসওয়ার্ড লিখুন <sup className="pl-2 text-red-600">*</sup>
               </label>
               <input
                 type="password"
@@ -74,7 +75,7 @@ const SignUp = () => {
             </div>
             <div className="mb-5">
               <label className="mb-3 block text-base font-bold text-[#07074D]">
-                মোবাইল নাম্বার লিখুন
+                মোবাইল নাম্বার লিখুন <sup className="pl-2 text-red-600">*</sup>
               </label>
               <input
                 type="text"
@@ -87,7 +88,7 @@ const SignUp = () => {
               <div className="w-full px-3 sm:w-1/2">
                 <div className="mb-5">
                   <label className="mb-3 block text-base font-bold text-[#07074D]">
-                    জন্ম তারিখ
+                    জন্ম তারিখ <sup className="pl-2 text-red-600">*</sup>
                   </label>
                   <input
                     type="date"
