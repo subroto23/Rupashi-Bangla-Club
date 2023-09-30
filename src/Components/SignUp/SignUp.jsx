@@ -12,8 +12,14 @@ const SignUp = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const phone = e.target.phone.value;
-    const dateOfBirth = e.target.date.value;
-    const dateOfDead = e.target.dead.value;
+    let dateOfBirth = e.target.date.value;
+    let dateOfDead = e.target.dead.value;
+    if (
+      typeof dateOfBirth === "undefined" ||
+      typeof dateOfDead === "undefined"
+    ) {
+      return (dateOfBirth = "11-13-1900") || (dateOfDead = "11-13-1900");
+    }
     fetch("https://rbcwebsite.onrender.com/api/users/directuser", {
       method: "POST",
       body: JSON.stringify({
