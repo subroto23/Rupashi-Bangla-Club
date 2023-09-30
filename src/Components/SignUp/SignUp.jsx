@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import Navbar from "../../Layout/Header/Navbar";
 import Footer from "../Footer/Footer";
-import Axios from "axios";
 import { useState } from "react";
 const SignUp = () => {
   const [openBtn, setOpenBtn] = useState(false);
@@ -12,41 +11,20 @@ const SignUp = () => {
     const password = e.target.password.value;
     const phone = e.target.phone.value;
     const dateOfBirth = e.target.date.value;
-    const newUser = JSON.stringify(name, email, password, phone, dateOfBirth);
-    // fetch("https://rbcwebsite.onrender.com/api/users/directuser", {
-    //   method: "POST",
-    //   body: JSON.stringify({
-    //     name,
-    //     email,
-    //     password,
-    //     phone,
-    //     dateOfBirth,
-    //   }),
-    //   headers: {
-    //     "Content-type": "application/json; charset=UTF-8",
-    //   },
-    // })
-    let axiosConfig = {
+    fetch("https://rbcwebsite.onrender.com/api/users/directuser", {
+      method: "POST",
+      body: JSON.stringify({
+        name,
+        email,
+        password,
+        phone,
+        dateOfBirth,
+      }),
       headers: {
-        "Content-Type": "application/json; charset=UTF-8",
-        Accept: "Token",
-        "Access-Control-Allow-Origin": "*",
+        "Content-type": "application/json; charset=UTF-8",
       },
-    };
-    // Axios.post("https://rbcwebsite.onrender.com/api/users/directuser")
-    //   .then((result) => console.log(result))
-    //   .catch((error) => console.log(error));
-
-    Axios({
-      method: "post",
-      url: "url",
-      headers: axiosConfig,
-      data: newUser,
-    })
-      .then((result) => console.log(result))
-      .catch((error) => console.log(error));
+    });
   };
-
   const handleChecked = (e) => {
     setOpenBtn(e.target.checked);
   };
