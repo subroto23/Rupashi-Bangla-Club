@@ -13,7 +13,6 @@ const SignUp = () => {
     const password = e.target.password.value;
     const phone = e.target.phone.value;
     let dateOfBirth = e.target.date.value;
-    let dateOfDead = e.target.dead.value;
     fetch("https://rbcwebsite.onrender.com/api/users/directuser", {
       method: "POST",
       body: JSON.stringify({
@@ -24,7 +23,6 @@ const SignUp = () => {
         password,
         phone,
         dateOfBirth,
-        dateOfDead,
       }),
       headers: {
         "Content-type": "application/json; charset=UTF-8",
