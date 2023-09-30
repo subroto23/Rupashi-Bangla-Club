@@ -18,7 +18,7 @@ const SignUp = () => {
       phone,
       dateOfBirth,
     };
-    Axios.post("https://rbcwebsite.onrender.com/api/users/registation", {
+    Axios.post("https://rbcwebsite.onrender.com/api/users/directuser", {
       saveData,
     })
       .then((result) => console.log(result))
