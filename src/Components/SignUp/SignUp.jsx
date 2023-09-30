@@ -18,7 +18,7 @@ const SignUp = () => {
       typeof dateOfBirth === "undefined" ||
       typeof dateOfDead === "undefined"
     ) {
-      return (dateOfBirth = "11-13-1900") || (dateOfDead = "11-13-1900");
+      return (dateOfBirth = "পাওয়া যায় নি") || (dateOfDead = "পাওয়া যায় নি");
     }
     fetch("https://rbcwebsite.onrender.com/api/users/directuser", {
       method: "POST",
