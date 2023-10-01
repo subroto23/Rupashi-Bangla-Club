@@ -28,7 +28,9 @@ const Navbar = () => {
             <button onClick={() => setShowProfile(!showProfile)}>
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
-                  <img src="https://www.w3schools.com/w3images/avatar2.png" />
+                  <img
+                    src="https://www.w3schools.com/w3images/avatar2.png"
+                  />
                 </div>
               </label>
             </button>

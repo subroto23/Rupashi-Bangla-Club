@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import Navbar from "../../Layout/Header/Navbar";
 import Footer from "../Footer/Footer";
+import axios from "axios";
 import { useState } from "react";
+
 const SignUp = () => {
-  const [openBtn, setOpenBtn] = useState(false);
-  const handleSignUp = (e) => {
+  const [posingData, setPostingData] = useState(null);
+  const [errorData, setErrorData] = useState(null);
+  const handleSignUp = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const fathername = e.target.fathername.value;
@@ -12,28 +15,33 @@ const SignUp = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const phone = e.target.phone.value;
-    let dateOfBirth = e.target.date.value;
-    fetch("https://rbcwebsite.onrender.com/api/users/directuser", {
-      method: "POST",
-      body: JSON.stringify({
-        name,
-        fathername,
-        mothername,
-        email,
-        password,
-        phone,
-        dateOfBirth,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((result) => console.log(result))
-      .catch((err) => console.log(err));
+    const dateOfBirth = e.target.date.value;
+    // const img = e.target.file.files[0];
+    const bodyDatas = {
+      name,
+      fathername,
+      mothername,
+      email,
+      password,
+      phone,
+      dateOfBirth,
+    };
+
+    axios
+      .post("https://rbcwebsite.onrender.com/api/users/directuser", bodyDatas, {
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+      .then((result) => {
+        setErrorData(null);
+        setPostingData(result);
+      })
+      .catch((err) => {
+        setPostingData(null), setErrorData(err);
+      });
   };
-  const handleChecked = (e) => {
-    setOpenBtn(e.target.checked);
-  };
+
   return (
     <>
       <Navbar />
@@ -121,7 +129,7 @@ const SignUp = () => {
                     className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                   />
                 </div>
-                <div className="mb-5 text-center">
+                {/* <div className="mb-5 text-center">
                   <input
                     onClick={handleChecked}
                     type="checkbox"
@@ -144,11 +152,11 @@ const SignUp = () => {
                       className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                     />
                   </div>
-                )}
+                )} */}
               </div>
               <div className="w-full px-3 sm:w-1/2"></div>
             </div>
-            {/* 
+
             <div className="mb-5">
               <label className="mb-3 block text-base font-bold text-[#07074D]">
                 আপনার ছবি সংযুক্ত করুন
@@ -158,7 +166,7 @@ const SignUp = () => {
                 name="file"
                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
               />
-            </div> */}
+            </div>
             <div className="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white  inline-block outline-none">
               <input type="submit" />
             </div>
@@ -176,6 +184,15 @@ const SignUp = () => {
             </Link>
           </div>
         </div>
+      </div>
+      {/* Testing */}
+      <div className="flex flex-col justify-center items-center border text-sm">
+        {posingData && (
+          <>
+            <h1>{posingData?.data?.message}</h1>
+          </>
+        )}
+        {errorData && <h1>{errorData?.response?.data?.message}</h1>}
       </div>
       <Footer />
     </>
