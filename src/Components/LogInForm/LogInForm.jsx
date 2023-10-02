@@ -9,13 +9,13 @@ const LogInForm = () => {
   const { handleSignIn } = useContext(AuthContext);
   //
   const navigate = useNavigate();
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
 
     //Sign In function
-    handleSignIn(email, password)
+    await handleSignIn(email, password)
       .then((result) => {
         console.log(result.user);
         navigate("/");
