@@ -20,9 +20,9 @@ const AuthProvider = ({ children }) => {
   };
 
   //Sign In User
-  const handleSignIn = (email, password) => {
+  const handleSignIn = async (email, password) => {
     setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password);
+    return await signInWithEmailAndPassword(auth, email, password);
   };
 
   //LogOut
