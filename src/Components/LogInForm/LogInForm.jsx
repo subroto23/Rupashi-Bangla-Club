@@ -20,8 +20,8 @@ const LogInForm = () => {
         console.log(result.user);
         navigate("/");
       })
-      .catch(() => {
-        console.log("Sorry Your email and password not mathced");
+      .catch((err) => {
+        console.log("Sorry Your email and password not mathced" + err);
       });
     e.target.reset();
   };
