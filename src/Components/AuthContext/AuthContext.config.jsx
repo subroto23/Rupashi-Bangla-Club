@@ -1,8 +1,7 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { createContext, useState } from "react";
-import { auth, storage } from "../../FirebaseAuth/Firebase.init";
 import { addDoc, collection } from "firebase/firestore";
-import { ref, uploadBytes } from "firebase/storage";
+import { auth, storage } from "../../FirebaseAuth/Firebase.init";
 //
 export const AuthContext = createContext(null);
 //
@@ -11,34 +10,23 @@ const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const hanldeCreateUser = (payload) => {
-    const { firstName, lastName, birthday, email, password, image } = payload;
+    const { firstName, lastName, birthday, email, password, imgurl } = payload;
     //
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then(async (result) => {
-        console.log(result);
         try {
-          const docRef = await addDoc(collection(storage, "users"), {
+          await addDoc(collection(storage, "users"), {
             firstName,
             lastName,
             birthday,
+            email,
+            imgurl,
             userId: `${result.user.uid}`,
           });
-          console.log("Document written with ID: ", docRef.id);
-        } catch (error) {
-          console.log(error);
+        } catch (e) {
+          console.error("Error adding document: ", e);
         }
-        //Image Uploaded
-        const imageRef = ref(storage, `image/${result.user.uid}`);
-        const newMetadata = {
-          cacheControl: "public,max-age=300",
-          contentType: "image/jpeg",
-        };
-        console.log(imageRef);
-        await uploadBytes(imageRef, image, newMetadata)
-          .then((res) => console.log(res))
-          .catch((err) => console.log("image Upload Failed" + err));
-        //
       })
       .catch((err) => console.log(err));
   };
