@@ -1,6 +1,4 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
-import Navbar from "../../Layout/Header/Navbar";
-import Footer from "../Footer/Footer";
+import { Link, NavLink } from "react-router-dom";
 import GoogleLogIn from "../GoogleLogIn/GoogleLogIn";
 import { TEInput, TERipple } from "tw-elements-react";
 import "tw-elements-react/dist/css/tw-elements-react.min.css";
@@ -20,8 +18,6 @@ const LogInForm = () => {
   };
   return (
     <div>
-      <Outlet />
-      <Navbar />
       <section className="mt-[70px]">
         <div className="container h-full px-6 md:py-24 py-3">
           <div className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
@@ -76,7 +72,6 @@ const LogInForm = () => {
                   {/* <!-- Forgot password link --> */}
                   <NavLink
                     to="/forgot-password"
-                    href="#!"
                     className="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
                   >
                     পাসওয়ার্ড ভুলে গেলে
@@ -106,7 +101,6 @@ const LogInForm = () => {
                   <div
                     className="mb-3 flex w-full items-center justify-center rounded bg-info px-7 pb-2.5 pt-3 text-center text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#54b4d3] transition duration-150 ease-in-out hover:bg-info-600 hover:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.3),0_4px_18px_0_rgba(84,180,211,0.2)] focus:bg-info-600 focus:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.3),0_4px_18px_0_rgba(84,180,211,0.2)] focus:outline-none focus:ring-0 active:bg-info-700 active:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.3),0_4px_18px_0_rgba(84,180,211,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(84,180,211,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.2),0_4px_18px_0_rgba(84,180,211,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.2),0_4px_18px_0_rgba(84,180,211,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(84,180,211,0.2),0_4px_18px_0_rgba(84,180,211,0.1)]"
                     style={{ backgroundColor: "#55acee" }}
-                    href="#!"
                     role="button"
                   >
                     {/* <!-- Twitter --> */}
@@ -155,7 +149,6 @@ const LogInForm = () => {
           </div>
         </div>
       </section>
-      <Footer />
     </div>
   );
 };

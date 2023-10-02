@@ -1,16 +1,15 @@
 // import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import app from "../../FirebaseAuth/Firebase.init";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+
 const GoogleLogIn = () => {
-  const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
 
   // const [gLoginUser, setGLoginUser] = useState(null);
   const handleGoogleLogin = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => console.log(result.user))
-      .catch((error) => console.log(error, error.message));
+    // signInWithPopup(, provider)
+    //   .then((result) => console.log(result.user))
+    //   .catch((error) => console.log(error, error.message));
   };
   return (
     <>

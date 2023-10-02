@@ -9,6 +9,8 @@ import ErrorPages from "./Components/ErrorPage/ErrorPages";
 import NewsViews from "./Components/NewsViewShow/NewsViews";
 import Root from "./Components/Root/Root";
 import LogInForm from "./Components/LogInForm/LogInForm";
+import AddUser from "./Components/AddUserByLogIn/AddUser";
+import AuthProvider from "./Components/AuthContext/AuthContext.config";
 import SignUp from "./Components/SignUp/SignUp";
 const router = createBrowserRouter([
   {
@@ -21,12 +23,16 @@ const router = createBrowserRouter([
         element: <HeaderHeroSection />,
       },
       {
+        path: "/signup",
+        element: <SignUp />,
+      },
+      {
         path: "/login",
         element: <LogInForm />,
       },
       {
-        path: "/signup",
-        element: <SignUp />,
+        path: "/adduser",
+        element: <AddUser />,
       },
     ],
   },
@@ -40,8 +46,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <ThemeProvider>
-      <RouterProvider router={router} />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider>
+        <RouterProvider router={router} />
+      </ThemeProvider>
+    </AuthProvider>
   </React.StrictMode>
 );

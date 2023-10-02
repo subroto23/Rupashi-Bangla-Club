@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Menu from "./NavbarMenu";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import GLogOut from "../../Components/GoogleLogIn/GLogOut";
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -28,9 +28,7 @@ const Navbar = () => {
             <button onClick={() => setShowProfile(!showProfile)}>
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
-                  <img
-                    src="https://www.w3schools.com/w3images/avatar2.png"
-                  />
+                  <img src="https://www.w3schools.com/w3images/avatar2.png" />
                 </div>
               </label>
             </button>
@@ -43,9 +41,9 @@ const Navbar = () => {
                   <a>Settings</a>
                 </li>
                 <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
-                  <a>
+                  <Link>
                     <GLogOut />
-                  </a>
+                  </Link>
                 </li>
               </ul>
             )}
