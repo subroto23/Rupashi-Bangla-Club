@@ -3,12 +3,14 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
-import { auth } from "../../FirebaseAuth/Firebase.init";
+import { auth, dbStorage } from "../../FirebaseAuth/Firebase.init";
+import { ref, uploadBytes } from "firebase/storage";
 //
 export const AuthContext = createContext(null);
 //
@@ -27,7 +29,31 @@ const AuthProvider = ({ children }) => {
   //Sign In User
   const handleSignIn = async (email, password) => {
     setLoading(true);
+    handleVerifyEmail();
+    handleCurrentUserInfo();
     return await signInWithEmailAndPassword(auth, email, password);
+  };
+
+  //upload Images
+  const uploadImages = async (file, currentUser) => {
+    const fileRef = ref(dbStorage, currentUser.uid + ".png");
+    setLoading(true);
+    await uploadBytes(fileRef, file)
+      .then(() => alert("File Upload SuccessFully"))
+      .catch((err) => console.log(err));
+  };
+
+  //Current User Information
+  const handleCurrentUserInfo = () => {
+    const user = auth.currentUser;
+    console.log(user);
+  };
+
+  //Verification Code sent email
+  const handleVerifyEmail = () => {
+    sendEmailVerification(auth.currentUser).then(() => {
+      console.log("Email send Successully");
+    });
   };
 
   //Google Account Login
@@ -75,6 +101,7 @@ const AuthProvider = ({ children }) => {
     loading,
     hanldeCreateUser,
     handleSignIn,
+    uploadImages,
     handleGlogin,
     handlefbLogin,
     LogOut,
