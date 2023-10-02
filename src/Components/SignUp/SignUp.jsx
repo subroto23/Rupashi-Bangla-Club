@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { AuthContext } from "../AuthContext/AuthContext.config";
+import { addDoc, collection } from "firebase/firestore";
+import { storage } from "../../FirebaseAuth/Firebase.init";
 
 const SignUp = () => {
   const newUserContext = useContext(AuthContext);
   //
   const { hanldeCreateUser } = newUserContext;
-  //
-  //
   const handleSubmit = (e) => {
     e.preventDefault();
     //
@@ -16,14 +16,23 @@ const SignUp = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const imgurl = e.target.imgLink.value;
-    hanldeCreateUser({
-      firstName,
-      lastName,
-      birthday,
-      email,
-      password,
-      imgurl,
-    });
+    hanldeCreateUser({ email, password })
+      .then(async (result) => {
+        try {
+          await addDoc(collection(storage, "users"), {
+            firstName,
+            lastName,
+            birthday,
+            email,
+            imgurl,
+            userId: `${result.user.uid}`,
+          });
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
+      })
+      .catch((err) => console.log(err));
+    e.target.reset();
   };
 
   //

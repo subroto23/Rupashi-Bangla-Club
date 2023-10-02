@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Menu from "./NavbarMenu";
 import { Link, NavLink } from "react-router-dom";
 import GLogOut from "../../Components/GoogleLogIn/GLogOut";
+import { AuthContext } from "../../Components/AuthContext/AuthContext.config";
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
+  //
+  const { user } = useContext(AuthContext);
   return (
     <>
       <nav className="bg-primary text-white fixed top-0 w-full z-50">
@@ -25,20 +28,36 @@ const Navbar = () => {
           </div>
           {/* Avater Section */}
           <div className="dropdown dropdown-end">
-            <button onClick={() => setShowProfile(!showProfile)}>
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
-                  <img src="https://www.w3schools.com/w3images/avatar2.png" />
-                </div>
-              </label>
-            </button>
+            {user ? (
+              <>
+                <button onClick={() => setShowProfile(!showProfile)}>
+                  <label
+                    tabIndex={0}
+                    className="btn btn-ghost btn-circle avatar"
+                  >
+                    <div className="w-10 rounded-full">
+                      <img src="https://www.w3schools.com/w3images/avatar2.png" />
+                    </div>
+                  </label>
+                </button>
+              </>
+            ) : (
+              <>
+                <NavLink
+                  to="/login"
+                  className="block md:inline-block px-3 py-2 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                >
+                  লগইন করুন
+                </NavLink>
+              </>
+            )}
             {showProfile && (
               <ul className="mt-2 z-[1] md:w-60 shadow menu menu-sm dropdown-content bg-primary rounded-md transition duration-150 ease-in-out">
                 <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
-                  <a>Profile</a>
+                  <Link>প্রফাইল</Link>
                 </li>
                 <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
-                  <a>Settings</a>
+                  <Link>আপডেট প্রফাইল</Link>
                 </li>
                 <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
                   <Link>

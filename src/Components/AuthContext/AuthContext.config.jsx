@@ -1,38 +1,53 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { createContext, useState } from "react";
-import { addDoc, collection } from "firebase/firestore";
-import { auth, storage } from "../../FirebaseAuth/Firebase.init";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
+import { createContext, useEffect, useState } from "react";
+import { auth } from "../../FirebaseAuth/Firebase.init";
 //
 export const AuthContext = createContext(null);
 //
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
 
-  const hanldeCreateUser = (payload) => {
-    const { firstName, lastName, birthday, email, password, imgurl } = payload;
-    //
-    setIsLoading(true);
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(async (result) => {
-        try {
-          await addDoc(collection(storage, "users"), {
-            firstName,
-            lastName,
-            birthday,
-            email,
-            imgurl,
-            userId: `${result.user.uid}`,
-          });
-        } catch (e) {
-          console.error("Error adding document: ", e);
-        }
-      })
-      .catch((err) => console.log(err));
+  //Create User
+  const hanldeCreateUser = ({ email, password }) => {
+    return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  const authInfo = { user, hanldeCreateUser };
+  //Sign In User
+  const handleSignIn = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
+  //Auth State Change Event
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser) {
+        setUser(currentUser);
+      } else {
+        console.log("Please Log In first");
+      }
+      return () => {
+        unSubscribe();
+      };
+    });
+  }, []);
+
+  //LogOut
+  const LogOut = async () => {
+    return await signOut(auth)
+      .then(() => {
+        setUser(null);
+      })
+      .catch(() => {
+        console.log("Sorry You are not Logged Out");
+      });
+  };
+  //Context Pass Function
+  const authInfo = { user, hanldeCreateUser, handleSignIn, LogOut };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

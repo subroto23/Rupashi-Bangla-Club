@@ -1,20 +1,29 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import GoogleLogIn from "../GoogleLogIn/GoogleLogIn";
 import { TEInput, TERipple } from "tw-elements-react";
 import "tw-elements-react/dist/css/tw-elements-react.min.css";
 import { FaGoogle } from "react-icons/fa";
-import Axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../AuthContext/AuthContext.config";
 const LogInForm = () => {
+  const { handleSignIn } = useContext(AuthContext);
+  //
+  const navigate = useNavigate();
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    Axios.post("https://rbcwebsite.onrender.com/auth/login", {
-      email,
-      password,
-    })
-      .then((result) => console.log(result))
-      .catch((error) => console.log(error));
+
+    //Sign In function
+    handleSignIn(email, password)
+      .then((result) => {
+        console.log(result.user);
+        navigate("/");
+      })
+      .catch(() => {
+        console.log("Sorry Your email and password not mathced");
+      });
+    e.target.reset();
   };
   return (
     <div>
