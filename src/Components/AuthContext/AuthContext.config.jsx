@@ -37,7 +37,7 @@ const AuthProvider = ({ children }) => {
         console.log(imageRef);
         await uploadBytes(imageRef, image, newMetadata)
           .then((res) => console.log(res))
-          .catch(() => console.log("image Upload Failed"));
+          .catch((err) => console.log("image Upload Failed" + err));
         //
       })
       .catch((err) => console.log(err));
