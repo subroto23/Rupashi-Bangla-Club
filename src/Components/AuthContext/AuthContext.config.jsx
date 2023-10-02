@@ -11,22 +11,38 @@ export const AuthContext = createContext(null);
 //
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   //Create User
   const hanldeCreateUser = ({ email, password }) => {
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   //Sign In User
   const handleSignIn = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  //LogOut
+  const LogOut = async () => {
+    setLoading(true);
+    return await signOut(auth)
+      .then(() => {
+        setLoading(true);
+        setUser(null);
+      })
+      .catch(() => {
+        console.log("Sorry You are not Logged Out");
+      });
+  };
   //Auth State Change Event
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
+        setLoading(false);
       } else {
         console.log("Please Log In first");
       }
@@ -36,18 +52,8 @@ const AuthProvider = ({ children }) => {
     });
   }, []);
 
-  //LogOut
-  const LogOut = async () => {
-    return await signOut(auth)
-      .then(() => {
-        setUser(null);
-      })
-      .catch(() => {
-        console.log("Sorry You are not Logged Out");
-      });
-  };
   //Context Pass Function
-  const authInfo = { user, hanldeCreateUser, handleSignIn, LogOut };
+  const authInfo = { user, loading, hanldeCreateUser, handleSignIn, LogOut };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

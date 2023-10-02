@@ -40,6 +40,21 @@ const Navbar = () => {
                     </div>
                   </label>
                 </button>
+                {showProfile && (
+                  <ul className="mt-2 z-[1] md:w-60 shadow menu menu-sm dropdown-content bg-primary rounded-md transition duration-150 ease-in-out">
+                    <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
+                      <Link>প্রফাইল</Link>
+                    </li>
+                    <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
+                      <Link>আপডেট প্রফাইল</Link>
+                    </li>
+                    <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
+                      <Link>
+                        <GLogOut />
+                      </Link>
+                    </li>
+                  </ul>
+                )}
               </>
             ) : (
               <>
@@ -50,21 +65,6 @@ const Navbar = () => {
                   লগইন করুন
                 </NavLink>
               </>
-            )}
-            {showProfile && (
-              <ul className="mt-2 z-[1] md:w-60 shadow menu menu-sm dropdown-content bg-primary rounded-md transition duration-150 ease-in-out">
-                <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
-                  <Link>প্রফাইল</Link>
-                </li>
-                <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
-                  <Link>আপডেট প্রফাইল</Link>
-                </li>
-                <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
-                  <Link>
-                    <GLogOut />
-                  </Link>
-                </li>
-              </ul>
             )}
           </div>
           <div className="md:hidden">
