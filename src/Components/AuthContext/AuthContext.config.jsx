@@ -1,4 +1,5 @@
 import {
+  FacebookAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
@@ -15,6 +16,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const provider = new GoogleAuthProvider();
+  const providerfb = new FacebookAuthProvider();
 
   //Create User
   const hanldeCreateUser = ({ email, password }) => {
@@ -32,6 +34,12 @@ const AuthProvider = ({ children }) => {
   const handleGlogin = () => {
     setLoading(true);
     return signInWithPopup(auth, provider);
+  };
+
+  //Facebook Login
+  const handlefbLogin = () => {
+    setLoading(true);
+    return signInWithPopup(auth, providerfb);
   };
 
   //LogOut
@@ -68,6 +76,7 @@ const AuthProvider = ({ children }) => {
     hanldeCreateUser,
     handleSignIn,
     handleGlogin,
+    handlefbLogin,
     LogOut,
   };
   return (

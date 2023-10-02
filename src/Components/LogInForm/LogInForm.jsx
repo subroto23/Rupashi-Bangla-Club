@@ -5,6 +5,7 @@ import "tw-elements-react/dist/css/tw-elements-react.min.css";
 import { FaGoogle } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../AuthContext/AuthContext.config";
+import FbLogin from "../FbLoggin/FbLogin";
 const LogInForm = () => {
   const { handleSignIn } = useContext(AuthContext);
   //
@@ -135,7 +136,7 @@ const LogInForm = () => {
                     >
                       <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
                     </svg>
-                    ফেসবুকের মাধ্যমে লগইন করুন
+                    <FbLogin />
                   </Link>
                 </TERipple>
               </form>
