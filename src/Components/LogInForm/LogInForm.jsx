@@ -5,9 +5,8 @@ import "tw-elements-react/dist/css/tw-elements-react.min.css";
 import { FaGoogle } from "react-icons/fa";
 import { useContext } from "react";
 import { AuthContext } from "../AuthContext/AuthContext.config";
-import Loader from "../Loading/Loader";
 const LogInForm = () => {
-  const { handleSignIn, loading } = useContext(AuthContext);
+  const { handleSignIn } = useContext(AuthContext);
   //
   const navigate = useNavigate();
   const handleLoginSubmit = async (e) => {
@@ -28,7 +27,6 @@ const LogInForm = () => {
   };
   return (
     <div>
-      {loading && <Loader />}
       <section className="mt-[70px]">
         <div className="container h-full px-6 md:py-24 py-3">
           <div className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">

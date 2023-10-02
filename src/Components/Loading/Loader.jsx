@@ -3,7 +3,7 @@ const Loader = () => {
     <div
       aria-label="Loading..."
       role="status"
-      className="flex items-center space-x-2 h-screen z-40 justify-center"
+      className="flex items-center space-x-2 h-screen z-40 justify-center absolute"
     >
       <svg
         className="h-20 w-20 animate-spin stroke-gray-500"
