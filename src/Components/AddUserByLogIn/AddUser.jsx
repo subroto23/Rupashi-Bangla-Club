@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Navbar from "../../Layout/Header/Navbar";
 import axios from "axios";
 import { useState } from "react";
 const AddUser = () => {
@@ -8,19 +7,6 @@ const AddUser = () => {
   const [img, setImg] = useState(null);
   const [base64Image, setBase64Image] = useState("");
 
-  //
-  if (img) {
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setBase64Image(reader.result);
-    };
-    reader.readAsDataURL(img);
-  }
-  if (!base64Image) {
-    console.log("No image selected");
-    return;
-  }
-  //
   const handleSignUp = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -31,6 +17,20 @@ const AddUser = () => {
     const phone = e.target.phone.value;
     const dateOfBirth = e.target.date.value;
     // const img = e.target.filesdata.files[0];
+
+    //
+    if (img) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setBase64Image(reader.result);
+      };
+      reader.readAsDataURL(img);
+    }
+    if (!base64Image) {
+      console.log("No image selected");
+      return;
+    }
+    //
     const bodyDatas = {
       name,
       fathername,
@@ -60,7 +60,6 @@ const AddUser = () => {
 
   return (
     <>
-      <Navbar />
       <div className="flex items-center justify-center md:p-12 px-8 md:mt-16 mt-20">
         <div className="mx-auto w-full md:max-w-[500px] bg-white">
           <h3 className="text-center font-bold mb-8 border-b-4 pb-4">

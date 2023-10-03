@@ -9,10 +9,10 @@ import ErrorPages from "./Components/ErrorPage/ErrorPages";
 import NewsViews from "./Components/NewsViewShow/NewsViews";
 import Root from "./Components/Root/Root";
 import LogInForm from "./Components/LogInForm/LogInForm";
-import AddUser from "./Components/AddUserByLogIn/AddUser";
 import AuthProvider from "./Components/AuthContext/AuthContext.config";
 import SignUp from "./Components/SignUp/SignUp";
 import ProfileDetils from "./Components/ProfileDetils/ProfileDetils";
+import AddUser from "./Components/AddUserByLogIn/AddUser";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,10 +30,6 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <LogInForm />,
-      },
-      {
-        path: "/adduser",
-        element: <AddUser />,
       },
       {
         path: "/profile",
