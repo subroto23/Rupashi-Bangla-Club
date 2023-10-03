@@ -14,7 +14,7 @@ const AddUser = () => {
     const password = e.target.password.value;
     const phone = e.target.phone.value;
     const dateOfBirth = e.target.date.value;
-    const img = e.target.files[0];
+    const img = e.target.filesdata.files[0];
     const bodyDatas = {
       name,
       fathername,
