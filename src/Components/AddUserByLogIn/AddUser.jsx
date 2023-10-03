@@ -5,6 +5,7 @@ import { useState } from "react";
 const AddUser = () => {
   const [posingData, setPostingData] = useState(null);
   const [errorData, setErrorData] = useState(null);
+  const [img, setImg] = useState(null);
   const handleSignUp = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -14,8 +15,7 @@ const AddUser = () => {
     const password = e.target.password.value;
     const phone = e.target.phone.value;
     const dateOfBirth = e.target.date.value;
-    const img = e.target.filesdata.files[0];
-    console.log(img);
+    // const img = e.target.filesdata.files[0];
     const bodyDatas = {
       name,
       fathername,
@@ -164,7 +164,7 @@ const AddUser = () => {
               </label>
               <input
                 type="file"
-                name="filesdata"
+                onChange={(e) => setImg(e.target.files[0])}
                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
               />
             </div>
