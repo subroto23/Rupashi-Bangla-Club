@@ -4,8 +4,7 @@ import { useState } from "react";
 const AddUser = () => {
   const [posingData, setPostingData] = useState(null);
   const [errorData, setErrorData] = useState(null);
-  const [img, setImg] = useState(null);
-  // const [base64Image, setBase64Image] = useState("");
+  const [img, setImg] = useState("../../../public/Somapty.png");
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -16,21 +15,6 @@ const AddUser = () => {
     const password = e.target.password.value;
     const phone = e.target.phone.value;
     const dateOfBirth = e.target.date.value;
-    // const img = e.target.filesdata.files[0];
-
-    //
-    // if (img) {
-    //   const reader = new FileReader();
-    //   reader.onloadend = () => {
-    //     setBase64Image(reader.result);
-    //   };
-    //   reader.readAsDataURL(img);
-    // }
-    // if (!base64Image) {
-    //   console.log("No image selected");
-    //   return;
-    // }
-    //
     const bodyDatas = {
       name,
       fathername,
@@ -45,7 +29,8 @@ const AddUser = () => {
     axios
       .post("https://rbcwebsite.onrender.com/api/users/directuser", bodyDatas, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          // "Content-Type": "multipart/form-data",
+          "Content-type": "application/json; charset=UTF-8",
         },
       })
       .then((result) => {
