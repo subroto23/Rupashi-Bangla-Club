@@ -15,6 +15,7 @@ const AddUser = () => {
     const phone = e.target.phone.value;
     const dateOfBirth = e.target.date.value;
     const img = e.target.filesdata.files[0];
+    console.log(img);
     const bodyDatas = {
       name,
       fathername,
@@ -25,11 +26,10 @@ const AddUser = () => {
       dateOfBirth,
       img,
     };
-
+    // "Content-type": "application/json; charset=UTF-8",
     axios
       .post("https://rbcwebsite.onrender.com/api/users/directuser", bodyDatas, {
         headers: {
-          "Content-type": "application/json; charset=UTF-8",
           "Content-Type": "multipart/form-data",
         },
       })
