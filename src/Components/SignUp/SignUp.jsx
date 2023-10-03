@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../AuthContext/AuthContext.config";
-import { addDoc, collection } from "firebase/firestore";
-import { auth, storage } from "../../FirebaseAuth/Firebase.init";
+// import { addDoc, collection } from "firebase/firestore";
+import { auth } from "../../FirebaseAuth/Firebase.init";
 
 const SignUp = () => {
   const newUserContext = useContext(AuthContext);
   const [photo, setPhoto] = useState(null);
   //
-  const { hanldeCreateUser, uploadImages } = newUserContext;
+  const { hanldeCreateUser, uploadImages, handleCreateUser } = newUserContext;
 
   //
   const handleFileUpload = (e) => {
@@ -27,17 +27,20 @@ const SignUp = () => {
     const phone = e.target.phone.value;
     hanldeCreateUser({ email, password })
       .then(async (result) => {
+        //USer Images Upload
         await uploadImages(photo, auth.currentUser);
-
+        //
         try {
-          await addDoc(collection(storage, "users"), {
+          const userInfo = {
             firstName,
             lastName,
             birthday,
             email,
             phone,
             userId: `${result.user.uid}`,
-          });
+          };
+          handleCreateUser(userInfo, result.user.uid);
+          // await addDoc(collection(storage, "users"), {});
         } catch (e) {
           console.error("Error adding document: ", e);
         }
@@ -120,7 +123,7 @@ const SignUp = () => {
                   <div className="mt-2">
                     <input
                       type="text"
-                      name="Phone"
+                      name="phone"
                       placeholder="0151409155"
                       className="block px-4 w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       required

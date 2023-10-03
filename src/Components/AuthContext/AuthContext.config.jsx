@@ -8,29 +8,30 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { createContext, useEffect, useState } from "react";
-import { auth, dbStorage } from "../../FirebaseAuth/Firebase.init";
-import { ref, uploadBytes } from "firebase/storage";
+import { auth, dbStorage, storage } from "../../FirebaseAuth/Firebase.init";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 //
 export const AuthContext = createContext(null);
 //
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [userImageUrl, setUserImageUrl] = useState("");
   const provider = new GoogleAuthProvider();
   const providerfb = new FacebookAuthProvider();
 
   //Create User
   const hanldeCreateUser = ({ email, password }) => {
     setLoading(true);
+    handleVerifyEmail();
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   //Sign In User
   const handleSignIn = async (email, password) => {
     setLoading(true);
-    handleVerifyEmail();
-    handleCurrentUserInfo();
     return await signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -43,10 +44,39 @@ const AuthProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
+  //CreateUser
+  const handleCreateUser = async (userInfo, uid) => {
+    await setDoc(doc(storage, "users", uid), userInfo).then(() =>
+      console
+        .log("User Information Created Successfully")
+        .catch((err) => console.log(err))
+    );
+  };
+
+  //Read User Profile Photos
+  const photoUrl = (userId) => {
+    // const forestRef = ref(dbStorage, `${userId}.png`);
+    // // Get metadata properties
+    // getMetadata(forestRef)
+    getDownloadURL(ref(dbStorage, `${userId}.png`))
+      .then((url) => {
+        setUserImageUrl(url);
+      })
+      .catch(() => {
+        console.log("User Image Not Found");
+      });
+  };
+
   //Current User Information
-  const handleCurrentUserInfo = () => {
-    const user = auth.currentUser;
-    console.log(user);
+  const handleCurrentUserInfo = async (userId) => {
+    const docRef = doc(storage, "users", userId);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      setUser(docSnap.data());
+    } else {
+      // docSnap.data() will be undefined in this case
+      console.log("No such document!");
+    }
   };
 
   //Verification Code sent email
@@ -84,28 +114,29 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        setUser(currentUser);
+        handleCurrentUserInfo(currentUser.uid);
+        photoUrl(currentUser.uid);
         setLoading(false);
-      } else {
-        console.log("Please Log In first");
       }
       return () => {
         unSubscribe();
       };
     });
   }, []);
-
   //Context Pass Function
   const authInfo = {
     user,
+    userImageUrl,
     loading,
     hanldeCreateUser,
     handleSignIn,
     uploadImages,
     handleGlogin,
     handlefbLogin,
+    handleCreateUser,
     LogOut,
   };
+  //
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );

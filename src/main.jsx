@@ -12,6 +12,7 @@ import LogInForm from "./Components/LogInForm/LogInForm";
 import AddUser from "./Components/AddUserByLogIn/AddUser";
 import AuthProvider from "./Components/AuthContext/AuthContext.config";
 import SignUp from "./Components/SignUp/SignUp";
+import ProfileDetils from "./Components/ProfileDetils/ProfileDetils";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "/adduser",
         element: <AddUser />,
+      },
+      {
+        path: "/profile",
+        element: <ProfileDetils />,
       },
     ],
   },

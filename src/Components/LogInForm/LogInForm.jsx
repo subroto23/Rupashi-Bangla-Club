@@ -17,8 +17,8 @@ const LogInForm = () => {
 
     //Sign In function
     await handleSignIn(email, password)
-      .then((result) => {
-        console.log(result.user);
+      .then(() => {
+        console.log("User Logged In successfully");
         navigate("/");
       })
       .catch((err) => {

@@ -7,7 +7,7 @@ const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   //
-  const { user } = useContext(AuthContext);
+  const { user, userImageUrl } = useContext(AuthContext);
   return (
     <>
       <nav className="bg-primary text-white fixed top-0 w-full z-50">
@@ -36,14 +36,17 @@ const Navbar = () => {
                     className="btn btn-ghost btn-circle avatar"
                   >
                     <div className="w-10 rounded-full">
-                      <img src="https://www.w3schools.com/w3images/avatar2.png" />
+                      <img
+                        src={userImageUrl}
+                        className="rounded-full h-28 w-28"
+                      />
                     </div>
                   </label>
                 </button>
                 {showProfile && (
                   <ul className="mt-2 z-[1] md:w-60 shadow menu menu-sm dropdown-content bg-primary rounded-md transition duration-150 ease-in-out">
                     <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
-                      <Link>প্রফাইল</Link>
+                      <Link to="/profile">প্রফাইল</Link>
                     </li>
                     <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
                       <Link>আপডেট প্রফাইল</Link>
