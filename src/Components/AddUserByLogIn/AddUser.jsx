@@ -4,7 +4,9 @@ import { useState } from "react";
 const AddUser = () => {
   const [posingData, setPostingData] = useState(null);
   const [errorData, setErrorData] = useState(null);
-  const [img, setImg] = useState("../../../public/Somapty.png");
+  const [img, setImg] = useState(
+    "https://images.unsplash.com/photo-1535954741680-a2e24eb05418?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80"
+  );
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -15,6 +17,11 @@ const AddUser = () => {
     const password = e.target.password.value;
     const phone = e.target.phone.value;
     const dateOfBirth = e.target.date.value;
+
+    // Create a FormData object to send the file
+    const formData = new FormData();
+    formData.append("image", img);
+    //
     const bodyDatas = {
       name,
       fathername,
@@ -23,13 +30,14 @@ const AddUser = () => {
       password,
       phone,
       dateOfBirth,
-      img,
+      formData,
     };
     // "Content-type": "application/json; charset=UTF-8",
-    axios
+    //
+    await axios
       .post("https://rbcwebsite.onrender.com/api/users/directuser", bodyDatas, {
         headers: {
-          // "Content-Type": "multipart/form-data",
+          "Content-Type": "multipart/form-data",
           "Content-type": "application/json; charset=UTF-8",
         },
       })
@@ -163,6 +171,7 @@ const AddUser = () => {
               </label>
               <input
                 type="file"
+                accept="image/*"
                 name="image"
                 onChange={(e) => setImg(e.target.files[0])}
                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
