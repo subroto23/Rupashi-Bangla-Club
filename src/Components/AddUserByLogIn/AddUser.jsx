@@ -6,6 +6,21 @@ const AddUser = () => {
   const [posingData, setPostingData] = useState(null);
   const [errorData, setErrorData] = useState(null);
   const [img, setImg] = useState(null);
+  const [base64Image, setBase64Image] = useState("");
+
+  //
+  if (img) {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setBase64Image(reader.result);
+    };
+    reader.readAsDataURL(img);
+  }
+  if (!base64Image) {
+    console.log("No image selected");
+    return;
+  }
+  //
   const handleSignUp = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -24,7 +39,7 @@ const AddUser = () => {
       password,
       phone,
       dateOfBirth,
-      img,
+      base64Image,
     };
     // "Content-type": "application/json; charset=UTF-8",
     axios
