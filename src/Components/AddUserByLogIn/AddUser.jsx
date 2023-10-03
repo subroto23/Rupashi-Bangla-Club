@@ -30,6 +30,7 @@ const AddUser = () => {
       .post("https://rbcwebsite.onrender.com/api/users/directuser", bodyDatas, {
         headers: {
           "Content-type": "application/json; charset=UTF-8",
+          "Content-Type": "multipart/form-data",
         },
       })
       .then((result) => {
@@ -50,7 +51,7 @@ const AddUser = () => {
           <h3 className="text-center font-bold mb-8 border-b-4 pb-4">
             রেজিস্টেশন ফর্ম
           </h3>
-          <form onSubmit={handleSignUp}>
+          <form onSubmit={handleSignUp} encType="multipart/form-data">
             <div className="mb-5">
               <label className="mb-3 block text-base font-bold text-[#07074D]">
                 সম্পূর্ন নাম লিখুন বাংলায় <sup className=" text-red-600">*</sup>
