@@ -51,10 +51,10 @@ const SignUp = () => {
   //
   return (
     <>
-      <div className="flex justify-center items-center mt-20 max-w-7xl px-4">
+      <div className="flex justify-center items-center mt-20 w-full px-4">
         <div className="space-y-12">
           <div className="border-b border-gray-900/10">
-            <h1 className="text-3xl text-center my-4 font-semibold leading-7 text-gray-900">
+            <h1 className="text-3xl text-center animate-pulse my-4 font-semibold leading-7 text-gray-900">
               রেজিস্টেশন করুন
             </h1>
             <p className="mt-1 text-sm leading-6 text-red-800 text-justify bg-[#f9eff1] rounded-md py-4 px-2">
