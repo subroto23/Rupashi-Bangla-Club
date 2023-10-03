@@ -5,7 +5,7 @@ const AddUser = () => {
   const [posingData, setPostingData] = useState(null);
   const [errorData, setErrorData] = useState(null);
   const [img, setImg] = useState(null);
-  const [base64Image, setBase64Image] = useState("");
+  // const [base64Image, setBase64Image] = useState("");
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -19,17 +19,17 @@ const AddUser = () => {
     // const img = e.target.filesdata.files[0];
 
     //
-    if (img) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setBase64Image(reader.result);
-      };
-      reader.readAsDataURL(img);
-    }
-    if (!base64Image) {
-      console.log("No image selected");
-      return;
-    }
+    // if (img) {
+    //   const reader = new FileReader();
+    //   reader.onloadend = () => {
+    //     setBase64Image(reader.result);
+    //   };
+    //   reader.readAsDataURL(img);
+    // }
+    // if (!base64Image) {
+    //   console.log("No image selected");
+    //   return;
+    // }
     //
     const bodyDatas = {
       name,
@@ -39,7 +39,7 @@ const AddUser = () => {
       password,
       phone,
       dateOfBirth,
-      base64Image,
+      img,
     };
     // "Content-type": "application/json; charset=UTF-8",
     axios
