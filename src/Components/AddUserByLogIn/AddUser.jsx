@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Navbar from "../../Layout/Header/Navbar";
-import Footer from "../Footer/Footer";
 import axios from "axios";
 import { useState } from "react";
 const AddUser = () => {
@@ -15,7 +14,7 @@ const AddUser = () => {
     const password = e.target.password.value;
     const phone = e.target.phone.value;
     const dateOfBirth = e.target.date.value;
-    // const img = e.target.file.files[0];
+    const img = e.target.files[0];
     const bodyDatas = {
       name,
       fathername,
@@ -24,6 +23,7 @@ const AddUser = () => {
       password,
       phone,
       dateOfBirth,
+      img,
     };
 
     axios
@@ -38,6 +38,7 @@ const AddUser = () => {
       })
       .catch((err) => {
         setPostingData(null), setErrorData(err);
+        console.log(err);
       });
   };
 
@@ -162,7 +163,7 @@ const AddUser = () => {
               </label>
               <input
                 type="file"
-                name="file"
+                name="filesdata"
                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
               />
             </div>
@@ -193,7 +194,6 @@ const AddUser = () => {
         )}
         {errorData && <h1>{errorData?.response?.data?.message}</h1>}
       </div>
-      <Footer />
     </>
   );
 };
