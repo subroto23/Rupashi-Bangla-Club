@@ -16,7 +16,6 @@ const ImageConverter = () => {
       })
       .catch((err) => console.log(err));
   }, []);
-  console.log(images);
   return (
     <div className="flex justify-center my-12">
       <img src={`data:image/jpg;base64,${images}`} />
