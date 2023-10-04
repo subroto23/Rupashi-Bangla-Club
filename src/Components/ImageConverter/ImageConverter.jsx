@@ -9,10 +9,19 @@ const ImageConverter = () => {
   useEffect(() => {
     axios
       .get("https://rbcwebsite.onrender.com/api/users/")
-      .then((res) => console.log(res.data.payload[0].image.data));
-  }, []);
+      .then((res) => {
+        let user = res.data.payload.users[0].image;
 
-  return <div className="flex justify-center my-12">Hellow</div>;
+        setimages(`${Buffer.from(user.data).toString("ascii")} `);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+  console.log(images);
+  return (
+    <div className="flex justify-center my-12">
+      <img src={`data:image/jpg;base64,${images}`} />
+    </div>
+  );
 };
 
 export default ImageConverter;
