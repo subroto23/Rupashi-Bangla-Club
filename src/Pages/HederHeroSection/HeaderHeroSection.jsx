@@ -3,6 +3,7 @@ import BlogCard from "../../Components/BlogCard/BlogCard";
 import HappyClients from "../../Components/HappyClients/HappyClients";
 import HeaderSlider from "../../Components/HeaderSlider/HeaderSlider";
 import Hero2 from "../../Components/Hero2Section/Hero2Section";
+import ImageConverter from "../../Components/ImageConverter/ImageConverter";
 import OverlayHeroSection from "../../Components/OverLayHeroSection/OverlayHeroSection";
 import PromoSection from "../../Components/PromoSection/PromoSection";
 import TopNews from "../../Components/TopNews/TopNews";
@@ -14,6 +15,7 @@ const HeaderHeroSection = () => {
     <div>
       <HeaderSlider />
       <OverlayHeroSection />
+      <ImageConverter />
       {/* <Carosoal /> */}
       <DateTimeHtml />
       <TopNews />

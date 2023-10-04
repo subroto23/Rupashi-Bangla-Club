@@ -16,32 +16,43 @@ const AddUser = () => {
     const dateOfBirth = e.target.date.value;
     const image = e.target.fill.files[0];
     //
-    const bodyDatas = {
-      image,
-      name,
-      fathername,
-      mothername,
-      email,
-      password,
-      phone,
-      dateOfBirth,
-    };
+    const reader = new FileReader();
+    reader.readAsDataURL(image);
 
-    await axios
-      .post("https://rbcwebsite.onrender.com/api/users/directuser", bodyDatas, {
-        headers: {
-          "Content-Type":
-            'multipart/form-data; charset=utf-8; boundary="another cool boundary";',
-        },
-      })
-      .then((result) => {
-        setErrorData(null);
-        setPostingData(result);
-      })
-      .catch((err) => {
-        setPostingData(null), setErrorData(err);
-        console.log(err);
-      });
+    reader.onload = async () => {
+      const base64Image = reader.result.split(",")[1];
+
+      const bodyDatas = {
+        base64Image,
+        name,
+        fathername,
+        mothername,
+        email,
+        password,
+        phone,
+        dateOfBirth,
+      };
+
+      await axios
+        .post(
+          "https://rbcwebsite.onrender.com/api/users/directuser",
+          bodyDatas,
+          {
+            headers: {
+              "Content-Type":
+                'multipart/form-data; charset=utf-8; boundary="another cool boundary";',
+            },
+          }
+        )
+        .then((result) => {
+          setErrorData(null);
+          setPostingData(result);
+        })
+        .catch((err) => {
+          setPostingData(null), setErrorData(err);
+          console.log(err);
+        });
+    };
   };
 
   return (
