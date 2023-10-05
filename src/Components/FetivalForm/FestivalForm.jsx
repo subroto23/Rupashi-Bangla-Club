@@ -21,6 +21,7 @@ const FestivalForm = () => {
       })
       .then((res) => setEventData(res.data))
       .catch((err) => console.log(err));
+    e.target.reset();
   };
 
   return (
