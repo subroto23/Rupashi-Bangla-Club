@@ -91,7 +91,9 @@ const FestivalForm = () => {
           </div>
         </form>
       </div>
-      <p>{eventData.message}</p>
+      <p className="text-center text-green-700 font-semibold my-4">
+        {eventData?.message}
+      </p>
     </div>
   );
 };
