@@ -13,6 +13,7 @@ import AuthProvider from "./Components/AuthContext/AuthContext.config";
 import SignUp from "./Components/SignUp/SignUp";
 import ProfileDetils from "./Components/ProfileDetils/ProfileDetils";
 import AddUser from "./Components/AddUserByLogIn/AddUser";
+import FestivalForm from "./Components/FetivalForm/FestivalForm";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/add",
         element: <AddUser />,
+      },
+      {
+        path: "/festive",
+        element: <FestivalForm />,
       },
     ],
   },
