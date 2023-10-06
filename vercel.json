@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/:path*",
-      "destination": "https://rbcbd.vercel.app/:path*"
+      "source": "/(.*)",
+      "destination": "/"
     }
   ]
 }
