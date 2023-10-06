@@ -19,6 +19,7 @@
     "buffer": "^6.0.3",
     "count-it-down": "^1.0.0",
     "firebase": "^10.4.0",
+    "porichoy": "^2.0.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-d3-tree": "^3.6.1",

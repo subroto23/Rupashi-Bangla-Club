@@ -14,6 +14,7 @@ import SignUp from "./Components/SignUp/SignUp";
 import ProfileDetils from "./Components/ProfileDetils/ProfileDetils";
 import AddUser from "./Components/AddUserByLogIn/AddUser";
 import FestivalForm from "./Components/FetivalForm/FestivalForm";
+import CreatedNews from "./Components/NewsForm/CreatedNews";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "/festive",
         element: <FestivalForm />,
+      },
+      {
+        path: "/news",
+        element: <CreatedNews />,
       },
     ],
   },
