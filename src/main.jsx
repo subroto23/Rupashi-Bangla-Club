@@ -12,7 +12,6 @@ import LogInForm from "./Components/LogInForm/LogInForm";
 import AuthProvider from "./Components/AuthContext/AuthContext.config";
 import SignUp from "./Components/SignUp/SignUp";
 import ProfileDetils from "./Components/ProfileDetils/ProfileDetils";
-import AddUser from "./Components/AddUserByLogIn/AddUser";
 import FestivalForm from "./Components/FetivalForm/FestivalForm";
 import CreatedNews from "./Components/NewsForm/CreatedNews";
 const router = createBrowserRouter([
@@ -26,10 +25,6 @@ const router = createBrowserRouter([
         element: <HeaderHeroSection />,
       },
       {
-        path: "/signup",
-        element: <SignUp />,
-      },
-      {
         path: "/login",
         element: <LogInForm />,
       },
@@ -38,8 +33,8 @@ const router = createBrowserRouter([
         element: <ProfileDetils />,
       },
       {
-        path: "/add",
-        element: <AddUser />,
+        path: "/signup",
+        element: <SignUp />,
       },
       {
         path: "/festive",

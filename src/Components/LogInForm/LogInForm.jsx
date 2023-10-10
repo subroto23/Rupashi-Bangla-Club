@@ -1,30 +1,26 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import GoogleLogIn from "../GoogleLogIn/GoogleLogIn";
 import { TEInput, TERipple } from "tw-elements-react";
 import "tw-elements-react/dist/css/tw-elements-react.min.css";
 import { FaGoogle } from "react-icons/fa";
+import FbLogin from "../FbLoggin/FbLogin";
 import { useContext } from "react";
 import { AuthContext } from "../AuthContext/AuthContext.config";
-import FbLogin from "../FbLoggin/FbLogin";
+
 const LogInForm = () => {
-  const { handleSignIn } = useContext(AuthContext);
-  //
-  const navigate = useNavigate();
+  const { LogInFirebaseUser } = useContext(AuthContext);
+  console.log(useContext(AuthContext));
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+    const form = new FormData(e.currentTarget);
+    const email = form.get("email");
+    const password = form.get("password");
 
-    //Sign In function
-    await handleSignIn(email, password)
-      .then(() => {
-        console.log("User Logged In successfully");
-        navigate("/");
-      })
-      .catch((err) => {
-        console.log("Sorry Your email and password not mathced" + err);
-      });
-    e.target.reset();
+    //Passing Value To the Log in
+    await LogInFirebaseUser(email, password)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+    //
   };
   return (
     <div>

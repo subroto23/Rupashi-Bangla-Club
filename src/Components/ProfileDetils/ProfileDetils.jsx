@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { AuthContext } from "../AuthContext/AuthContext.config";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../AuthContext/AuthContext.config";
 
 const ProfileDetils = () => {
-  const { user, userImageUrl } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   return (
     <>
       <div className="flex items-center justify-center mt-20">
@@ -12,16 +12,15 @@ const ProfileDetils = () => {
             <div className="photo-wrapper p-2">
               <img
                 className="w-full h-56 mx-auto"
-                src={userImageUrl}
-                alt="John Doe"
+                src={`data:image/png;base64,,${user.image}`}
               />
             </div>
             <div className="p-2">
               <h3 className="text-center text-xl text-gray-900 font-medium leading-8">
-                {`${user.firstName} ${user.lastName}`}
+                {user.name}
               </h3>
               <div className="text-center text-gray-400 text-xs font-semibold">
-                <p>{user.birthday}</p>
+                <p>{user.dateOfBirth}</p>
               </div>
               <table className="text-xs my-3">
                 <tbody>
