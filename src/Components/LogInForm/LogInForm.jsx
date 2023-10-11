@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import GoogleLogIn from "../GoogleLogIn/GoogleLogIn";
 import { TEInput, TERipple } from "tw-elements-react";
 import "tw-elements-react/dist/css/tw-elements-react.min.css";
@@ -9,15 +9,16 @@ import { AuthContext } from "../AuthContext/AuthContext.config";
 
 const LogInForm = () => {
   const { LogInFirebaseUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
 
-    await LogInFirebaseUser(email, password)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    await LogInFirebaseUser(email, password).then(() => {
+      navigate("/");
+    });
     //
   };
   return (

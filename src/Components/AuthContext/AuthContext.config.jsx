@@ -60,26 +60,32 @@ const AuthProvider = ({ children }) => {
   };
   //Auth State Change Controller
   useEffect(() => {
-    setLoading(true);
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setLoading(true);
       if (currentUser) {
+        setLoading(true);
         const docRef = doc(storage, "users", currentUser.uid);
         getDoc(docRef)
-          .then((res) => setUser(res.data()))
+          .then((res) => {
+            setUser(res.data());
+          })
           .catch((err) => console.log(err));
         getDownloadURL(ref(dbStorage, `${currentUser.uid}.jpg`)).then((url) => {
           setUser({ ...user, image: url });
+          setLoading(false);
         });
-        setLoading(false);
       }
       return () => unSubscribe();
     });
   }, []);
   //User LogOut
   const LogoutFirebase = () => {
+    setLoading(true);
     signOut(auth)
       .then(() => {
         setUser(null);
+        setLoading(false);
+        console.log("LogOut SuccessFull");
         setLoading(false);
       })
       .catch((error) => {
