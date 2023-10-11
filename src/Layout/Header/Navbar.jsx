@@ -27,47 +27,49 @@ const Navbar = () => {
               <Menu />
             </div>
             {/* Avater Section */}
-            {loading ? (
-              <span className="loading loading-spinner text-warning"></span>
-            ) : user ? (
-              <>
-                <div className="dropdown dropdown-end">
-                  <button onClick={() => setShowProfile(!showProfile)}>
-                    <label
-                      tabIndex={0}
-                      className="btn btn-ghost btn-circle avatar"
-                    >
-                      <div className="w-10 rounded-full">
-                        <img
-                          src={
-                            loading ? (
-                              <span className="loading loading-spinner text-error"></span>
-                            ) : (
-                              user?.image
-                            )
-                          }
-                          className="rounded-full h-28 w-28"
-                        />
-                      </div>
-                    </label>
-                  </button>
-                  {showProfile && (
-                    <ul className="mt-2 z-[1] md:w-60 shadow menu menu-sm dropdown-content bg-primary rounded-md transition duration-150 ease-in-out">
-                      <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
-                        <Link to="/profile">প্রফাইল</Link>
-                      </li>
-                      <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
-                        <Link>আপডেট প্রফাইল</Link>
-                      </li>
-                      <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
-                        <Link>
-                          <GLogOut />
-                        </Link>
-                      </li>
-                    </ul>
-                  )}
-                </div>
-              </>
+            {user ? (
+              loading ? (
+                <span className="loading loading-spinner text-warning"></span>
+              ) : (
+                <>
+                  <div className="dropdown dropdown-end">
+                    <button onClick={() => setShowProfile(!showProfile)}>
+                      <label
+                        tabIndex={0}
+                        className="btn btn-ghost btn-circle avatar"
+                      >
+                        <div className="w-10 rounded-full">
+                          <img
+                            src={
+                              loading ? (
+                                <span className="loading loading-spinner text-error"></span>
+                              ) : (
+                                user?.image
+                              )
+                            }
+                            className="rounded-full h-28 w-28"
+                          />
+                        </div>
+                      </label>
+                    </button>
+                    {showProfile && (
+                      <ul className="mt-2 z-[1] md:w-60 shadow menu menu-sm dropdown-content bg-primary rounded-md transition duration-150 ease-in-out">
+                        <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
+                          <Link to="/profile">প্রফাইল</Link>
+                        </li>
+                        <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
+                          <Link>আপডেট প্রফাইল</Link>
+                        </li>
+                        <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
+                          <Link>
+                            <GLogOut />
+                          </Link>
+                        </li>
+                      </ul>
+                    )}
+                  </div>
+                </>
+              )
             ) : (
               <>
                 <NavLink
