@@ -14,6 +14,7 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [regiError, setregiError] = useState("");
   //Firebase Registation
   const handleRegistationFireBase = async (props) => {
     setLoading(true);
@@ -49,8 +50,9 @@ const AuthProvider = ({ children }) => {
         const mountainsRef = ref(dbStorage, `${id}.jpg`);
         uploadBytes(mountainsRef, image);
         setLoading(false);
+        setregiError("আপনার একাউন্টি সফলভাবে চালু হয়েছে।");
       })
-      .catch((err) => console.log(err));
+      .catch(() => setregiError("ই-মেইটি পূর্বেই ব্যাবহার করা হয়েছে"));
   };
 
   //User LogIn
@@ -85,7 +87,6 @@ const AuthProvider = ({ children }) => {
       .then(() => {
         setUser(null);
         setLoading(false);
-        console.log("LogOut SuccessFull");
         setLoading(false);
       })
       .catch((error) => {
@@ -96,6 +97,8 @@ const AuthProvider = ({ children }) => {
     user,
     loading,
     handleRegistationFireBase,
+    regiError,
+    setregiError,
     LogInFirebaseUser,
     LogoutFirebase,
   };

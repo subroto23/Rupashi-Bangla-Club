@@ -4,17 +4,22 @@ import { TEInput, TERipple } from "tw-elements-react";
 import "tw-elements-react/dist/css/tw-elements-react.min.css";
 import { FaGoogle } from "react-icons/fa";
 import FbLogin from "../FbLoggin/FbLogin";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../AuthContext/AuthContext.config";
 
 const LogInForm = () => {
   const { LogInFirebaseUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [error, setError] = useState("");
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
+    setError("");
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
+    if (password.length < 6) {
+      setError("আপনার পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের ছিলো");
+    }
 
     await LogInFirebaseUser(email, password).then(() => {
       navigate("/");
@@ -83,6 +88,9 @@ const LogInForm = () => {
                   </NavLink>
                 </div>
 
+                <div className="text-center text-red-600 font-bold my-2">
+                  {error && <span>{error}</span>}
+                </div>
                 {/* <!-- Submit button --> */}
 
                 <TERipple rippleColor="light" className="w-full">

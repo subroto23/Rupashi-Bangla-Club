@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../AuthContext/AuthContext.config";
 const SignUp = () => {
-  const { handleRegistationFireBase } = useContext(AuthContext);
+  const { handleRegistationFireBase, regiError } = useContext(AuthContext);
+  const [errorRegistation, setErrorRegistation] = useState("");
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -14,6 +15,15 @@ const SignUp = () => {
     const phone = e.target.phone.value;
     const dateOfBirth = e.target.date.value;
     const image = e.target.fill.files[0];
+    //
+    if (password.length < 6) {
+      setErrorRegistation("পাসওয়ার্ড সর্বনিম্ন ৬ অক্ষরের হতে হবে।");
+      return;
+    }
+    if (image.size >= 2097152) {
+      setErrorRegistation("আপনার ছবির সাইজ 2MB এর বেশি।");
+      return;
+    }
     //
     const registationValue = {
       name,
@@ -29,14 +39,9 @@ const SignUp = () => {
       isclubMember: false,
       image,
     };
-    // await storageImage(image);
-    // //Fire Storage Registation
-    // await FireStorageRegistation(registationValue);
-
     //Firebase Registation
     await handleRegistationFireBase(registationValue);
   };
-
   return (
     <>
       <div className="flex items-center justify-center md:p-12 px-8 md:mt-16 mt-20">
@@ -65,6 +70,7 @@ const SignUp = () => {
                 name="fathername"
                 placeholder="পিতার নাম"
                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                required
               />
             </div>
             <div className="mb-5">
@@ -76,6 +82,7 @@ const SignUp = () => {
                 name="mothername"
                 placeholder="মাতার নাম"
                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                required
               />
             </div>
             <div className="mb-5">
@@ -87,6 +94,7 @@ const SignUp = () => {
                 name="email"
                 placeholder="ই-মেইল লিখুন"
                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                required
               />
             </div>
             <div className="mb-5">
@@ -98,6 +106,7 @@ const SignUp = () => {
                 name="password"
                 placeholder="পাসওয়ার্ড"
                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                required
               />
             </div>
             <div className="mb-5">
@@ -121,6 +130,7 @@ const SignUp = () => {
                     type="date"
                     name="date"
                     className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                    required
                   />
                 </div>
               </div>
@@ -135,10 +145,17 @@ const SignUp = () => {
                 type="file"
                 name="fill"
                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                required
               />
             </div>
-            <div className="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white  inline-block outline-none">
-              <input type="submit" />
+            <div className="text-center text-red-600 font-bold my-2">
+              {errorRegistation ||
+                (regiError && <span>{errorRegistation || regiError}</span>)}
+            </div>
+            <div>
+              <button className="hover:shadow-form hover:bg-gray-500 w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white  inline-block outline-none">
+                সাবমিট করুন
+              </button>
             </div>
           </form>
           <div className="text-center pt-6">
