@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../AuthContext/AuthContext.config";
 const SignUp = () => {
-  const { handleRegistationFireBase, FireStorageRegistation, storageImage } =
-    useContext(AuthContext);
+  const { handleRegistationFireBase } = useContext(AuthContext);
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -22,20 +21,20 @@ const SignUp = () => {
       mothername,
       dateOfBirth,
       email,
+      password,
       phone,
       isBanned: false,
       isAdmin: false,
       isJurnalist: false,
       isclubMember: false,
+      image,
     };
-    await storageImage(image);
-    //Fire Storage Registation
-    await FireStorageRegistation(registationValue);
+    // await storageImage(image);
+    // //Fire Storage Registation
+    // await FireStorageRegistation(registationValue);
 
     //Firebase Registation
-    await handleRegistationFireBase(email, password)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    await handleRegistationFireBase(registationValue);
   };
 
   return (

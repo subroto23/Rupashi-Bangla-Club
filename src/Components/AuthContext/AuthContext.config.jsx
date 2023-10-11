@@ -6,19 +6,51 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth, dbStorage, storage } from "../../FirebaseAuth/Firebase.init";
-import { setDoc, doc } from "firebase/firestore";
-import { ref, uploadBytes } from "firebase/storage";
+import { setDoc, doc, getDoc } from "firebase/firestore";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 export const AuthContext = createContext(null);
 
 //
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
-  const [user, setuser] = useState(null);
-
+  const [user, setUser] = useState(null);
   //Firebase Registation
-  const handleRegistationFireBase = async (email, password) => {
+  const handleRegistationFireBase = async (props) => {
     setLoading(true);
-    return await createUserWithEmailAndPassword(auth, email, password);
+    const {
+      name,
+      fathername,
+      mothername,
+      dateOfBirth,
+      email,
+      password,
+      phone,
+      isBanned,
+      isAdmin,
+      isJurnalist,
+      isclubMember,
+      image,
+    } = props;
+    await createUserWithEmailAndPassword(auth, email, password)
+      .then((res) => {
+        const id = res.user.uid;
+        setDoc(doc(storage, "users", id), {
+          name,
+          fathername,
+          mothername,
+          dateOfBirth,
+          email,
+          phone,
+          isBanned,
+          isAdmin,
+          isJurnalist,
+          isclubMember,
+        });
+        const mountainsRef = ref(dbStorage, `${id}.jpg`);
+        uploadBytes(mountainsRef, image);
+        setLoading(false);
+      })
+      .catch((err) => console.log(err));
   };
 
   //User LogIn
@@ -28,39 +60,26 @@ const AuthProvider = ({ children }) => {
   };
   //Auth State Change Controller
   useEffect(() => {
+    setLoading(true);
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       if (currentUser) {
-        setuser(currentUser);
+        const docRef = doc(storage, "users", currentUser.uid);
+        getDoc(docRef)
+          .then((res) => setUser(res.data()))
+          .catch((err) => console.log(err));
+        getDownloadURL(ref(dbStorage, `${currentUser.uid}.jpg`)).then((url) => {
+          setUser({ ...user, image: url });
+        });
         setLoading(false);
       }
       return () => unSubscribe();
     });
   }, []);
-  //FireStorage Registation
-  const FireStorageRegistation = async (props) => {
-    if (!loading) {
-      await setDoc(doc(storage, "users", user?.uid), props)
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
-    }
-  };
-
-  //Storage Image
-  const storageImage = async (image) => {
-    if (!loading) {
-      const mountainsRef = ref(dbStorage, `${user?.uid}.jpg`);
-      await uploadBytes(mountainsRef, image)
-        .then(() => {
-          console.log("Uploaded file successfully!");
-        })
-        .catch((err) => console.log(err.message));
-    }
-  };
   //User LogOut
   const LogoutFirebase = () => {
     signOut(auth)
       .then(() => {
-        setuser(null);
+        setUser(null);
         setLoading(false);
       })
       .catch((error) => {
@@ -71,10 +90,8 @@ const AuthProvider = ({ children }) => {
     user,
     loading,
     handleRegistationFireBase,
-    FireStorageRegistation,
     LogInFirebaseUser,
     LogoutFirebase,
-    storageImage,
   };
   //
   return (

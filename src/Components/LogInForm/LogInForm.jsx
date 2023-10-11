@@ -9,14 +9,12 @@ import { AuthContext } from "../AuthContext/AuthContext.config";
 
 const LogInForm = () => {
   const { LogInFirebaseUser } = useContext(AuthContext);
-  console.log(useContext(AuthContext));
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
 
-    //Passing Value To the Log in
     await LogInFirebaseUser(email, password)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
