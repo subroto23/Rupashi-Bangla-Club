@@ -2,6 +2,8 @@ import { createContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  sendEmailVerification,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
@@ -50,11 +52,20 @@ const AuthProvider = ({ children }) => {
         const mountainsRef = ref(dbStorage, `${id}.jpg`);
         uploadBytes(mountainsRef, image);
         setLoading(false);
-        setregiError("আপনার একাউন্টি সফলভাবে চালু হয়েছে।");
+        sendEmailVerification(auth.currentUser).then(() =>
+          setregiError(`${email} ভেরিফাই করতে আপনার ই-মেইলটি চেক করুন`)
+        );
+        // setregiError("আপনার একাউন্টি সফলভাবে চালু হয়েছে।");
       })
       .catch(() => setregiError("ই-মেইটি পূর্বেই ব্যাবহার করা হয়েছে"));
   };
 
+  //Reset Password
+  const handleResetPassword = (email) => {
+    return sendPasswordResetEmail(auth, email);
+  };
+
+  //
   //User LogIn
   const LogInFirebaseUser = async (email, password) => {
     setLoading(true);
@@ -87,7 +98,6 @@ const AuthProvider = ({ children }) => {
       .then(() => {
         setUser(null);
         setLoading(false);
-        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -98,7 +108,7 @@ const AuthProvider = ({ children }) => {
     loading,
     handleRegistationFireBase,
     regiError,
-    setregiError,
+    handleResetPassword,
     LogInFirebaseUser,
     LogoutFirebase,
   };

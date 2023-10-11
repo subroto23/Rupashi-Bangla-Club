@@ -14,6 +14,7 @@ import SignUp from "./Components/SignUp/SignUp";
 import ProfileDetils from "./Components/ProfileDetils/ProfileDetils";
 import FestivalForm from "./Components/FetivalForm/FestivalForm";
 import CreatedNews from "./Components/NewsForm/CreatedNews";
+import ResetPassword from "./Components/ResetPassword/ResetPassword";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <SignUp />,
+      },
+      {
+        path: "/reset",
+        element: <ResetPassword />,
       },
       {
         path: "/festive",

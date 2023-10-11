@@ -7,6 +7,7 @@ const SignUp = () => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    setErrorRegistation("");
     const name = e.target.name.value;
     const fathername = e.target.fathername.value;
     const mothername = e.target.mothername.value;
