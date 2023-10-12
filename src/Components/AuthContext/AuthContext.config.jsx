@@ -17,6 +17,7 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [regiError, setregiError] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   //Firebase Registation
   const handleRegistationFireBase = async (props) => {
     setLoading(true);
@@ -51,11 +52,10 @@ const AuthProvider = ({ children }) => {
         });
         const mountainsRef = ref(dbStorage, `${id}.jpg`);
         uploadBytes(mountainsRef, image);
-        setLoading(false);
         sendEmailVerification(auth.currentUser).then(() =>
           setregiError(`${email} ভেরিফাই করতে আপনার ই-মেইলটি চেক করুন`)
         );
-        // setregiError("আপনার একাউন্টি সফলভাবে চালু হয়েছে।");
+        setLoading(false);
       })
       .catch(() => setregiError("ই-মেইটি পূর্বেই ব্যাবহার করা হয়েছে"));
   };
@@ -73,10 +73,10 @@ const AuthProvider = ({ children }) => {
   };
   //Auth State Change Controller
   useEffect(() => {
+    setLoading(true);
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setLoading(true);
       if (currentUser) {
-        setLoading(true);
         const docRef = doc(storage, "users", currentUser.uid);
         getDoc(docRef)
           .then((res) => {
@@ -84,7 +84,7 @@ const AuthProvider = ({ children }) => {
           })
           .catch((err) => console.log(err));
         getDownloadURL(ref(dbStorage, `${currentUser.uid}.jpg`)).then((url) => {
-          setUser({ ...user, image: url });
+          setImageUrl(url);
           setLoading(false);
         });
       }
@@ -105,6 +105,7 @@ const AuthProvider = ({ children }) => {
   };
   const authInfo = {
     user,
+    imageUrl,
     loading,
     handleRegistationFireBase,
     regiError,

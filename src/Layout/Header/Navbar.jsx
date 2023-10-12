@@ -6,7 +6,8 @@ import { AuthContext } from "../../Components/AuthContext/AuthContext.config";
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
-  const { user, loading } = useContext(AuthContext);
+  const { user, loading, imageUrl } = useContext(AuthContext);
+  console.log(imageUrl);
   return (
     <>
       <nav className="bg-primary text-white fixed top-0 w-full z-50">
@@ -39,16 +40,18 @@ const Navbar = () => {
                         className="btn btn-ghost btn-circle avatar"
                       >
                         <div className="w-10 rounded-full">
-                          <img
-                            src={
-                              loading ? (
-                                <span className="loading loading-spinner text-error"></span>
-                              ) : (
-                                user?.image
-                              )
-                            }
-                            className="rounded-full h-28 w-28"
-                          />
+                          {loading ? (
+                            <span className="loading loading-spinner text-error"></span>
+                          ) : (
+                            <img
+                              src={
+                                imageUrl
+                                  ? imageUrl
+                                  : "https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
+                              }
+                              className="rounded-full h-28 w-28"
+                            />
+                          )}
                         </div>
                       </label>
                     </button>

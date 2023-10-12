@@ -2,14 +2,21 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthContext/AuthContext.config";
 const ProfileDetils = () => {
-  const { user } = useContext(AuthContext);
+  const { user, imageUrl } = useContext(AuthContext);
   return (
     <>
       <div className="flex items-center justify-center mt-20">
         <div className="">
           <div className="bg-[#bed6f6cc] shadow-xl rounded-lg py-3">
             <div className="photo-wrapper p-2">
-              <img className="w-full h-56 mx-auto" src={user?.image} />
+              <img
+                className="w-full h-56 mx-auto"
+                src={
+                  imageUrl
+                    ? imageUrl
+                    : "https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg"
+                }
+              />
             </div>
             <div className="p-2">
               <h3 className="text-center text-xl text-gray-900 font-medium leading-8">
