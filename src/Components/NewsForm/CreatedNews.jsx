@@ -19,7 +19,7 @@ const CreatedNews = () => {
       setMessage("দয়া করে টাইটেল 40 অক্ষরের মধ্যে লিখুন");
     }
     axios
-      .post("http://localhost:3001/api/news/create", formValues, {
+      .post("https://rbcwebsite.onrender.com/api/news/create", formValues, {
         headers: {
           "Content-Type":
             'multipart/form-data; charset=utf-8; boundary="another cool boundary";',
