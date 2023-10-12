@@ -21,9 +21,12 @@ const LogInForm = () => {
       setError("আপনার পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের ছিলো");
     }
 
-    await LogInFirebaseUser(email, password).then(() => {
-      navigate("/");
-    });
+    await LogInFirebaseUser(email, password)
+      .then(() => {
+        setError("সফলভাবে লগইন হয়েছে");
+        navigate("/");
+      })
+      .catch((err) => setError(err.message));
     //
   };
   return (
