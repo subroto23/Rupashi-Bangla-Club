@@ -25,7 +25,7 @@ const HeroBigNews = ({ newsValue }) => {
               <div className="absolute bottom-0 md:px-8 px-4 space-y-2 bg-black w-full">
                 <div className="absolute bottom-4 pr-2">
                   <h1 className="md:text-5xl text-yellow-600 text-xl font-bold hover:text-primary">
-                    {newsValue.title}
+                    {newsValue.title.slice(0, 35)}...
                   </h1>
                   <p className="md:text-2xl text-lg text-justify text-white">
                     {newsDetails}...{" "}
