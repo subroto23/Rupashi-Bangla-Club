@@ -3,12 +3,12 @@ const Footer = () => {
   return (
     <div className="mt-8">
       <footer className="bg-primary text-center text-white dark:bg-neutral-600 dark:text-neutral-200 lg:text-left">
-        <div className="max-w-7xl mx-auto flex items-center justify-center border-b-2 border-neutral-200 dark:border-neutral-500 lg:justify-between py-4">
+        <div className="flex border-b-2 border-neutral-200 dark:border-neutral-500 lg:justify-between py-4">
           <div className="mr-12 hidden lg:block">
             <span>আমাদের সাথে যুক্ত হোনঃ-</span>
           </div>
           {/* <!-- Social network icons container --> */}
-          <div className="flex justify-center">
+          <div className="flex justify-center items-center">
             <a className="mr-6 text-white dark:text-neutral-200">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -77,7 +77,7 @@ const Footer = () => {
         </div>
 
         {/* <!-- Main container div: holds the entire content of the footer, including four sections (Tailwind Elements, Products, Useful links, and Contact), with responsive styling and appropriate padding/margins. --> */}
-        <div className="mx-6 py-10 text-center md:text-left max-w-6xl">
+        <div className="mx-auto py-10 text-center md:text-left max-w-6xl">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {/* <!-- Tailwind Elements section --> */}
             <div className="md:block">
@@ -92,9 +92,8 @@ const Footer = () => {
                 </svg>
                 রূপসী বাংলা ক্লাব
               </h6>
-              <p className="text-justify">
-                রূপসী বাংলা ক্লাব একটি সামাজিক উন্নায়ন মূলক সংগঠন । আমাদের
-                সমাজের অসচ্ছল,হতদরিদ্র মানুষের সেবাই মূল লক্ষ্য।
+              <p className="text-justify px-4">
+                আমরা সমাজের অসচ্ছল,হতদরিদ্র মানুষের সেবাই মূল লক্ষ্য।
               </p>
             </div>
             {/* <!-- Products section --> */}

@@ -17,7 +17,7 @@ const HeroBigNews = ({ newsValue }) => {
         <div className="hover:brightness-150 hover:text-primary hover:contrast-100">
           <div className="relative ">
             <img
-              className="relative w-full h-[250px]"
+              className="relative brightness-50 w-full h-[250px]"
               src={`data:image/jpg;base64,${image}`}
               alt=""
             />
@@ -30,7 +30,7 @@ const HeroBigNews = ({ newsValue }) => {
                   <p className="md:text-2xl text-lg text-justify text-white">
                     {newsDetails}...{" "}
                     <Link
-                      to="/news/views/:id"
+                      to={`/news/views/${newsValue._id}`}
                       className="text-yellow-300 font-extrabold"
                     >
                       বিস্তারিত পড়ুন

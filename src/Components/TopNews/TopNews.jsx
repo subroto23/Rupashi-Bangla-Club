@@ -10,12 +10,13 @@ const TopNews = () => {
     axios
       .get("https://rbcwebsite.onrender.com/api/news/view/")
       .then((res) => {
-        setnewsArrs(res.data.payload.allNews.reverse()), setLoading(false);
+        const newsArrays = res.data.payload.allNews.reverse();
+        setnewsArrs(newsArrays.slice(0, 6)), setLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-6xl mx-auto px-2">
       <h1 className="text-xl mb-8 text-primary font-extrabold">সংবাদ</h1>
       <div className="grid md:grid-cols-3 gap-4 grid-cols-1">
         {loading ? (
