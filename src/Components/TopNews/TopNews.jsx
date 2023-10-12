@@ -1,13 +1,20 @@
 import { useEffect, useState } from "react";
 import HeroBigNews from "./HeroBigNews/HeroBigNews";
+import axios from "axios";
 
 const TopNews = () => {
   const [newsArr, setNewsArr] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    fetch("https://api.npoint.io/07b1fa8c1567c93fd234")
-      .then((res) => res.json())
-      .then((data) => setNewsArr(data.reverse()));
+    setLoading(true);
+    axios
+      .get("https://rbcwebsite.onrender.com/api/news/view/")
+      .then((res) => {
+        setNewsArr(res.data.payload.allNews.reverse()), setLoading(false);
+      })
+      .catch((err) => console.log(err));
   }, []);
+  console.log(newsArr);
   return (
     <div className="md:my-24 my-2 md:mx-auto container">
       <div className="mt-8 mb-16 text-center">
@@ -16,7 +23,9 @@ const TopNews = () => {
           আমাদের গ্রামের ঘটনা
         </p>
       </div>
-      {newsArr.length > 0 && <HeroBigNews newsArr={newsArr} />}
+      {newsArr.length > 0 && (
+        <HeroBigNews newsArr={newsArr} loading={loading} />
+      )}
     </div>
   );
 };

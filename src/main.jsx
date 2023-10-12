@@ -64,7 +64,7 @@ const router = createBrowserRouter([
   {
     path: "/news/views/:id",
     loader: ({ params }) =>
-      fetch(`https://api.npoint.io/07b1fa8c1567c93fd234/${Number(params.id)}`),
+      fetch(`https://rbcwebsite.onrender.com/api/news/${(params.id)}`),
     element: (
       <PrivateRoute>
         <NewsViews />
