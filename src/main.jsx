@@ -15,6 +15,8 @@ import ProfileDetils from "./Components/ProfileDetils/ProfileDetils";
 import FestivalForm from "./Components/FetivalForm/FestivalForm";
 import CreatedNews from "./Components/NewsForm/CreatedNews";
 import ResetPassword from "./Components/ResetPassword/ResetPassword";
+import PrivateRoute from "./Components/ProtectedRouting/PrivateRoute";
+import JurnalistRoute from "./Components/JurnalistRoute/JurnalistRoute";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -43,11 +45,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/festive",
-        element: <FestivalForm />,
+        element: (
+          <PrivateRoute>
+            <FestivalForm />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/news",
-        element: <CreatedNews />,
+        element: (
+          <JurnalistRoute>
+            <CreatedNews />
+          </JurnalistRoute>
+        ),
       },
     ],
   },
@@ -55,7 +65,11 @@ const router = createBrowserRouter([
     path: "/news/views/:id",
     loader: ({ params }) =>
       fetch(`https://api.npoint.io/07b1fa8c1567c93fd234/${Number(params.id)}`),
-    element: <NewsViews />,
+    element: (
+      <PrivateRoute>
+        <NewsViews />
+      </PrivateRoute>
+    ),
   },
 ]);
 

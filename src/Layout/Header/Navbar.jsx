@@ -7,7 +7,6 @@ const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const { user, loading, imageUrl } = useContext(AuthContext);
-  console.log(imageUrl);
   return (
     <>
       <nav className="bg-primary text-white fixed top-0 w-full z-50">

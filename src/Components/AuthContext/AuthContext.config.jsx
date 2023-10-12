@@ -15,6 +15,7 @@ export const AuthContext = createContext(null);
 //
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
+  const [logger, setLogger] = useState(null);
   const [user, setUser] = useState(null);
   const [regiError, setregiError] = useState("");
   const [imageUrl, setImageUrl] = useState("");
@@ -75,7 +76,6 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     setLoading(true);
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setLoading(true);
       if (currentUser) {
         const docRef = doc(storage, "users", currentUser.uid);
         getDoc(docRef)
@@ -85,8 +85,15 @@ const AuthProvider = ({ children }) => {
           .catch((err) => console.log(err));
         getDownloadURL(ref(dbStorage, `${currentUser.uid}.jpg`)).then((url) => {
           setImageUrl(url);
+          setLogger(currentUser);
           setLoading(false);
         });
+      } else {
+        setLoading(true);
+        setLogger(null);
+        setUser(null);
+        setImageUrl("");
+        setLoading(false);
       }
       return () => unSubscribe();
     });
@@ -105,6 +112,7 @@ const AuthProvider = ({ children }) => {
   };
   const authInfo = {
     user,
+    logger,
     imageUrl,
     loading,
     handleRegistationFireBase,

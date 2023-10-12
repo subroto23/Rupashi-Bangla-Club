@@ -7,13 +7,12 @@ const Carosoal = () => {
   countItDown(weddingDate, (date) => setCountingValue(date));
   return (
     <div>
-      {/* <div className="blur-[150px] md:h-16 h-16 to-purple-400 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600 "></div> */}
       <div className="container mx-auto">
         <div className="flex flex-col  items-center md:py-8 pt-1 justify-center my-12">
           <h1 className="text-gray-900 dark:text-white font-bold text-3xl md:text-6xl xl:text-7xl">
-            দূর্গা পূজার বাকি
+            দূর্গা পূজার আর মাত্র বাকি
           </h1>
-          <div className="grid md:grid-cols-4 grid-cols-2 md:gap-12 gap-8 md:my-8 my-4 text-primary dark:text-white">
+          <div className="grid md:grid-cols-4 grid-cols-4 md:gap-12 gap-8 md:my-8 my-4 text-primary dark:text-white">
             <div className="flex flex-col justify-center items-center">
               <span className="countdown font-mono ">
                 <span
