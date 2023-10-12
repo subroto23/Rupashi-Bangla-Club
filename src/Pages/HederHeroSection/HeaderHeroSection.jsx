@@ -17,12 +17,12 @@ const HeaderHeroSection = () => {
       {/* <Carosoal /> */}
       <DateTimeHtml />
       <TopNews />
-      <PromoSection />
+      {/* <PromoSection />
       <BlogCard />
       <RbcMember />
       <TrustPartner />
       <HappyClients />
-      <Hero2 />
+      <Hero2 /> */}
     </div>
   );
 };

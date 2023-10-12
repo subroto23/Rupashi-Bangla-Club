@@ -3,29 +3,35 @@ import HeroBigNews from "./HeroBigNews/HeroBigNews";
 import axios from "axios";
 
 const TopNews = () => {
-  const [newsArr, setNewsArr] = useState([]);
+  const [newsArrs, setnewsArrs] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     setLoading(true);
     axios
       .get("https://rbcwebsite.onrender.com/api/news/view/")
       .then((res) => {
-        setNewsArr(res.data.payload.allNews.reverse()), setLoading(false);
+        setnewsArrs(res.data.payload.allNews.reverse()), setLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
-  console.log(newsArr);
   return (
-    <div className="md:my-24 my-2 md:mx-auto container">
-      <div className="mt-8 mb-16 text-center">
-        <h1 className="text-4xl text-primary font-extrabold">আমাদের সংবাদ</h1>
-        <p className="text-xl  font-bolder my-2 font-bold ml-6">
-          আমাদের গ্রামের ঘটনা
-        </p>
+    <div className="max-w-6xl mx-auto">
+      <h1 className="text-xl mb-8 text-primary font-extrabold">সংবাদ</h1>
+      <div className="grid md:grid-cols-3 gap-4 grid-cols-1">
+        {loading ? (
+          <span className="loading loading-spinner text-warning"></span>
+        ) : (
+          newsArrs.map((newsValue) => {
+            return (
+              <HeroBigNews
+                key={newsValue._id}
+                newsValue={newsValue}
+                loading={loading}
+              />
+            );
+          })
+        )}
       </div>
-      {newsArr.length > 0 && (
-        <HeroBigNews newsArr={newsArr} loading={loading} />
-      )}
     </div>
   );
 };

@@ -19,7 +19,7 @@ const NewsViews = () => {
         <p className="text-xs text-gray-400">তারিখঃ {DateTime}</p>
         <small className="text-sm text-gray-400">প্রতিবেদকঃ {createdBy}</small>
         <h1 className="md:text-2xl text-lg mb-8">{title}</h1>
-        <figure>
+        <figure className="flex flex-col items-center">
           <img
             className="rounded-md"
             src={`data:image/jpg;base64,${images}`}
