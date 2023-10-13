@@ -20,7 +20,9 @@ const TopNews = () => {
       {loading ? (
         ""
       ) : (
-        <h1 className="text-xl mb-8 text-primary font-extrabold">সংবাদ</h1>
+        <h1 className="text-xl mb-8 text-primary font-extrabold md:block hidden">
+          সংবাদ পড়ুন
+        </h1>
       )}
       <div className="grid md:grid-cols-3 gap-4 grid-cols-1">
         {loading

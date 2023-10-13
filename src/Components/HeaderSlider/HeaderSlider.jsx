@@ -60,14 +60,14 @@ const HeaderSlider = () => {
         <SwiperSlide>
           <img
             className="w-full h-full cover"
-            src="https://icms-image.slatic.net/images/ims-web/76b78e2f-db47-46d4-a279-70679a36f2c9.jpg"
+            src="https://i.ibb.co/VTwSNpt/e587c6aa-76ec-4ff1-ae01-e9fd99c5568f.jpg"
             alt=""
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             className="w-full h-full cover"
-            src="https://icms-image.slatic.net/images/ims-web/5c3ea859-2ecd-4e85-bc10-68cfd2e56727.jpg"
+            src="https://i.ibb.co/pxBKpKT/bf6f5dea-77ab-4b6f-be88-f2005952d565.jpg"
             alt=""
           />
         </SwiperSlide>
