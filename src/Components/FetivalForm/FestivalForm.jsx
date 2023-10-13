@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 
 const FestivalForm = () => {
-  const [image, setImage] = useState(null);
+  // const [image, setImage] = useState(null);
   const [eventData, setEventData] = useState(null);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -11,7 +11,7 @@ const FestivalForm = () => {
     const subtitle = form.get("subTitle");
     const about = form.get("about");
     const date = form.get("date");
-    const formValues = { title, subtitle, about, date, image };
+    const formValues = { title, subtitle, about, date };
     axios
       .post("https://rbcwebsite.onrender.com/events/create", formValues, {
         headers: {
@@ -73,7 +73,7 @@ const FestivalForm = () => {
                 required
               />
             </div>
-            <div>
+            {/* <div>
               <label htmlFor="image">উৎসব সম্পর্কিত ছবি</label>
               <input
                 name="image"
@@ -81,7 +81,7 @@ const FestivalForm = () => {
                 onChange={(e) => setImage(e.target.files[0])}
                 className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
-            </div>
+            </div> */}
             <div className="my-1">
               <input
                 className="btn btn-ghost text-white cursor-pointer hover:text-black bg-primary w-full"

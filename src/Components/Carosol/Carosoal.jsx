@@ -1,7 +1,7 @@
 import countItDown from "count-it-down";
 import { useState } from "react";
-const TimerCountdown = () => {
-  const weddingDate = new Date("10/20/2023");
+const TimerCountdown = ({ eventsData }) => {
+  const weddingDate = new Date(`${eventsData}`);
   const [countingValue, setCountingValue] = useState({});
 
   countItDown(weddingDate, (date) => setCountingValue(date));

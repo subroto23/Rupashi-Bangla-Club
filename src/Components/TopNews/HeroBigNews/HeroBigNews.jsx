@@ -7,7 +7,7 @@ const HeroBigNews = ({ newsValue }) => {
   const [image, setImage] = useState([]);
   useEffect(() => {
     if (newsValue.details.length > 40) {
-      setNewsDetails(newsValue.details.slice(0, 50));
+      setNewsDetails(newsValue.details.slice(0, 20));
       setImage(`${Buffer.from(newsValue.image).toString("ascii")} `);
     }
   }, []);
@@ -25,7 +25,7 @@ const HeroBigNews = ({ newsValue }) => {
               <div className="absolute bottom-0 md:px-8 px-4 space-y-2 bg-black w-full">
                 <div className="absolute bottom-4 pr-2">
                   <h1 className="md:text-5xl text-yellow-600 text-xl font-bold hover:text-primary">
-                    {newsValue.title.slice(0, 35)}...
+                    {newsValue.title.slice(0, 25)}...
                   </h1>
                   <p className="md:text-2xl text-lg text-justify text-white">
                     {newsDetails}...{" "}

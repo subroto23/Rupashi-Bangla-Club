@@ -64,7 +64,7 @@ const router = createBrowserRouter([
   {
     path: "/news/views/:id",
     loader: ({ params }) =>
-      fetch(`https://rbcwebsite.onrender.com/api/news/${(params.id)}`),
+      fetch(`https://rbcwebsite.onrender.com/api/news/${params.id}`),
     element: (
       <PrivateRoute>
         <NewsViews />
@@ -76,9 +76,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-      <ThemeProvider>
-        <RouterProvider router={router} />
-      </ThemeProvider>
+        <ThemeProvider>
+          <RouterProvider router={router} />
+        </ThemeProvider>
     </AuthProvider>
   </React.StrictMode>
 );
