@@ -13,10 +13,9 @@ const HeaderHeroSection = () => {
   return (
     <div>
       <HeaderSlider />
-      <OverlayHeroSection />
-      {/* <Carosoal /> */}
-      <DateTimeHtml />
       <TopNews />
+      {/* <OverlayHeroSection /> */}
+      {/* <DateTimeHtml /> */}
       {/* <PromoSection />
       <BlogCard />
       <RbcMember />

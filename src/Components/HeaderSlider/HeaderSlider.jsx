@@ -1,18 +1,17 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
 // import "./HeaderSlider.module.css";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import TimerCountdown from "../Carosol/Carosoal";
 
 const HeaderSlider = () => {
   return (
-    <div className="mt-16">
+    <div className="mt-16 relative">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -42,6 +41,14 @@ const HeaderSlider = () => {
           />
         </SwiperSlide>
       </Swiper>
+      <div className="md:absolute md:right-4 md:bottom-2 z-30 ">
+        <div className=" bg-white md:border-red-600 my-4 md:my-0  mx-auto border px-4 text-center">
+          <span className="text-green-800  font-bold animate-pulse">
+            দূর্গাপূজার বাকি আর মাত্র
+          </span>
+          <TimerCountdown />
+        </div>
+      </div>
     </div>
   );
 };

@@ -110,6 +110,8 @@ const AuthProvider = ({ children }) => {
         console.log(error);
       });
   };
+
+
   const authInfo = {
     user,
     logger,
