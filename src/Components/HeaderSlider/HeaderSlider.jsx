@@ -43,7 +43,7 @@ const HeaderSlider = () => {
       </Swiper>
       <div className="md:absolute md:right-4 md:bottom-2 z-30 ">
         <div className=" bg-white md:border-red-600 my-4 md:my-0  mx-auto border px-4 text-center">
-          <span className="text-green-800  font-bold animate-pulse">
+          <span className="text-green-800  font-bold">
             দূর্গাপূজার বাকি আর মাত্র
           </span>
           <TimerCountdown />
