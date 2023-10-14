@@ -26,7 +26,7 @@ const NewsViews = () => {
             alt=""
           />
           <figcaption className="text-xs text-center mb-2 mt-3">
-            ছবি তুলেছেনঃ {createdBy}
+            ছবি সংগ্রহ করেছেনঃ {createdBy}
           </figcaption>
         </figure>
         <article>
