@@ -19,6 +19,9 @@ import PrivateRoute from "./Components/ProtectedRouting/PrivateRoute";
 import JurnalistRoute from "./Components/JurnalistRoute/JurnalistRoute";
 import Admin from "./Pages/Admin/Admin";
 import CadaForm from "./Components/CadaForm/CadaForm";
+import CadaViews from "./Components/Cada Details/CadaViews";
+import CardUpdate from "./Components/Admin/CadaUpdate/CadaUpdate";
+import CadaUpdateForm from "./Components/Admin/CadaUpdate/CadaUpdateForm";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -53,6 +56,14 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/cada-views",
+        element: (
+          <PrivateRoute>
+            <CadaViews />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
   {
@@ -68,20 +79,30 @@ const router = createBrowserRouter([
         element: <CadaForm />,
       },
       {
+        path: "/admin/cada-update",
+        element: <CardUpdate />,
+      },
+      {
         path: "/admin/news",
         element: <CreatedNews />,
+      },
+      {
+        path: "/admin/cada-update-form/:id",
+        element: <CadaUpdateForm />,
+        loader: ({ params }) =>
+          fetch(`https://rbcwebsite.onrender.com/cada/details/${params.id}`),
       },
     ],
   },
   {
     path: "/news/views/:id",
-    loader: ({ params }) =>
-      fetch(`https://rbcwebsite.onrender.com/api/news/${params.id}`),
     element: (
       <PrivateRoute>
         <NewsViews />
       </PrivateRoute>
     ),
+    loader: ({ params }) =>
+      fetch(`https://rbcwebsite.onrender.com/api/news/${params.id}`),
   },
 ]);
 

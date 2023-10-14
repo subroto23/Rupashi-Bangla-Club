@@ -16,7 +16,7 @@ const TopNews = () => {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <div className="max-w-6xl mx-auto px-2">
+    <div className="max-w-6xl mx-auto">
       {loading ? (
         ""
       ) : (
