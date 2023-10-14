@@ -25,7 +25,7 @@ const HeaderSlider = () => {
         const CurrentYear = new Date().getFullYear();
         const currentDate = `${CurrentYear}-${CurrentMonth + 1}-${CurrentDay}`;
         const EventsDate = res.data.payload.event.filter(
-          (event) => event.date >= currentDate
+          (event) => event.date > currentDate
         );
         EventsDate.sort((a, b) => {
           const dateA = new Date(a.date);
@@ -40,7 +40,6 @@ const HeaderSlider = () => {
       })
       .catch((err) => console.log(err));
   }, []);
-
   return (
     <div className="mt-16 relative">
       <Swiper
