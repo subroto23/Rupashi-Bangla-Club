@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import TitleViews from "../Title/TitleViews";
 
 const CadaViews = () => {
   const [cadaLists, setCadaLists] = useState(null);
@@ -18,9 +19,7 @@ const CadaViews = () => {
   return (
     <div className="flex flex-col mt-16 max-w-6xl mx-auto">
       <table className="max-w-32 text-left text-sm font-light">
-        <caption className="my-2 font-bold">
-          দূর্গা পূজা ২০২৩ ইং সালের প্রণামী তালিকা
-        </caption>
+        <TitleViews />
         <thead className="border-b bg-yellow-600 font-medium dark:border-neutral-500 dark:bg-neutral-600">
           <tr className="text-center">
             <th scope="col" className="px-2 py-4">

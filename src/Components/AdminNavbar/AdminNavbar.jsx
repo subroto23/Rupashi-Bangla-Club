@@ -15,6 +15,22 @@ const AdminNavbar = () => {
           </li>
           <li className="hover:bg-primary w-full hover:text-white border-b">
             <Link
+              to="/admin/title-post"
+              className="block rounded-lg px-4 py-2 text-xl text-black  hover:text-white font-bold"
+            >
+              টাইটেল তৈরির ফর্ম
+            </Link>
+          </li>
+          <li className="hover:bg-primary w-full hover:text-white border-b">
+            <Link
+              to="/admin/title/title-update"
+              className="block rounded-lg px-4 py-2 text-xl text-black  hover:text-white font-bold"
+            >
+              টাইটেল আপডেট ফর্ম
+            </Link>
+          </li>
+          <li className="hover:bg-primary w-full hover:text-white border-b">
+            <Link
               to="/admin/cadaform"
               className="block rounded-lg px-4 py-2 text-xl text-black  hover:text-white font-bold"
             >

@@ -9,7 +9,7 @@ const CardUpdate = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:3001/cada/details")
+      .get("https://rbcwebsite.onrender.com/cada/details")
       .then((res) => {
         const cadaValue = res.data.payload.data;
         setCadaLists(cadaValue), setLoading(false);

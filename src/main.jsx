@@ -22,6 +22,9 @@ import CadaForm from "./Components/CadaForm/CadaForm";
 import CadaViews from "./Components/Cada Details/CadaViews";
 import CardUpdate from "./Components/Admin/CadaUpdate/CadaUpdate";
 import CadaUpdateForm from "./Components/Admin/CadaUpdate/CadaUpdateForm";
+import TitleUpdate from "./Components/Title/TitleUpdate";
+import TaitelPost from "./Components/Title/TitlePost";
+import TitleUpdateForm from "./Components/Title/TitleUpdateForm";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -85,6 +88,20 @@ const router = createBrowserRouter([
       {
         path: "/admin/news",
         element: <CreatedNews />,
+      },
+      {
+        path: "/admin/title-post",
+        element: <TaitelPost />,
+      },
+      {
+        path: "/admin/title/title-update",
+        element: <TitleUpdate />,
+      },
+      {
+        path: "/admin/title/title-update/:id",
+        element: <TitleUpdateForm />,
+        loader: ({ params }) =>
+          fetch(`https://rbcwebsite.onrender.com/title/heading/${params.id}`),
       },
       {
         path: "/admin/cada-update-form/:id",
