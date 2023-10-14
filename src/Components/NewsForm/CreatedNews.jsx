@@ -33,7 +33,7 @@ const CreatedNews = () => {
   };
   return (
     <>
-      <div className="mt-16 max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto bg-gray-100 py-4">
         <div className="flex justify-center  items-center flex-col">
           <h1 className="text-xl mt-2 mb-4">খবর তৈরির ফর্ম </h1>
           <form onSubmit={handleSubmit}>

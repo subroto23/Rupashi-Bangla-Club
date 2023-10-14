@@ -17,6 +17,8 @@ import CreatedNews from "./Components/NewsForm/CreatedNews";
 import ResetPassword from "./Components/ResetPassword/ResetPassword";
 import PrivateRoute from "./Components/ProtectedRouting/PrivateRoute";
 import JurnalistRoute from "./Components/JurnalistRoute/JurnalistRoute";
+import Admin from "./Pages/Admin/Admin";
+import CadaForm from "./Components/CadaForm/CadaForm";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -51,13 +53,23 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+    ],
+  },
+  {
+    path: "/admin",
+    element: (
+      <JurnalistRoute>
+        <Admin />
+      </JurnalistRoute>
+    ),
+    children: [
       {
-        path: "/news",
-        element: (
-          <JurnalistRoute>
-            <CreatedNews />
-          </JurnalistRoute>
-        ),
+        path: "/admin/cadaform",
+        element: <CadaForm />,
+      },
+      {
+        path: "/admin/news",
+        element: <CreatedNews />,
       },
     ],
   },
@@ -76,9 +88,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
-        <ThemeProvider>
-          <RouterProvider router={router} />
-        </ThemeProvider>
+      <ThemeProvider>
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </AuthProvider>
   </React.StrictMode>
 );
