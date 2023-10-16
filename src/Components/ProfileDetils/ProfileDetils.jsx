@@ -4,7 +4,7 @@ const ProfileDetils = () => {
   const { user, imageUrl } = useContext(AuthContext);
   return (
     <>
-      <div className="flex items-center justify-center mt-20">
+      <div className="flex items-center justify-center">
         <div className="md:w-2/5">
           <div className="bg-[#bed6f6cc] shadow-xl rounded-lg py-3">
             <div className="photo-wrapper p-2">

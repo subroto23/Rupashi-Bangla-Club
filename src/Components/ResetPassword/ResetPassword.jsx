@@ -19,7 +19,7 @@ const ResetPassword = () => {
       });
   };
   return (
-    <div className="max-w-lg border mx-auto mt-20 mb-10 bg-white p-8 rounded-xl shadow shadow-slate-300">
+    <div className="max-w-lg border mx-auto mb-10 bg-white p-8 rounded-xl shadow shadow-slate-300">
       <h1 className="text-xl my-4 text-green-600 font-bold">
         পাসওয়ার্ড রিসেট ফর্ম
       </h1>

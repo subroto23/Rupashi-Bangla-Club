@@ -45,7 +45,7 @@ const SignUp = () => {
   };
   return (
     <>
-      <div className="flex items-center justify-center md:p-12 px-8 md:mt-16 mt-20">
+      <div className="flex items-center justify-center md:p-12">
         <div className="mx-auto w-full md:max-w-[500px] bg-white">
           <h3 className="text-center font-bold mb-8 border-b-4 pb-4">
             রেজিস্টেশন ফর্ম

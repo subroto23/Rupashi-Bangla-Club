@@ -41,7 +41,7 @@ const HeaderSlider = () => {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <div className="mt-16 relative">
+    <div className="relative">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -71,7 +71,7 @@ const HeaderSlider = () => {
           />
         </SwiperSlide>
       </Swiper>
-      {loading ? (
+      {/* {loading ? (
         ""
       ) : (
         <div className="md:absolute md:right-4 md:bottom-2 z-30 ">
@@ -82,7 +82,7 @@ const HeaderSlider = () => {
             <TimerCountdown eventsData={eventsData} />
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

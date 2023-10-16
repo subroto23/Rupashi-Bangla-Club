@@ -13,7 +13,7 @@ const AllNewsViews = () => {
     });
   }, []);
   return (
-    <div className="max-w-6xl mx-auto mt-16 md:mt-20">
+    <div className="max-w-6xl mx-auto">
       <h1 className="text-lg text-orange-600 animate-pulse text-center">
         সংবাদ পড়ুন
       </h1>

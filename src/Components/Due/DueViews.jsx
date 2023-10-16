@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 const DueViews = () => {
   const dueViewsLoader = useLoaderData();
   return (
-    <div className="mt-20 max-w-6xl mx-auto">
+    <div className="mt-3 max-w-6xl mx-auto">
       <table className="text-xs w-full text-center" border="2">
         <caption className="mb-2 font-bold ">বকেয়ার তালিকা</caption>
         <thead>

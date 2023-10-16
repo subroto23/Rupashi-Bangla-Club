@@ -1,3 +1,5 @@
+import { TypeAnimation } from "react-type-animation";
+
 const DateTimeHtml = () => {
   function getDatebd(arg) {
     const rojAdd = " রোজ ";
@@ -205,20 +207,27 @@ const DateTimeHtml = () => {
 
   const { dateBd, dateEn } = setDateEng(new Date());
   return (
-    <div className="grid md:grid-cols-2 grid-col-1 gap-8 md:w-9/12 py-8 border-y-4  border-gray-100 dark:border-gray-800 container mx-auto">
-      <div className="text-center">
-        <h6 className="text-lg font-semibold text-gray-700 dark:text-white">
-          আজ ইংরেজি তারিখ
-        </h6>
-        <p className="mt-2 text-gray-500">{`${dateEn.date} ${dateEn.month} ${dateEn.year} , ${dateEn.day}`}</p>
-      </div>
-      <div className="text-center">
-        <h6 className="text-lg font-semibold text-gray-700 dark:text-white">
-          আজ বাংলা তারিখ
-        </h6>
-        <p className="mt-2 text-gray-500">{`${dateBd.date} ${dateBd.month} ${dateBd.year} ,
-       ${dateBd.day} , ${dateBd.session}`}</p>
-      </div>
+    <div className="text-center bg-green-800 text-white font-bold">
+      <TypeAnimation
+        preRenderFirstString={true}
+        sequence={[
+          500,
+          `${dateBd.date} ${dateBd.month} ${dateBd.year} ,
+            ${dateBd.day} , ${dateBd.session}`,
+          1000,
+          `আজ ইংরেজি ${dateEn.date} ${dateEn.month} ${dateEn.year} , ${dateEn.day}`,
+          1000,
+          `${dateBd.date} ${dateBd.month} ${dateBd.year} ,
+            ${dateBd.day} , ${dateBd.session}`,
+
+          1000,
+          `আজ ইংরেজি ${dateEn.date} ${dateEn.month} ${dateEn.year} , ${dateEn.day}`,
+          500,
+        ]}
+        speed={50}
+        style={{ fontSize: ".6em" }}
+        repeat={Infinity}
+      />
     </div>
   );
 };
