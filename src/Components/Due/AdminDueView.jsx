@@ -5,23 +5,20 @@ import Swal from "sweetalert2";
 const AdminDueView = () => {
   const dueViewsLoader = useLoaderData();
   const handleDelete = (id) => {
-    axios
-      .delete(`https://rbcwebsite.onrender.com/due/details/${id}`)
-      .then(() => {
-        Swal.fire({
-          title: "আপনি কি নিশ্চিত?",
-          text: "আপনি কিন্তু একবার ডিলেট করে ফেললে আর ফিরে পাবেন না",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "হ্যা! আমি নিশ্চিত",
-        }).then((result) => {
-          if (result.isConfirmed) {
-            Swal.fire("ডিলেটেট!", "ডিলেট করা হয়েছে পেজটি রিলোড দিন", "সফলভাবে");
-          }
-        });
-      });
+    Swal.fire({
+      title: "আপনি কি নিশ্চিত?",
+      text: "আপনি কিন্তু একবার ডিলেট করে ফেললে আর ফিরে পাবেন না",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "হ্যা! আমি নিশ্চিত",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`https://rbcwebsite.onrender.com/due/details/${id}`);
+        Swal.fire("ডিলেটেট!", "ডিলেট করা হয়েছে পেজটি রিলোড দিন", "সফলভাবে");
+      }
+    });
   };
   return (
     <div className=" mt-4 max-w-6xl mx-auto">
@@ -45,7 +42,12 @@ const AdminDueView = () => {
               <td className="w-1/8 p-2 border">{due.paidTk}</td>
               <td className="w-1/8 p-2 border">{due.due}</td>
               <td className="w-1/8 p-2 border">
-                <Link to={`/admin/due/update/${due._id}`}>Edit</Link>
+                <Link
+                  to={`/admin/due/update/${due._id}`}
+                  className="text-primary"
+                >
+                  Edit
+                </Link>
               </td>
               <td className="w-1/8 p-2  border">
                 <button

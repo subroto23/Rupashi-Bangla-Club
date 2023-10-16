@@ -20,9 +20,11 @@ const DueViews = () => {
             <tr key={due._id} className="even:bg-gray-200">
               <td className="w-1/6 p-2 border">{due.name}</td>
               <td className="w-2/6 p-2 border">{due.source}</td>
-              <td className="w-1/6 p-2 border">{due.fixedTk}</td>
+              <td className="w-1/6 p-2 border font-bold text-green-600">
+                {due.fixedTk}
+              </td>
               <td className="w-1/6 p-2 border">{due.paidTk}</td>
-              <td className="w-1/6 p-2 border bg-red-100">{due.due}</td>
+              <td className="w-1/6 p-2 border text-red-600">{due.due}</td>
             </tr>
           ))}
         </tbody>

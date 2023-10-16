@@ -32,6 +32,10 @@ const DueUpdateForm = () => {
     <div className=" max-w-7xl mx-auto bg-gray-100 py-4">
       <div className="flex justify-center  items-center flex-col">
         <h1 className="text-xl mt-2 mb-4">বকেয়া আপডেট ফর্ম</h1>
+        <caption className="my-2 text-red-600 font-bold">
+          {updateValue.payload.dataValue.source}{" "}
+          {updateValue.payload.dataValue.name} এর
+        </caption>
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 border px-4">
             <div className="my-1">
