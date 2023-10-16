@@ -59,9 +59,6 @@ const Navbar = () => {
                         <li className="hover:text-white text-sm hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
                           <Link to="/profile">প্রফাইল</Link>
                         </li>
-                        {/* <li className="hover:text-white text-sm hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
-                          <Link>আপডেট প্রফাইল</Link>
-                        </li> */}
                         <li className="hover:text-white text-sm hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
                           <Link>
                             <GLogOut />

@@ -21,8 +21,8 @@ const TitleViews = () => {
         <span className="loading loading-spinner text-success"></span>
       ) : (
         <caption className="my-2 font-bold">
-          {titleLists[0]?.title}{" "}
-          <span className="text-red-600 animate-pulse">*Live</span>
+          {titleLists[0]?.title} <span className="text-red-600 ml-2">Live</span>
+          <span className="loading loading-ring loading-lg"></span>
         </caption>
       )}
     </>

@@ -94,9 +94,6 @@ const Footer = () => {
                 </svg>
                 রূপসী বাংলা ক্লাব
               </h6>
-              {/* <p className="text-justify px-4">
-                আমরা সমাজের অসচ্ছল,হতদরিদ্র মানুষের সেবাই মূল লক্ষ্য।
-              </p> */}
             </div>
             {/* <!-- Products section --> */}
             <div className="grid grid-cols-2 md:pl-16 md:col-span-2">
@@ -105,16 +102,33 @@ const Footer = () => {
                   ভিজিট করুন
                 </h6>
                 <p className="mb-4">
-                  <Link className="text-white dark:text-neutral-200">খবর</Link>
+                  <Link className="text-white dark:text-neutral-200">
+                    সংবাদ পড়ুন
+                  </Link>
                 </p>
                 <p className="mb-4">
-                  <Link className="text-white dark:text-neutral-200">শিক্ষা</Link>
+                  <Link
+                    to="/cada-views"
+                    className="text-white dark:text-neutral-200"
+                  >
+                    পূজার প্রণামী
+                  </Link>
                 </p>
                 <p className="mb-4">
-                  <Link className="text-white dark:text-neutral-200">খেলাধুলা</Link>
+                  <Link
+                    to="/due/views"
+                    className="text-white dark:text-neutral-200"
+                  >
+                    বকেয়ার তালিকা
+                  </Link>
                 </p>
-                <p>
-                  <Link className="text-white dark:text-neutral-200">সেবাসমূহ</Link>
+                <p className="mb-4">
+                  <Link
+                    to="/festive"
+                    className="text-white dark:text-neutral-200"
+                  >
+                    উৎসব যুক্ত করুন
+                  </Link>
                 </p>
               </div>
               {/* <!-- Useful links section --> */}
@@ -126,7 +140,9 @@ const Footer = () => {
                   <Link className="text-white dark:text-neutral-200">ছবি</Link>
                 </p>
                 <p className="mb-4">
-                  <Link className="text-white dark:text-neutral-200">ভিডীও</Link>
+                  <Link className="text-white dark:text-neutral-200">
+                    ভিডীও
+                  </Link>
                 </p>
                 <p className="mb-4">
                   <Link className="text-white dark:text-neutral-200">
@@ -134,7 +150,9 @@ const Footer = () => {
                   </Link>
                 </p>
                 <p>
-                  <Link className="text-white dark:text-neutral-200">গ্রামবাসী</Link>
+                  <Link className="text-white dark:text-neutral-200">
+                    গ্রামবাসী
+                  </Link>
                 </p>
               </div>
             </div>

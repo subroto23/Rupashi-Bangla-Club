@@ -29,6 +29,7 @@ import DueCreateForm from "./Components/Due/DuePost";
 import DueViews from "./Components/Due/DueViews";
 import AdminDueView from "./Components/Due/AdminDueView";
 import DueUpdateForm from "./Components/Due/DueUpdateForm";
+import AllNewsViews from "./Components/NewsViews/AllNewsViews";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HeaderHeroSection />,
+      },
+      {
+        path: "/news",
+        element: <AllNewsViews />,
       },
       {
         path: "/login",
@@ -70,6 +75,7 @@ const router = createBrowserRouter([
             <CadaViews />
           </PrivateRoute>
         ),
+        loader: () => fetch("https://rbcwebsite.onrender.com/cada/details"),
       },
       {
         path: "/due/views",

@@ -1,21 +1,9 @@
-import axios from "axios";
-import { useState } from "react";
-import { useEffect } from "react";
 import TitleViews from "../Title/TitleViews";
+import { useLoaderData } from "react-router-dom";
 
 const CadaViews = () => {
-  const [cadaLists, setCadaLists] = useState(null);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    setLoading(true);
-    axios
-      .get("https://rbcwebsite.onrender.com/cada/details")
-      .then((res) => {
-        const cadaValue = res.data.payload.data;
-        setCadaLists(cadaValue), setLoading(false);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  const cadaViewsData = useLoaderData();
+  const cadaViews = cadaViewsData.payload.data;
   return (
     <div className="flex flex-col mt-16 max-w-6xl mx-auto">
       <table className="max-w-32 text-left text-sm font-light">
@@ -37,31 +25,27 @@ const CadaViews = () => {
           </tr>
         </thead>
         <tbody>
-          {loading ? (
-            <span className="loading loading-spinner text-success"></span>
-          ) : (
-            cadaLists.map((list, idx) => {
-              return (
-                <tr
-                  key={list._id}
-                  className="border odd:bg-white text-center bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700"
-                >
-                  <td className="whitespace-nowrap px-6 py-4 border font-medium">
-                    {idx + 1}
-                  </td>
-                  <td className="whitespace-nowrap px-2 py-4 border">
-                    {list.name}
-                  </td>
-                  <td className="whitespace-nowrap px-2 py-4 border">
-                    {list.fixedTk}
-                  </td>
-                  <td className="whitespace-nowrap px-2 py-4 border">
-                    {list.paidTk}
-                  </td>
-                </tr>
-              );
-            })
-          )}
+          {cadaViews.map((list, idx) => {
+            return (
+              <tr
+                key={list._id}
+                className="border odd:bg-white text-center bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700"
+              >
+                <td className="whitespace-nowrap px-6 py-4 border font-medium">
+                  {idx + 1}
+                </td>
+                <td className="whitespace-nowrap px-2 py-4 border">
+                  {list.name}
+                </td>
+                <td className="whitespace-nowrap px-2 py-4 border">
+                  {list.fixedTk}
+                </td>
+                <td className="whitespace-nowrap px-2 py-4 border">
+                  {list.paidTk}
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
