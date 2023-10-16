@@ -44,6 +44,12 @@ const NavbarMenu = () => {
           >
             পূজার প্রণামী
           </NavLink>
+          <NavLink
+            to="/due/views"
+            className="block md:inline-block px-3 py-2 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+          >
+            বকেয়া
+          </NavLink>
         </>
       )}
       {logger && user && user.isJurnalist && (

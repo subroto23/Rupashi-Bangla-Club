@@ -25,6 +25,10 @@ import CadaUpdateForm from "./Components/Admin/CadaUpdate/CadaUpdateForm";
 import TitleUpdate from "./Components/Title/TitleUpdate";
 import TaitelPost from "./Components/Title/TitlePost";
 import TitleUpdateForm from "./Components/Title/TitleUpdateForm";
+import DueCreateForm from "./Components/Due/DuePost";
+import DueViews from "./Components/Due/DueViews";
+import AdminDueView from "./Components/Due/AdminDueView";
+import DueUpdateForm from "./Components/Due/DueUpdateForm";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -67,6 +71,15 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path: "/due/views",
+        element: (
+          <PrivateRoute>
+            <DueViews />,
+          </PrivateRoute>
+        ),
+        loader: () => fetch("https://rbcwebsite.onrender.com/due/details"),
+      },
     ],
   },
   {
@@ -104,10 +117,25 @@ const router = createBrowserRouter([
           fetch(`https://rbcwebsite.onrender.com/title/heading/${params.id}`),
       },
       {
+        path: "/admin/due/post",
+        element: <DueCreateForm />,
+      },
+      {
+        path: "/admin/due/views",
+        element: <AdminDueView />,
+        loader: () => fetch("https://rbcwebsite.onrender.com/due/details"),
+      },
+      {
         path: "/admin/cada-update-form/:id",
         element: <CadaUpdateForm />,
         loader: ({ params }) =>
           fetch(`https://rbcwebsite.onrender.com/cada/details/${params.id}`),
+      },
+      {
+        path: "/admin/due/update/:id",
+        element: <DueUpdateForm />,
+        loader: ({ params }) =>
+          fetch(`https://rbcwebsite.onrender.com/due/details/${params.id}`),
       },
     ],
   },
