@@ -55,14 +55,14 @@ const Navbar = () => {
                       </label>
                     </button>
                     {showProfile && (
-                      <ul className="mt-2 z-[1] md:w-60 shadow menu menu-sm dropdown-content bg-primary rounded-md transition duration-150 ease-in-out">
-                        <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
+                      <ul className="mt-2 z-[1] md:w-60 w-32 shadow menu menu-sm dropdown-content bg-primary rounded-md transition duration-150 ease-in-out">
+                        <li className="hover:text-white text-sm hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
                           <Link to="/profile">প্রফাইল</Link>
                         </li>
-                        <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
+                        {/* <li className="hover:text-white text-sm hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
                           <Link>আপডেট প্রফাইল</Link>
-                        </li>
-                        <li className="hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
+                        </li> */}
+                        <li className="hover:text-white text-sm hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
                           <Link>
                             <GLogOut />
                           </Link>
