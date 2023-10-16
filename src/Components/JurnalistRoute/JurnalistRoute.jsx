@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { AuthContext } from "../AuthContext/AuthContext.config";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 const JurnalistRoute = ({ children }) => {
   const { user, logger, loading } = useContext(AuthContext);
+  const location = useLocation();
   if (user && loading) {
     return (
       <div className="absolute right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 ">
@@ -17,7 +18,7 @@ const JurnalistRoute = ({ children }) => {
   if (user.isJurnalist) {
     return children;
   }
-  return <Navigate to="/"></Navigate>;
+  return <Navigate state={location.pathname} to="/"></Navigate>;
 };
 
 export default JurnalistRoute;

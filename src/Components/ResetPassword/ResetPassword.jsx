@@ -55,12 +55,12 @@ const ResetPassword = () => {
             <span>রিসেট পাসওয়ার্ড</span>
           </button>
           <p className="text-center">
-            যদি পূর্বে কোনো একাউন্ট না করা থাকে।তাহলে{" "}
+            লগইন করতে
             <Link
-              to="/signup"
+              to="/login"
               className="text-indigo-600 font-medium inline-flex space-x-1 items-center"
             >
-              <span>এখানে </span>
+              <span>এখানে ক্লিক করুন </span>
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +73,6 @@ const ResetPassword = () => {
                 </svg>
               </span>
             </Link>{" "}
-            একাউন্ট করুন
           </p>
         </div>
       </form>

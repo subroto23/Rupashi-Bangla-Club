@@ -9,6 +9,7 @@ import { AuthContext } from "../AuthContext/AuthContext.config";
 
 const LogInForm = () => {
   const { LogInFirebaseUser } = useContext(AuthContext);
+  const location = useNavigate();
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const handleLoginSubmit = async (e) => {
@@ -24,7 +25,7 @@ const LogInForm = () => {
     await LogInFirebaseUser(email, password)
       .then(() => {
         setError("সফলভাবে লগইন হয়েছে");
-        navigate("/");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((err) => setError(err.message));
     //
