@@ -72,9 +72,17 @@ const Navbar = () => {
                     </label>
                   </button>
                   {showProfile && (
-                    <ul className="mt-2 z-[1] md:w-60 w-32 shadow menu menu-sm dropdown-content bg-primary rounded-md transition duration-150 ease-in-out">
+                    <ul className="mt-2 z-10 md:w-60 w-32 shadow menu menu-sm dropdown-content bg-primary rounded-md transition duration-150 ease-in-out">
                       <li className="hover:text-white text-sm hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
                         <Link to="/profile">প্রফাইল</Link>
+                      </li>
+                      <li className="hover:text-white text-sm hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
+                        <Link
+                          to="/festive"
+                          className="block md:inline-block px-3 py-2 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                        >
+                          উৎসব সংযুক্ত করুন
+                        </Link>
                       </li>
                       <li className="hover:text-white text-sm hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
                         <Link>

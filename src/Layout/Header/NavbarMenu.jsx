@@ -33,12 +33,6 @@ const NavbarMenu = () => {
       {logger && (
         <>
           <NavLink
-            to="/festive"
-            className="block md:inline-block px-3 py-2 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
-          >
-            উৎসব যুক্ত করুন
-          </NavLink>
-          <NavLink
             to="/cada-views"
             className="block md:inline-block px-3 py-2 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
           >

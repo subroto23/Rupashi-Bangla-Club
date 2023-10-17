@@ -11,7 +11,7 @@ const Marque = () => {
       .get("https://rbcwebsite.onrender.com/title/heading")
       .then((res) => {
         const titleValue = res.data.payload.data;
-        setTitleLists(titleValue.reverse().slice(0, -1)), setLoading(false);
+        setTitleLists(titleValue.reverse(0, -1)), setLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);

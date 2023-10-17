@@ -30,6 +30,8 @@ import DueViews from "./Components/Due/DueViews";
 import AdminDueView from "./Components/Due/AdminDueView";
 import DueUpdateForm from "./Components/Due/DueUpdateForm";
 import AllNewsViews from "./Components/NewsViews/AllNewsViews";
+import NewsUpdate from "./Components/AdminNews/NewsUpdate";
+import NewsUpdateForm from "./Components/AdminNews/NewsUpdateForm";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -109,12 +111,22 @@ const router = createBrowserRouter([
         element: <CreatedNews />,
       },
       {
+        path: "/admin/news/update",
+        element: <NewsUpdate />,
+      },
+      {
         path: "/admin/title-post",
         element: <TaitelPost />,
       },
       {
         path: "/admin/title/title-update",
         element: <TitleUpdate />,
+      },
+      {
+        path: "/admin/title/update/:id",
+        element: <NewsUpdateForm />,
+        loader: ({ params }) =>
+          fetch(`https://rbcwebsite.onrender.com/api/news/${params.id}`),
       },
       {
         path: "/admin/title/title-update/:id",

@@ -10,7 +10,7 @@ const TopNews = () => {
     axios
       .get("https://rbcwebsite.onrender.com/api/news/view/")
       .then((res) => {
-        const newsArrays = res.data.payload.allNews.reverse();
+        const newsArrays = res.data.payload.allNews;
         setnewsArrs(newsArrays.slice(0, 6)), setLoading(false);
       })
       .catch((err) => console.log(err));
