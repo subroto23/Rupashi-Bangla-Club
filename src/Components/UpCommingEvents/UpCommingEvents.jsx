@@ -32,7 +32,7 @@ const UpCommingEvents = () => {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <div className="border">
+    <div className="mb-4">
       {loading ? (
         <span></span>
       ) : (
