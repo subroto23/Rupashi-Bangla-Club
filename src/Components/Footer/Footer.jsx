@@ -101,7 +101,7 @@ const Footer = () => {
                 ভিজিট করুন
               </h6>
               <p className="mb-4">
-                <Link className="text-white dark:text-neutral-200">
+                <Link to="/news" className="text-white dark:text-neutral-200">
                   সংবাদ পড়ুন
                 </Link>
               </p>
