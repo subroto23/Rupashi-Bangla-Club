@@ -25,14 +25,12 @@ const Marque = () => {
           <Marquee>
             {titleLists.map((data) => {
               return (
-                <>
-                  <div className="mr-8">
-                    <span className="text-red-600 mx-1 font-bold animate-ping">
-                      <span className="loading loading-ring loading-sm"></span>
-                    </span>
-                    {data?.title}
-                  </div>
-                </>
+                <div key={data._id} className="mr-8">
+                  <span className="text-red-600 mx-1 font-bold animate-ping">
+                    <span className="loading loading-ring loading-sm"></span>
+                  </span>
+                  {data?.title}
+                </div>
               );
             })}{" "}
           </Marquee>

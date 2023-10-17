@@ -27,7 +27,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <nav className={`bg-primary z-10 text-white w-full ${stickyClass}`}>
+      <nav className={`bg-primary z-50 text-white w-full ${stickyClass}`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between h-16 px-4 border-b border-solid border-slate-600">
           <div className="flex-shrink-0 font-bold tracking-wider">
             <div className="flex flex-shrink-0 items-center">

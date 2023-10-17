@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import TimerCountdown from "../Carosol/Carosoal";
+import TimerCountdown from "../DateEnBn/DateEnBn";
 import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
@@ -71,7 +71,7 @@ const HeaderSlider = () => {
           />
         </SwiperSlide>
       </Swiper>
-      {loading ? (
+      {/* {loading ? (
         ""
       ) : (
         <div className="md:absolute md:right-4 md:bottom-2 z-30 ">
@@ -82,7 +82,7 @@ const HeaderSlider = () => {
             <TimerCountdown eventsData={eventsData} />
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
