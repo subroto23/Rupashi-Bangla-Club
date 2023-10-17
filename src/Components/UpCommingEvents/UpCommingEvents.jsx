@@ -20,9 +20,13 @@ const UpCommingEvents = () => {
         const currentDate = moment().format("YYYY-MM-DD");
         const EventsDateArrs = res.data.payload.event;
         const filtedDate = EventsDateArrs.filter(
-          (data) => data.date.slice(0, 7) === currentDate.slice(0, 7)
+          (data) =>
+            data.date.slice(0, 7) === currentDate.slice(0, 7) &&
+            data.date > currentDate
         );
-        setEvents(filtedDate);
+        setEvents(
+          filtedDate.sort((a, b) => new Date(a.date) - new Date(b.date))
+        );
         setLoading(false);
       })
       .catch((err) => console.log(err));
@@ -34,7 +38,7 @@ const UpCommingEvents = () => {
       ) : (
         <>
           <div className="text-center mt-8 md:text-3xl text-primary animate-jump-in animate-infinite animate-duration-[6000ms] animate-delay-2000 animate-ease-linear my-4">
-            <strong className="">মাসের অনুষ্ঠানসমূহ</strong>
+            <strong className="">আসন্ন মাসের অনুষ্ঠানসমূহ</strong>
           </div>
           <Swiper
             direction={"vertical"}
