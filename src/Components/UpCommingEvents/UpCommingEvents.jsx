@@ -38,7 +38,7 @@ const UpCommingEvents = () => {
       ) : (
         <>
           <div className="text-center mt-8 md:text-3xl text-primary animate-jump-in animate-infinite animate-duration-[6000ms] animate-delay-2000 animate-ease-linear my-4">
-            <strong className="">আসন্ন মাসের অনুষ্ঠানসমূহ</strong>
+            <strong className="">মাসের অনুষ্ঠানসমূহ</strong>
           </div>
           <Swiper
             direction={"vertical"}
