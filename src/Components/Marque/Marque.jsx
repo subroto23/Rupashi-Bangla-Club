@@ -31,7 +31,6 @@ const Marque = () => {
   }, []);
   return (
     <div
-      data-aos="flip-left"
       className="fixed bottom-0 z-10 bg-white text-gray-400 w-full"
     >
       {loading ? (
