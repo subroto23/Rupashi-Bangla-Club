@@ -75,7 +75,6 @@ const HeaderSlider = () => {
         ""
       ) : (
         <div
-          data-aos="flip-down"
           className="md:absolute md:right-4 md:bottom-2 z-30 "
         >
           <div className=" bg-white md:border-red-600 my-4 md:my-0  mx-auto border text-center">
