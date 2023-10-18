@@ -35,9 +35,8 @@ const NewsUpdateForm = () => {
       .catch(() => setMessage("দুঃখিত এই মূহুর্তে নিউজটি আপডেট করা সম্ভব নয়"));
   };
 
-  
   return (
-    <div className="max-w-7xl mx-auto bg-gray-100 py-4">
+    <div data-aos="flip-up" className="max-w-7xl mx-auto bg-gray-100 py-4">
       <div className="flex justify-center  items-center flex-col">
         <h1 className="text-xl mt-2 mb-4">খবর আপডেট ফর্ম </h1>
         <form onSubmit={handleSubmit}>

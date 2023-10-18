@@ -4,7 +4,10 @@ const Footer = () => {
   const Year = new Date().getFullYear();
   return (
     <footer className="bg-primary my-4 text-center text-white dark:bg-neutral-600 dark:text-neutral-200 lg:text-left">
-      <div className="flex border-b-2 border-neutral-200 dark:border-neutral-500 max-w-6xl md:justify-between justify-center mx-auto py-4">
+      <div
+        data-aos="zoom-in-up"
+        className="flex border-b-2 border-neutral-200 dark:border-neutral-500 max-w-6xl md:justify-between justify-center mx-auto py-4"
+      >
         <div className="mr-12 hidden lg:block">
           <span>আমাদের সাথে যুক্ত হোনঃ-</span>
         </div>
@@ -78,7 +81,10 @@ const Footer = () => {
       </div>
 
       {/* <!-- Main container div: holds the entire content of the footer, including four sections (Tailwind Elements, Products, Useful links, and Contact), with responsive styling and appropriate padding/margins. --> */}
-      <div className="mx-auto py-10 text-center md:text-left max-w-6xl">
+      <div
+        data-aos="zoom-in-down"
+        className="mx-auto py-10 text-center md:text-left max-w-6xl"
+      >
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {/* <!-- Tailwind Elements section --> */}
           <div className="md:block">

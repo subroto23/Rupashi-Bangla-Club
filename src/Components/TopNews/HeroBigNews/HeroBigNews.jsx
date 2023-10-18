@@ -12,7 +12,7 @@ const HeroBigNews = ({ newsValue }) => {
     }
   }, []);
   return (
-    <div className="relative bg-blend-overlay block">
+    <div data-aos="flip-left" className="relative bg-blend-overlay block">
       <NavLink to={`/news/views/${newsValue._id}`}>
         <div className="hover:brightness-150 hover:text-primary hover:contrast-100">
           <div className="relative ">

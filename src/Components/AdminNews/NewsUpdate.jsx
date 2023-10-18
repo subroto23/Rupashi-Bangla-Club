@@ -33,7 +33,7 @@ const NewsUpdate = () => {
     });
   };
   return (
-    <div className="max-w-6xl mx-auto">
+    <div data-aos="flip-up" className="max-w-6xl mx-auto">
       <h1 className="text-lg my-6 text-orange-600 animate-pulse text-center">
         সংবাদ আপডেট করুন
       </h1>

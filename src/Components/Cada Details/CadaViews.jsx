@@ -5,7 +5,7 @@ const CadaViews = () => {
   const cadaViewsData = useLoaderData();
   const cadaViews = cadaViewsData.payload.data;
   return (
-    <div className="flex flex-col max-w-6xl mx-auto">
+    <div data-aos="flip-up" className="flex flex-col max-w-6xl mx-auto">
       <table className="max-w-32 text-left text-sm font-light">
         <TitleViews />
         <thead className="border-b bg-yellow-600 font-medium dark:border-neutral-500 dark:bg-neutral-600">
@@ -24,7 +24,7 @@ const CadaViews = () => {
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody data-aos="flip-up">
           {cadaViews.map((list, idx) => {
             return (
               <tr

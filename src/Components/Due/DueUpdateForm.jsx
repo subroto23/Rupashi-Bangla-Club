@@ -29,7 +29,7 @@ const DueUpdateForm = () => {
       .catch(() => setMessage("দুঃখিত আপডেট করা যায় নি"));
   };
   return (
-    <div className=" max-w-7xl mx-auto bg-gray-100 py-4">
+    <div data-aos="flip-up" className=" max-w-7xl mx-auto bg-gray-100 py-4">
       <div className="flex justify-center  items-center flex-col">
         <h1 className="text-xl mt-2 mb-4">বকেয়া আপডেট ফর্ম</h1>
         <caption className="my-2 text-red-600 font-bold">

@@ -16,11 +16,14 @@ const TopNews = () => {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-6xl mx-auto md:my-16">
       {loading ? (
         ""
       ) : (
-        <h1 className="text-xl mb-8 text-primary font-extrabold md:block hidden">
+        <h1
+          data-aos="zoom-in"
+          className="text-xl mb-8 text-primary font-extrabold md:block hidden"
+        >
           সংবাদ পড়ুন
         </h1>
       )}

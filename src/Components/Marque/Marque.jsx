@@ -30,7 +30,10 @@ const Marque = () => {
     });
   }, []);
   return (
-    <div className="fixed bottom-0 z-10 bg-white text-gray-400 w-full">
+    <div
+      data-aos="flip-left"
+      className="fixed bottom-0 z-10 bg-white text-gray-400 w-full"
+    >
       {loading ? (
         <span className="loading loading-spinner text-success"></span>
       ) : (
@@ -53,7 +56,7 @@ const Marque = () => {
                     <span className="text-red-600 mx-1 font-bold animate-ping">
                       <span className="loading loading-ring loading-sm"></span>
                     </span>
-                   আজ {data?.title}
+                    আজ {data?.title}
                   </div>
                 );
               })}

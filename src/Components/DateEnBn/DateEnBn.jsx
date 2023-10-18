@@ -6,7 +6,10 @@ const TimerCountdown = ({ eventsData }) => {
 
   countItDown(weddingDate, (date) => setCountingValue(date));
   return (
-    <div className="flex flex-col items-center justify-center ">
+    <div
+      data-aos="flip-up"
+      className="flex flex-col items-center justify-center "
+    >
       <div className="grid md:grid-cols-4 grid-cols-4 md:gap-12 gap-10 text-primary dark:text-white">
         <div className="flex flex-col justify-center items-center">
           <span className="countdown font-mono animate-pulse">

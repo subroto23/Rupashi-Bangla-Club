@@ -12,7 +12,10 @@ const NewsViews = () => {
     <div>
       <Navbar />
       <Outlet />
-      <div className="max-w-6xl pb-12 container mx-auto px-4 text-justify">
+      <div
+        data-aos="flip-up"
+        className="max-w-6xl pb-12 container mx-auto px-4 text-justify"
+      >
         <h1 className="text-primary underline mt-6 mb-2 md:text-3xl text-lg">
           খবর
         </h1>

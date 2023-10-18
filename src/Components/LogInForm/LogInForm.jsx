@@ -31,7 +31,7 @@ const LogInForm = () => {
     //
   };
   return (
-    <div>
+    <div data-aos="flip-down">
       <section className="mt-[70px]">
         <div className="container h-full px-6 md:py-24 py-3">
           <div className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">

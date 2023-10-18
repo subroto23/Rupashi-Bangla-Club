@@ -30,7 +30,7 @@ const UpCommingEvents = () => {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <div className="mb-4">
+    <div data-aos="zoom-in-down" className="mb-4 md:my-16">
       {loading ? (
         <span></span>
       ) : (

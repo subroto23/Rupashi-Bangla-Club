@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 const AdminNavbar = () => {
   return (
     <>
-      <div className="bg-yellow-500 text-white border-red-600 shadow-xl ">
+      <div
+        data-aos="flip-up"
+        className="bg-yellow-500 text-white border-red-600 shadow-xl "
+      >
         <ul className="space-y-1  md:flex-row flex flex-col justify-center items-center">
           <li className="hover:bg-primary w-full hover:text-white border-b">
             <Link

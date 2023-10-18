@@ -24,7 +24,7 @@ const CadaForm = () => {
       .catch(() => setMessage("দুঃখিত সংযোগ করা যায় নি"));
   };
   return (
-    <div className=" max-w-7xl mx-auto bg-gray-100 py-4">
+    <div data-aos="flip-up" className=" max-w-7xl mx-auto bg-gray-100 py-4">
       <div className="flex justify-center  items-center flex-col">
         <h1 className="text-xl mt-2 mb-4">চাঁদা তৈরির ফর্ম</h1>
         <form onSubmit={handleSubmit}>

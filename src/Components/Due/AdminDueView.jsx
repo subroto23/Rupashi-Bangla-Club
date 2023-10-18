@@ -21,7 +21,7 @@ const AdminDueView = () => {
     });
   };
   return (
-    <div className="mt-4 max-w-6xl mx-auto">
+    <div data-aos="flip-up" className="mt-4 max-w-6xl mx-auto">
       <table className="text-xs w-full text-center" border="2">
         <caption className="mb-2 font-bold ">বকেয়ার তালিকা</caption>
         <thead>

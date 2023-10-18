@@ -49,7 +49,7 @@ const Navbar = () => {
               <span className="loading loading-spinner text-warning"></span>
             ) : (
               <>
-                <div className="dropdown dropdown-end">
+                <div data-aos="zoom-in-down" className="dropdown dropdown-end">
                   <button onClick={() => setShowProfile(!showProfile)}>
                     <label
                       tabIndex={0}

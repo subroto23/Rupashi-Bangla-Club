@@ -31,7 +31,11 @@ const AllNewsViews = () => {
           <div className="grid md:grid-cols-3 grid-cols-1 gap-3">
             {loaders.map((news) => {
               return (
-                <div key={news._id} className="border  gap-8">
+                <div
+                  data-aos="flip-up"
+                  key={news._id}
+                  className="border  gap-8"
+                >
                   <Link to={`/news/views/${news._id}`}>
                     <div className="h-full hover:bg-blue-100 rounded-lg shadow-lg overflow-hidden max-w-lg w-full">
                       <img
