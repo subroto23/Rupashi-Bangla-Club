@@ -8,8 +8,6 @@ import { Mousewheel, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import "./Upcomming.module.css";
-
 const UpCommingEvents = () => {
   const [events, setEvents] = useState(null);
   const [loading, setLoading] = useState(true);

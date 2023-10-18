@@ -9,12 +9,20 @@ const CreatedNews = () => {
   const [message, setMessage] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
+    setMessage("");
     const form = new FormData(e.currentTarget);
     const title = form.get("title");
     const details = form.get("details");
     const createdBy = user.name;
     const formValues = { title, details, createdBy, image };
-    setMessage("");
+    if (image.type != "image/jpeg") {
+      setMessage("শুধুমাত্র .jpg ফাইল টাইপ দিতে হবে");
+      return;
+    }
+    if (image.size > 2097152) {
+      setMessage("আপনার ছবির সাইজ 2MB এর বেশি");
+      return;
+    }
     if (title.length > 40) {
       setMessage("দয়া করে টাইটেল 40 অক্ষরের মধ্যে লিখুন");
     }
@@ -67,6 +75,7 @@ const CreatedNews = () => {
                   name="image"
                   type="file"
                   required
+                  accept="image/jpg"
                   onChange={(e) => setImage(e.target.files[0])}
                   className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
