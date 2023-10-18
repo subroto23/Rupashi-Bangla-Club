@@ -71,7 +71,7 @@ const HeaderSlider = () => {
           />
         </SwiperSlide>
       </Swiper>
-      {loading ? (
+      {/* {loading ? (
         ""
       ) : (
         <div
@@ -84,7 +84,7 @@ const HeaderSlider = () => {
             <TimerCountdown eventsData={eventsData} />
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };
