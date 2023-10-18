@@ -35,7 +35,7 @@ const UpCommingEvents = () => {
         <span></span>
       ) : (
         <>
-          <div className="text-center md:mt-8 mt-12 md:text-3xl text-primary animate-jump-in animate-infinite animate-duration-[6000ms] animate-delay-2000 animate-ease-linear my-4">
+          <div className="text-center md:mt-8 mt-10 md:text-3xl text-primary animate-jump-in animate-infinite animate-duration-[6000ms] animate-delay-2000 animate-ease-linear my-4">
             <strong className="">মাসের অনুষ্ঠানসমূহ</strong>
           </div>
           <Swiper
