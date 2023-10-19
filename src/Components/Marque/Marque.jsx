@@ -30,9 +30,7 @@ const Marque = () => {
     });
   }, []);
   return (
-    <div
-      className="fixed bottom-0 z-10 bg-white text-gray-400 w-full"
-    >
+    <div className="fixed bottom-0 z-10 bg-white text-gray-400 w-full">
       {loading ? (
         <span className="loading loading-spinner text-success"></span>
       ) : (
@@ -53,7 +51,7 @@ const Marque = () => {
                 return (
                   <div key={data._id} className="mr-8">
                     <span className="text-red-600 mx-1 font-bold animate-ping">
-                      <span className="loading loading-ring loading-sm"></span>
+                      *Live
                     </span>
                     আজ {data?.title}
                   </div>
