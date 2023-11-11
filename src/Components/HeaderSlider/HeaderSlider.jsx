@@ -59,14 +59,14 @@ const HeaderSlider = () => {
         <SwiperSlide>
           <img
             className="w-full h-full cover"
-            src="https://i.ibb.co/VTwSNpt/e587c6aa-76ec-4ff1-ae01-e9fd99c5568f.jpg"
+            src="https://i.ibb.co/q9NcNDL/pngtree-subho-deepavali-bangla-lettering-with-diwali-lamp-illustration-png-image-3974189-png.jpg"
             alt=""
           />
         </SwiperSlide>
         <SwiperSlide>
           <img
             className="w-full h-full cover"
-            src="https://i.ibb.co/pxBKpKT/bf6f5dea-77ab-4b6f-be88-f2005952d565.jpg"
+            src="https://i.ibb.co/q9NcNDL/pngtree-subho-deepavali-bangla-lettering-with-diwali-lamp-illustration-png-image-3974189-png.jpg"
             alt=""
           />
         </SwiperSlide>
@@ -74,9 +74,7 @@ const HeaderSlider = () => {
       {loading ? (
         ""
       ) : (
-        <div
-          className="md:absolute md:right-4 md:bottom-2 z-30 "
-        >
+        <div className="md:absolute md:right-4 md:bottom-2 z-30 ">
           <div className=" bg-white md:border-red-600 my-4 md:my-0  mx-auto border text-center">
             <span className="text-green-800 mt-2 font-bold">
               {`${eventsTitle}`} বাকি আর মাত্র
