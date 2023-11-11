@@ -21,10 +21,10 @@ const SignUp = () => {
       setErrorRegistation("পাসওয়ার্ড সর্বনিম্ন ৬ অক্ষরের হতে হবে।");
       return;
     }
-    if (image.size >= 2097152) {
-      setErrorRegistation("আপনার ছবির সাইজ 2MB এর বেশি।");
-      return;
-    }
+    // if (image.size >= 2097152) {
+    //   setErrorRegistation("আপনার ছবির সাইজ 2MB এর বেশি।");
+    //   return;
+    // }
     //
     const registationValue = {
       name,

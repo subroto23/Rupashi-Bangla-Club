@@ -19,10 +19,10 @@ const CreatedNews = () => {
       setMessage("শুধুমাত্র .jpg ফাইল টাইপ দিতে হবে");
       return;
     }
-    if (image.size > 2097152) {
-      setMessage("আপনার ছবির সাইজ 2MB এর বেশি");
-      return;
-    }
+    // if (image.size > 2097152) {
+    //   setMessage("আপনার ছবির সাইজ 2MB এর বেশি");
+    //   return;
+    // }
     if (title.length > 40) {
       setMessage("দয়া করে টাইটেল 40 অক্ষরের মধ্যে লিখুন");
     }

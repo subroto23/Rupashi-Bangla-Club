@@ -74,7 +74,9 @@ const HeaderSlider = () => {
       {loading ? (
         ""
       ) : (
-        <div className="md:absolute md:right-4 md:bottom-2 z-30 ">
+        <div
+          className="md:absolute md:right-4 md:bottom-2 z-30 "
+        >
           <div className=" bg-white md:border-red-600 my-4 md:my-0  mx-auto border text-center">
             <span className="text-green-800 mt-2 font-bold">
               {`${eventsTitle}`} বাকি আর মাত্র
