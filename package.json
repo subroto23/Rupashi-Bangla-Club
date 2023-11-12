@@ -19,7 +19,7 @@
     "axios": "^1.5.1",
     "buffer": "^6.0.3",
     "count-it-down": "^1.0.0",
-    "firebase": "^10.4.0",
+    "firebase": "^10.6.0",
     "js-cookie": "^3.0.5",
     "moment": "^2.29.4",
     "porichoy": "^2.0.0",
