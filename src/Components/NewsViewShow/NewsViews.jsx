@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import Navbar from "../../Layout/Header/Navbar";
 import Footer from "../Footer/Footer";
 import { Buffer } from "buffer";
@@ -12,6 +13,10 @@ const NewsViews = () => {
     <div>
       <Navbar />
       <Outlet />
+      <Helmet>
+        <title>{title}</title>
+        <meta property="og:image" content={image} />
+      </Helmet>
       <div
         data-aos="flip-up"
         className="max-w-6xl pb-12 container mx-auto px-4 text-justify"
