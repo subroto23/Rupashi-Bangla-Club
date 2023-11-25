@@ -1,7 +1,22 @@
-import { useLoaderData } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const DueViews = () => {
-  const dueViewsLoader = useLoaderData();
+  const { isPending, data: dueViewsLoader } = useQuery({
+    queryKey: ["dueViews"],
+    queryFn: async () => {
+      const resData = await axios
+        .get("https://rbcwebsite.onrender.com/due/details")
+        .then((res) => {
+          const ArraysData = res.data.payload.data;
+          return ArraysData;
+        });
+      return resData;
+    },
+  });
+  if (isPending) {
+    return <span className="loading loading-spinner text-accent"></span>;
+  }
   return (
     <div data-aos="flip-up" className="mt-3 max-w-6xl mx-auto">
       <table className="text-xs w-full text-center" border="2">
@@ -16,7 +31,7 @@ const DueViews = () => {
           </tr>
         </thead>
         <tbody>
-          {dueViewsLoader.payload.data.map((due) => (
+          {dueViewsLoader?.map((due) => (
             <tr key={due._id} className="even:bg-gray-200">
               <td className="w-1/6 p-2 border">{due.name}</td>
               <td className="w-2/6 p-2 border">{due.source}</td>

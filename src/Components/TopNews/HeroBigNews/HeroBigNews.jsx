@@ -17,7 +17,7 @@ const HeroBigNews = ({ newsValue }) => {
         <div className="hover:brightness-150 hover:text-primary hover:contrast-100">
           <div className="relative ">
             <img
-              className="relative brightness-50 w-full h-[250px]"
+              className="w-full h-64 object-cover hover:rounded-xl"
               src={`data:image/jpg;base64,${image}`}
               alt=""
             />

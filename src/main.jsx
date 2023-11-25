@@ -32,10 +32,7 @@ import DueUpdateForm from "./Components/Due/DueUpdateForm";
 import AllNewsViews from "./Components/NewsViews/AllNewsViews";
 import NewsUpdate from "./Components/AdminNews/NewsUpdate";
 import NewsUpdateForm from "./Components/AdminNews/NewsUpdateForm";
-import {
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // App.js
 const router = createBrowserRouter([
   {
@@ -82,7 +79,6 @@ const router = createBrowserRouter([
             <CadaViews />
           </PrivateRoute>
         ),
-        loader: () => fetch("https://rbcwebsite.onrender.com/cada/details"),
       },
       {
         path: "/due/views",
@@ -91,7 +87,6 @@ const router = createBrowserRouter([
             <DueViews />,
           </PrivateRoute>
         ),
-        loader: () => fetch("https://rbcwebsite.onrender.com/due/details"),
       },
     ],
   },

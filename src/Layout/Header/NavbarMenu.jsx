@@ -18,12 +18,12 @@ const NavbarMenu = () => {
       >
         সংবাদ
       </NavLink>
-      <NavLink
+      {/* <NavLink
         to="/photos"
         className="block md:inline-block px-3 py-2 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
       >
         গ্যালারী
-      </NavLink>
+      </NavLink> */}
       <NavLink
         to="/signup"
         className="block md:inline-block px-3 py-2 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"

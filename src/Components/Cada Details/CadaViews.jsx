@@ -1,9 +1,20 @@
+import axios from "axios";
 import TitleViews from "../Title/TitleViews";
-import { useLoaderData } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 const CadaViews = () => {
-  const cadaViewsData = useLoaderData();
-  const cadaViews = cadaViewsData.payload.data;
+  const { data: cadaViews } = useQuery({
+    queryKey: ["cadaViews"],
+    queryFn: async () => {
+      const resData = await axios
+        .get("https://rbcwebsite.onrender.com/cada/details")
+        .then((res) => {
+          const ArraysData = res.data.payload.data;
+          return ArraysData;
+        });
+      return resData;
+    },
+  });
   return (
     <div data-aos="flip-up" className="flex flex-col max-w-6xl mx-auto">
       <table className="max-w-32 text-left text-sm font-light">
@@ -25,7 +36,7 @@ const CadaViews = () => {
           </tr>
         </thead>
         <tbody data-aos="flip-up">
-          {cadaViews.map((list, idx) => {
+          {cadaViews?.map((list, idx) => {
             return (
               <tr
                 key={list._id}

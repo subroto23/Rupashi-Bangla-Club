@@ -1,22 +1,24 @@
 import { Link } from "react-router-dom";
 import { Buffer } from "buffer";
-import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 const AllNewsViews = () => {
-  const [loaders, setLoaders] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [pagination, setPagination] = useState({});
   const [page, setPage] = useState(1);
-  useEffect(() => {
-    axios
-      .get(`https://rbcwebsite.onrender.com/api/news/view/?page=${page}`)
-      .then((res) => {
-        const loderDatas = res.data.payload.allNews;
-        setPagination(res.data.payload);
-        setLoaders(loderDatas), setLoading(false);
-      });
-  }, [page]);
+  const { isPending: loading, data: loaders } = useQuery({
+    queryKey: ["allNews"],
+    queryFn: async () => {
+      const resData = await axios
+        .get(`https://rbcwebsite.onrender.com/api/news/view/?page=${page}`)
+        .then((res) => {
+          const ArraysData = res.data.payload.allNews;
+          setPagination(res.data.payload);
+          return ArraysData;
+        });
+      return resData;
+    },
+  });
   return (
     <div className="max-w-6xl mx-auto">
       <h1 className="text-lg my-6 text-orange-600 animate-pulse text-center">
@@ -29,7 +31,7 @@ const AllNewsViews = () => {
       ) : (
         <>
           <div className="grid md:grid-cols-3 grid-cols-1 gap-3">
-            {loaders.map((news) => {
+            {loaders?.map((news) => {
               return (
                 <div
                   data-aos="flip-up"
@@ -52,7 +54,7 @@ const AllNewsViews = () => {
                         <p className="text-gray-700 leading-tight mb-4">
                           {news.details.length > 60 ? (
                             <>
-                              {news.details.slice(0, 107)}{" "}
+                              {news?.details?.slice(0, 107)}{" "}
                               <span className="animate-bounce text-primary">
                                 ...
                               </span>

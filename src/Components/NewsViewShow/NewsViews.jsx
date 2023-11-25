@@ -17,10 +17,10 @@ const NewsViews = () => {
         <title>{title}</title>
         <meta
           property="og:image"
-          width="200px"
-          height="200px"
-          content="https://i.ibb.co/XsyrBtv/IMG-9476.jpg"
+          content="https://play-lh.googleusercontent.com/U5cZNppoZG_aFbIsiG9AvtAyeGYnaNl_1mL0Wr0VQT_6ZyF3Xi-0MkKNezVKwiOBDyBB=w200"
         />
+        <meta name="description" content={createdBy} />
+        {/* Set dynamic thumbnail */}
       </Helmet>
       <div
         data-aos="flip-up"

@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react";
 import HeroBigNews from "./HeroBigNews/HeroBigNews";
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const TopNews = () => {
-  const [newsArrs, setnewsArrs] = useState([]);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    setLoading(true);
-    axios
-      .get("https://rbcwebsite.onrender.com/api/news/view/")
-      .then((res) => {
-        const newsArrays = res.data.payload.allNews;
-        setnewsArrs(newsArrays.slice(0, 6)), setLoading(false);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  const { isPending: loading, data: newsArrs } = useQuery({
+    queryKey: ["newArray"],
+    queryFn: async () => {
+      const resData = await axios
+        .get("https://rbcwebsite.onrender.com/api/news/view")
+        .then((res) => {
+          const newsArrays = res.data.payload.allNews;
+          return newsArrays.slice(0, 6);
+        });
+      return resData;
+    },
+  });
   return (
     <div className="max-w-6xl mx-auto md:my-16">
       {loading ? (
@@ -28,18 +28,19 @@ const TopNews = () => {
         </h1>
       )}
       <div className="grid md:grid-cols-3 gap-4 grid-cols-1">
-        {loading
-          ? // <span className="loading loading-spinner text-warning"></span>
-            ""
-          : newsArrs.map((newsValue) => {
-              return (
-                <HeroBigNews
-                  key={newsValue._id}
-                  newsValue={newsValue}
-                  loading={loading}
-                />
-              );
-            })}
+        {loading ? (
+          <span className="loading loading-spinner text-warning"></span>
+        ) : (
+          newsArrs?.map((newsValue) => {
+            return (
+              <HeroBigNews
+                key={newsValue._id}
+                newsValue={newsValue}
+                loading={loading}
+              />
+            );
+          })
+        )}
       </div>
     </div>
   );
