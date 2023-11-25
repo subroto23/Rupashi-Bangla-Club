@@ -19,7 +19,7 @@ const NewsViews = () => {
           property="og:image"
           width="200px"
           height="200px"
-          content={`data:image/jpg;base64,${images}`}
+          content="https://i.ibb.co/XsyrBtv/IMG-9476.jpg"
         />
       </Helmet>
       <div
