@@ -9,14 +9,18 @@ const NewsViews = () => {
     newsData.payload.newsDetails;
   const DateTime = date.slice(0, 10);
   const images = Buffer.from(image).toString("ascii");
-  console.log(image);
   return (
     <div>
       <Navbar />
       <Outlet />
       <Helmet>
         <title>{title}</title>
-        <meta property="og:image" content={`data:image/jpg;base64,${images}`} />
+        <meta
+          property="og:image"
+          width="200px"
+          height="200px"
+          content={`data:image/jpg;base64,${images}`}
+        />
       </Helmet>
       <div
         data-aos="flip-up"
@@ -30,7 +34,7 @@ const NewsViews = () => {
         <h1 className="md:text-2xl text-lg mb-8">{title}</h1>
         <figure className="flex flex-col items-center">
           <img
-            className="rounded-md"
+            className="rounded-md w-full md:min-h-[500px] h-60 object-cover"
             src={`data:image/jpg;base64,${images}`}
             alt=""
           />

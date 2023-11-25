@@ -32,6 +32,10 @@ import DueUpdateForm from "./Components/Due/DueUpdateForm";
 import AllNewsViews from "./Components/NewsViews/AllNewsViews";
 import NewsUpdate from "./Components/AdminNews/NewsUpdate";
 import NewsUpdateForm from "./Components/AdminNews/NewsUpdateForm";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 // App.js
 const router = createBrowserRouter([
   {
@@ -165,13 +169,15 @@ const router = createBrowserRouter([
       fetch(`https://rbcwebsite.onrender.com/api/news/${params.id}`),
   },
 ]);
-
+const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProvider>
-      <ThemeProvider>
-        <RouterProvider router={router} />
-      </ThemeProvider>
-    </AuthProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <ThemeProvider>
+          <RouterProvider router={router} />
+        </ThemeProvider>
+      </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );
