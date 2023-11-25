@@ -160,11 +160,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/news/views/:id",
-    element: (
-      <PrivateRoute>
-        <NewsViews />
-      </PrivateRoute>
-    ),
+    element: <NewsViews />,
     loader: ({ params }) =>
       fetch(`https://rbcwebsite.onrender.com/api/news/${params.id}`),
   },

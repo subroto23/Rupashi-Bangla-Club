@@ -9,13 +9,14 @@ const NewsViews = () => {
     newsData.payload.newsDetails;
   const DateTime = date.slice(0, 10);
   const images = Buffer.from(image).toString("ascii");
+  console.log(image);
   return (
     <div>
       <Navbar />
       <Outlet />
       <Helmet>
         <title>{title}</title>
-        <meta property="og:image" content={image} />
+        <meta property="og:image" content={`data:image/jpg;base64,${images}`} />
       </Helmet>
       <div
         data-aos="flip-up"
