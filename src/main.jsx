@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-// import App from "./App.jsx";
+
 import "./index.css";
 import { ThemeProvider } from "@material-tailwind/react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
@@ -32,6 +32,7 @@ import DueUpdateForm from "./Components/Due/DueUpdateForm";
 import AllNewsViews from "./Components/NewsViews/AllNewsViews";
 import NewsUpdate from "./Components/AdminNews/NewsUpdate";
 import NewsUpdateForm from "./Components/AdminNews/NewsUpdateForm";
+// App.js
 const router = createBrowserRouter([
   {
     path: "/",

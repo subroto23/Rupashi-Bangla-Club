@@ -18,14 +18,13 @@ const auth = getAuth(app);
 const storage = getFirestore(app);
 const dbStorage = getStorage();
 const messaging = getMessaging(app);
-
 function requestPermission() {
   console.log("Requesting permission...");
   Notification.requestPermission().then((permission) => {
     if (permission === "granted") {
       console.log("Notification permission granted.");
 
-      getToken(messaging, {
+      return getToken(messaging, {
         vapidKey:
           "BPeX1_O8zQ1jSGuHlECNWYC8f5V0u6cXUVufVIIyIAVxp6QbfMyY_WDLka14v7s1eVAK3n11i3lWWY0xrqm-edQ",
       })
