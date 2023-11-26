@@ -8,25 +8,15 @@ import "react-quill/dist/quill.snow.css";
 const CreatedNews = () => {
   const { user } = useContext(AuthContext);
   const [message, setMessage] = useState("");
-  const [value, setValue] = useState("");
+  const [details, setDetails] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     setMessage("");
     const form = new FormData(e.currentTarget);
     const title = form.get("title");
-    // const details = form.get("details");
     const image = form.get("image");
     const createdBy = user.name;
-    const formValues = { title, value, createdBy, image };
-    console.log(formValues);
-    // if (image.type != "image/jpeg") {
-    //   setMessage("শুধুমাত্র .jpg ফাইল টাইপ দিতে হবে");
-    //   return;
-    // }
-    // if (image.size > 2097152) {
-    //   setMessage("আপনার ছবির সাইজ 2MB এর বেশি");
-    //   return;
-    // }
+    const formValues = { title, value: details, createdBy, image };
     if (title.length > 60) {
       setMessage("দয়া করে টাইটেল 60 অক্ষরের মধ্যে লিখুন");
     }
@@ -64,20 +54,11 @@ const CreatedNews = () => {
               </div>
               <div className="my-1">
                 <label htmlFor="about">খবরের বিবারণ</label>
-                {/* <textarea
-                  name="details"
-                  id=""
-                  cols="30"
-                  rows="10"
-                  required
-                  placeholder="বিবারণ লিখা শুরু করুন"
-                  className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                ></textarea> */}
                 <ReactQuill
                   className="h-72 mb-12"
                   theme="snow"
-                  value={value}
-                  onChange={setValue}
+                  value={details}
+                  onChange={setDetails}
                 />
               </div>
               <div>
@@ -86,8 +67,6 @@ const CreatedNews = () => {
                   name="image"
                   type="text"
                   required
-                  // accept="image/jpg"
-                  // onChange={(e) => setImage(e.target.files[0])}
                   className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   placeholder="https://www.i.hajhah.com"
                 />

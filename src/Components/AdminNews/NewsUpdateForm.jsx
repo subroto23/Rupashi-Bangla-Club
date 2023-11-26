@@ -7,14 +7,14 @@ import "react-quill/dist/quill.snow.css";
 const NewsUpdateForm = () => {
   const loader = useLoaderData();
   const [message, setMessage] = useState("");
-  const [value, setValue] = useState("");
+  const [details, setDetails] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const title = form.get("title");
     // const details = form.get("details");
     const image = form.get("image");
-    const formValues = { title, value, image };
+    const formValues = { title, details, image };
     setMessage("");
     if (title.length > 60) {
       setMessage("দয়া করে টাইটেল 60 অক্ষরের মধ্যে লিখুন");
@@ -57,20 +57,12 @@ const NewsUpdateForm = () => {
             </div>
             <div className="my-1">
               <label htmlFor="about">খবরের বিবারণ</label>
-              {/* <textarea
-                name="details"
-                defaultValue={loader.payload.newsDetails.details}
-                cols="30"
-                rows="10"
-                required
-                placeholder="বিবারণ লিখা শুরু করুন"
-                className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-              ></textarea> */}
               <ReactQuill
-                className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="h-72 mb-12"
                 theme="snow"
-                value={value}
-                onChange={setValue}
+                value={details}
+                onChange={setDetails}
+                defaultValue={loader.payload.newsDetails.details}
               />
             </div>
             <div>
@@ -78,6 +70,7 @@ const NewsUpdateForm = () => {
               <input
                 name="image"
                 type="text"
+                defaultValue={loader.payload.newsDetails.image}
                 required
                 // accept="image/jpg"
                 // onChange={(e) => setImage(e.target.files[0])}

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Buffer } from "buffer";
+// import { Buffer } from "buffer";
 import axios from "axios";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
@@ -41,9 +41,7 @@ const AllNewsViews = () => {
                   <Link to={`/news/views/${news._id}`}>
                     <div className="h-full hover:bg-blue-100 rounded-lg shadow-lg overflow-hidden max-w-lg w-full">
                       <img
-                        src={`data:image/jpg;base64,${Buffer.from(
-                          news?.image
-                        ).toString("ascii")}`}
+                        src={news.image}
                         alt=""
                         className="w-full h-64 object-cover hover:rounded-xl"
                       />
