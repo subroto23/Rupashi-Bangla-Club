@@ -27,8 +27,13 @@ const NewsUpdate = () => {
       confirmButtonText: "হ্যা! আমি নিশ্চিত",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`https://rbcwebsite.onrender.com/api/news/${id}`);
-        Swal.fire("ডিলেটেট!", "ডিলেট করা হয়েছে পেজটি রিলোড দিন", "সফলভাবে");
+        axios
+          .delete(`https://rbcwebsite.onrender.com/api/news/${id}`)
+          .then(() => {
+            const filter = newsArrs.filter((data) => data._id !== id);
+            Swal.fire("সফলভাবে ডিলেট করা হয়েছে");
+            setnewsArrs(filter);
+          });
       }
     });
   };
@@ -43,11 +48,11 @@ const NewsUpdate = () => {
         </div>
       ) : (
         <>
-          {newsArrs.map((news) => {
+          {newsArrs?.map((news) => {
             return (
               <div key={news._id} className="border">
-                <div className="flex justify-between">
-                  <p className="w-2/4 ">{news.title}</p>
+                <div className="flex justify-between items-center">
+                  <p className="w-2/4 py-2">{news.title}</p>
                   <Link to={`/admin/title/update/${news._id}`}>
                     <button className="text-primary w-1/4">Edit</button>
                   </Link>

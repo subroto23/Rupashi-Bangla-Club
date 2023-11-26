@@ -2,29 +2,33 @@ import axios from "axios";
 import { useContext } from "react";
 import { useState } from "react";
 import { AuthContext } from "../AuthContext/AuthContext.config";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const CreatedNews = () => {
   const { user } = useContext(AuthContext);
-  const [image, setImage] = useState(null);
   const [message, setMessage] = useState("");
+  const [value, setValue] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     setMessage("");
     const form = new FormData(e.currentTarget);
     const title = form.get("title");
-    const details = form.get("details");
+    // const details = form.get("details");
+    const image = form.get("image");
     const createdBy = user.name;
-    const formValues = { title, details, createdBy, image };
-    if (image.type != "image/jpeg") {
-      setMessage("শুধুমাত্র .jpg ফাইল টাইপ দিতে হবে");
-      return;
-    }
+    const formValues = { title, value, createdBy, image };
+    console.log(formValues);
+    // if (image.type != "image/jpeg") {
+    //   setMessage("শুধুমাত্র .jpg ফাইল টাইপ দিতে হবে");
+    //   return;
+    // }
     // if (image.size > 2097152) {
     //   setMessage("আপনার ছবির সাইজ 2MB এর বেশি");
     //   return;
     // }
-    if (title.length > 40) {
-      setMessage("দয়া করে টাইটেল 40 অক্ষরের মধ্যে লিখুন");
+    if (title.length > 60) {
+      setMessage("দয়া করে টাইটেল 60 অক্ষরের মধ্যে লিখুন");
     }
     axios
       .post("https://rbcwebsite.onrender.com/api/news/create", formValues, {
@@ -41,10 +45,11 @@ const CreatedNews = () => {
   };
   return (
     <>
+      {/* data-aos="flip-left" */}
       <div data-aos="flip-left" className="max-w-7xl mx-auto bg-gray-100 py-4">
         <div className="flex justify-center  items-center flex-col">
           <h1 className="text-xl mt-2 mb-4">খবর তৈরির ফর্ম </h1>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="md:w-3/4 max-w-5xl">
             <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 border px-4">
               <div className="my-1">
                 <label htmlFor="title">খবরের টাইটেল</label>
@@ -59,7 +64,7 @@ const CreatedNews = () => {
               </div>
               <div className="my-1">
                 <label htmlFor="about">খবরের বিবারণ</label>
-                <textarea
+                {/* <textarea
                   name="details"
                   id=""
                   cols="30"
@@ -67,19 +72,38 @@ const CreatedNews = () => {
                   required
                   placeholder="বিবারণ লিখা শুরু করুন"
                   className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                ></textarea>
-              </div>
-              <div>
-                <label htmlFor="image">খবরের ছবি</label>
-                <input
-                  name="image"
-                  type="file"
-                  required
-                  accept="image/jpg"
-                  onChange={(e) => setImage(e.target.files[0])}
-                  className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                ></textarea> */}
+                <ReactQuill
+                  className="h-72 mb-12"
+                  theme="snow"
+                  value={value}
+                  onChange={setValue}
                 />
               </div>
+              <div>
+                <label htmlFor="image">খবরের ছবি লিংক</label>
+                <input
+                  name="image"
+                  type="text"
+                  required
+                  // accept="image/jpg"
+                  // onChange={(e) => setImage(e.target.files[0])}
+                  className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  placeholder="https://www.i.hajhah.com"
+                />
+              </div>
+              <span>
+                ছবির লিংক{" "}
+                <a
+                  href="https://imgbb.com/"
+                  target="blank"
+                  className="text-red-600"
+                >
+                  এখান
+                </a>
+                <span className="px-2">থেকে তৈরি করুন</span>
+              </span>
+
               {message && (
                 <div className="my-4 text-center text-red-600">
                   <span>{message && message}</span>

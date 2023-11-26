@@ -1,14 +1,14 @@
 import { Helmet } from "react-helmet";
 import Navbar from "../../Layout/Header/Navbar";
 import Footer from "../Footer/Footer";
-import { Buffer } from "buffer";
+// import { Buffer } from "buffer";
 import { Outlet, useLoaderData } from "react-router-dom";
 const NewsViews = () => {
   const newsData = useLoaderData();
   const { createdBy, title, date, details, image } =
     newsData.payload.newsDetails;
   const DateTime = date.slice(0, 10);
-  const images = Buffer.from(image).toString("ascii");
+  // const images = Buffer.from(image).toString("ascii");
   return (
     <div>
       <Navbar />
@@ -17,7 +17,9 @@ const NewsViews = () => {
         <title>{title}</title>
         <meta
           property="og:image"
-          content="https://play-lh.googleusercontent.com/U5cZNppoZG_aFbIsiG9AvtAyeGYnaNl_1mL0Wr0VQT_6ZyF3Xi-0MkKNezVKwiOBDyBB=w200"
+          width="200px"
+          height="200px"
+          content={image}
         />
         <meta name="description" content={createdBy} />
         {/* Set dynamic thumbnail */}
@@ -35,16 +37,14 @@ const NewsViews = () => {
         <figure className="flex flex-col items-center">
           <img
             className="rounded-md w-full md:min-h-[500px] h-60 object-cover"
-            src={`data:image/jpg;base64,${images}`}
+            src={image}
             alt=""
           />
           <figcaption className="text-xs text-center mb-2 mt-3">
             ছবি সংগ্রহ করেছেনঃ {createdBy}
           </figcaption>
         </figure>
-        <article>
-          <p>{details}</p>
-        </article>
+        <div dangerouslySetInnerHTML={{ __html: details }}></div>
       </div>
       <Footer />
     </div>

@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Buffer } from "buffer";
+// import { Buffer } from "buffer";
 
 const HeroBigNews = ({ newsValue }) => {
   const [newsDetails, setNewsDetails] = useState("");
-  const [image, setImage] = useState([]);
+  // const [image, setImage] = useState([]);
   useEffect(() => {
     if (newsValue.details.length > 40) {
       setNewsDetails(newsValue.details.slice(0, 20));
-      setImage(`${Buffer.from(newsValue.image).toString("ascii")} `);
+      // setImage(`${Buffer.from(newsValue.image).toString("ascii")} `);
     }
   }, []);
   return (
@@ -18,7 +18,8 @@ const HeroBigNews = ({ newsValue }) => {
           <div className="relative ">
             <img
               className="w-full h-64 object-cover hover:rounded-xl"
-              src={`data:image/jpg;base64,${image}`}
+              // src={`data:image/jpg;base64,${image}`}
+              src={newsValue.image}
               alt=""
             />
             <div className="bg-black h-full">
