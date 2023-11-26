@@ -13,6 +13,7 @@ const NewsViews = () => {
       <Navbar />
       <Outlet />
       <Helmet>
+        <title>{title}</title>
         <meta property="og:title" content={title} />
         <meta property="og:description" content={details} />
         <meta property="og:image" content={image} />
