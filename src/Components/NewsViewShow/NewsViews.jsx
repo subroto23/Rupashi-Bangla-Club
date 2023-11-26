@@ -13,17 +13,19 @@ const NewsViews = () => {
       <Navbar />
       <Outlet />
       <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={details} />
         <meta property="og:title" content={title} />
-        <meta property="og:url" content={`${window.location.href}`} />
-        <meta property=" og:type" content="article" />
+        <meta property="og:description" content={details} />
         <meta property="og:image" content={image} />
-        <link rel="icon" type="image/svg+xml" href={image} />
+        <meta property="og:url" content={window.location.href} />
+        <meta
+          property="og:type"
+          content="https://rupashi-bangla-club.vercel.app/"
+        />
+        <meta property="fb:app_id" content="209791452118337 " />
       </Helmet>
       <div
         data-aos="flip-up"
-        className="max-w-6xl pb-12 container mx-auto px-4 text-justify"
+        className="max-w-6xl pb-12 mx-auto px-4  text-justify"
       >
         <h1 className="text-primary underline mt-6 mb-2 md:text-3xl text-lg">
           খবর
