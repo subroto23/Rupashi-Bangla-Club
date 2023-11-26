@@ -8,21 +8,17 @@ const NewsViews = () => {
   const { createdBy, title, date, details, image } =
     newsData.payload.newsDetails;
   const DateTime = date.slice(0, 10);
-  // const images = Buffer.from(image).toString("ascii");
   return (
     <div>
       <Navbar />
       <Outlet />
       <Helmet>
         <title>{title}</title>
-        <meta
-          property="og:image"
-          width="200px"
-          height="200px"
-          content={image}
-        />
-        <meta name="description" content={createdBy} />
-        {/* Set dynamic thumbnail */}
+        <meta name="description" content={details} />
+        <meta property="og:image" content={image} />
+        <meta property="og:title" content={title} />
+        <meta property="og:url" content={window.location.href} />
+        <meta property=" og:type" content="article" />
       </Helmet>
       <div
         data-aos="flip-up"
@@ -40,7 +36,10 @@ const NewsViews = () => {
             ছবি সংগ্রহ করেছেনঃ {createdBy}
           </figcaption>
         </figure>
-        <div dangerouslySetInnerHTML={{ __html: details }}></div>
+        <div
+          dangerouslySetInnerHTML={{ __html: details }}
+          className="my-6 text-3xl leading-normal"
+        ></div>
       </div>
       <Footer />
     </div>
