@@ -15,9 +15,9 @@ const NewsViews = () => {
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={details} />
-        <meta property="og:image" content={image} />
+        <meta property="og:image" content={`${image}`} />
         <meta property="og:title" content={title} />
-        <meta property="og:url" content={window.location.href} />
+        <meta property="og:url" content={`${window.location.href}`} />
         <meta property=" og:type" content="article" />
       </Helmet>
       <div
