@@ -11,7 +11,7 @@ const NewsUpdate = () => {
     axios
       .get("https://rbc-server.vercel.app/api/news/view/")
       .then((res) => {
-        const newsArrays = res.data.payload.allNews;
+        const newsArrays = res?.data?.payload?.allNews;
         setnewsArrs(newsArrays.slice(0, 6)), setLoading(false);
       })
       .catch((err) => console.log(err));

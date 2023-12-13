@@ -12,7 +12,7 @@ const Marque = () => {
     axios
       .get("https://rbc-server.vercel.app/title/heading")
       .then((res) => {
-        const titleValue = res.data.payload.data;
+        const titleValue = res?.data?.payload?.data;
         titleValue.shift();
         setTitleLists(titleValue.reverse(0, -1)), setLoading(false);
       })
@@ -21,7 +21,7 @@ const Marque = () => {
   useEffect(() => {
     axios.get("https://rbc-server.vercel.app/events").then((res) => {
       const currentDate = moment().format("YYYY-MM-DD");
-      const EventsDateArrs = res.data.payload.event;
+      const EventsDateArrs = res?.data?.payload?.event;
       const filtedDate = EventsDateArrs.filter(
         (data) => data.date.slice(0, 10) === currentDate.slice(0, 10)
       );

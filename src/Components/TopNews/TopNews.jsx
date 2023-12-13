@@ -9,7 +9,7 @@ const TopNews = () => {
       const resData = await axios
         .get("https://rbc-server.vercel.app/api/news/view")
         .then((res) => {
-          const newsArrays = res.data.payload.allNews;
+          const newsArrays = res?.data?.payload?.allNews;
           return newsArrays.slice(0, 6);
         });
       return resData;

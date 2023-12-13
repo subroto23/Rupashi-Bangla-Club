@@ -8,7 +8,7 @@ const ImageConverter = () => {
     axios
       .get("https://rbc-server.vercel.app/api/users/")
       .then((res) => {
-        let user = res.data.payload.users[0].image;
+        let user = res?.data?.payload?.users[0].image;
         setimages(`${Buffer.from(user.data).toString("ascii")} `);
       })
       .catch((err) => console.log(err));

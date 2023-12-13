@@ -12,8 +12,8 @@ const AllNewsViews = () => {
       const resData = await axios
         .get(`https://rbc-server.vercel.app/api/news/view/?page=${page}`)
         .then((res) => {
-          const ArraysData = res.data.payload.allNews;
-          setPagination(res.data.payload);
+          const ArraysData = res?.data?.payload?.allNews;
+          setPagination(res?.data?.payload);
           return ArraysData;
         });
       return resData;

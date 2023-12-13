@@ -24,7 +24,7 @@ const HeaderSlider = () => {
         const CurrentMonth = new Date().getMonth();
         const CurrentYear = new Date().getFullYear();
         const currentDate = `${CurrentYear}-${CurrentMonth + 1}-${CurrentDay}`;
-        const EventsDate = res.data.payload.event.filter(
+        const EventsDate = res?.data?.payload?.event.filter(
           (event) => event.date > currentDate
         );
         EventsDate.sort((a, b) => {
@@ -71,7 +71,7 @@ const HeaderSlider = () => {
           />
         </SwiperSlide>
       </Swiper>
-      {loading ? (
+      {/* {loading ? (
         ""
       ) : (
         <div className="md:absolute md:right-4 md:bottom-2 z-30 ">
@@ -82,7 +82,7 @@ const HeaderSlider = () => {
             <TimerCountdown eventsData={eventsData} />
           </div>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

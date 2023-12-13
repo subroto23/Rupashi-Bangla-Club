@@ -12,7 +12,7 @@ const CardUpdate = () => {
     axios
       .get("https://rbc-server.vercel.app/cada/details")
       .then((res) => {
-        const cadaValue = res.data.payload.data;
+        const cadaValue = res?.data?.payload?.data;
         setCadaLists(cadaValue), setLoading(false);
       })
       .catch((err) => console.log(err));

@@ -9,7 +9,9 @@ const Root = () => {
     <div>
       <DateTimeHtml />
       <Navbar />
-      <Outlet />
+      <div className="min-h-screen">
+        <Outlet />
+      </div>
       <Footer />
       <Marque />
     </div>
