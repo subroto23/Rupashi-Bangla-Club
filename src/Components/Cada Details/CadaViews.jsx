@@ -3,7 +3,7 @@ import TitleViews from "../Title/TitleViews";
 import { useQuery } from "@tanstack/react-query";
 
 const CadaViews = () => {
-  const { data: cadaViews } = useQuery({
+  const { data: cadaViews = [] } = useQuery({
     queryKey: ["cadaViews"],
     queryFn: async () => {
       const resData = await axios

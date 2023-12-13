@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 const AllNewsViews = () => {
   const [pagination, setPagination] = useState({});
   const [page, setPage] = useState(1);
-  const { isPending: loading, data: loaders } = useQuery({
+  const { isPending: loading, data: loaders = [] } = useQuery({
     queryKey: ["allNews"],
     queryFn: async () => {
       const resData = await axios

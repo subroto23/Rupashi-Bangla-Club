@@ -1,9 +1,10 @@
 import axios from "axios";
 
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import UseDueValue from "../../MiddleWare/UseDueValue";
 const AdminDueView = () => {
-  const dueViewsLoader = useLoaderData();
+  const [dueViewsLoader, isPending, refetch] = UseDueValue();
   const handleDelete = (id) => {
     Swal.fire({
       title: "আপনি কি নিশ্চিত?",
@@ -15,11 +16,18 @@ const AdminDueView = () => {
       confirmButtonText: "হ্যা! আমি নিশ্চিত",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`https://rbc-server.vercel.app/due/details/${id}`);
-        Swal.fire("ডিলেটেট!", "ডিলেট করা হয়েছে পেজটি রিলোড দিন", "সফলভাবে");
+        axios
+          .delete(`https://rbc-server.vercel.app/due/details/${id}`)
+          .then(() => {
+            Swal.fire("ডিলেটেট!", "ডিলেট করা হয়েছে পেজটি রিলোড দিন", "সফলভাবে");
+            refetch();
+          });
       }
     });
   };
+  if (isPending) {
+    return <span className="loading loading-spinner text-accent"></span>;
+  }
   return (
     <div data-aos="flip-up" className="mt-4 max-w-6xl mx-auto">
       <table className="text-xs w-full text-center" border="2">
@@ -34,7 +42,7 @@ const AdminDueView = () => {
           </tr>
         </thead>
         <tbody>
-          {dueViewsLoader.payload.data.map((due) => (
+          {dueViewsLoader?.map((due) => (
             <tr key={due._id} className="even:bg-gray-200">
               <td className="w-1/8 p-2 border">{due.name}</td>
               {/* <td className="w-2/8 p-2 border">{due.source}</td> */}

@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const TopNews = () => {
-  const { isPending: loading, data: newsArrs } = useQuery({
+  const { isPending: loading, data: newsArrs = [] } = useQuery({
     queryKey: ["newArray"],
     queryFn: async () => {
       const resData = await axios

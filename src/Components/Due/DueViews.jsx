@@ -1,19 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import UseDueValue from "../../MiddleWare/UseDueValue";
 
 const DueViews = () => {
-  const { isPending, data: dueViewsLoader } = useQuery({
-    queryKey: ["dueViews"],
-    queryFn: async () => {
-      const resData = await axios
-        .get("https://rbc-server.vercel.app/due/details")
-        .then((res) => {
-          const ArraysData = res?.data?.payload;
-          return ArraysData;
-        });
-      return resData;
-    },
-  });
+  const [dueViewsLoader, isPending] = UseDueValue();
   if (isPending) {
     return <span className="loading loading-spinner text-accent"></span>;
   }

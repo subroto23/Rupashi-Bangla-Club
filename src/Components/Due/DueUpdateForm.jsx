@@ -1,10 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import UseDueValue from "../../MiddleWare/UseDueValue";
 
 const DueUpdateForm = () => {
+  const [, , refetch] = UseDueValue();
   const updateValue = useLoaderData();
   const [message, setMessage] = useState(null);
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     setMessage("");
@@ -25,6 +28,8 @@ const DueUpdateForm = () => {
       )
       .then(() => {
         setMessage("সফলভাবে আপডেট হয়েছে"), e.target.reset();
+        refetch();
+        navigate("/admin/due/views");
       })
       .catch(() => setMessage("দুঃখিত আপডেট করা যায় নি"));
   };

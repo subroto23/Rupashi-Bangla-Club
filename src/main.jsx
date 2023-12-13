@@ -141,7 +141,6 @@ const router = createBrowserRouter([
       {
         path: "/admin/due/views",
         element: <AdminDueView />,
-        loader: () => fetch("https://rbc-server.vercel.app/due/details"),
       },
       {
         path: "/admin/cada-update-form/:id",
