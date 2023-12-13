@@ -12,7 +12,7 @@ const Marque = () => {
     axios
       .get("https://rbc-server.vercel.app/title/heading")
       .then((res) => {
-        const titleValue = res?.data?.payload?.data;
+        const titleValue = res?.data?.payload;
         titleValue.shift();
         setTitleLists(titleValue.reverse(0, -1)), setLoading(false);
       })

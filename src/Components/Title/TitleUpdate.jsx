@@ -12,7 +12,7 @@ const TitleUpdate = () => {
     axios
       .get("https://rbc-server.vercel.app/title/heading")
       .then((res) => {
-        const cadaValue = res?.data?.payload?.data;
+        const cadaValue = res?.data?.payload;
         setTitleLists(cadaValue), setLoading(false);
       })
       .catch((err) => console.log(err));

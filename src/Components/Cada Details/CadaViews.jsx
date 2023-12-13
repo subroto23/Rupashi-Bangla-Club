@@ -9,7 +9,7 @@ const CadaViews = () => {
       const resData = await axios
         .get("https://rbc-server.vercel.app/cada/details")
         .then((res) => {
-          const ArraysData = res?.data?.payload?.data;
+          const ArraysData = res?.data?.payload;
           return ArraysData;
         });
       return resData;
