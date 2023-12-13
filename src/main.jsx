@@ -126,13 +126,13 @@ const router = createBrowserRouter([
         path: "/admin/title/update/:id",
         element: <NewsUpdateForm />,
         loader: ({ params }) =>
-          fetch(`https://rbcwebsite.onrender.com/api/news/${params.id}`),
+          fetch(`https://rbc-server.vercel.app/api/news/${params.id}`),
       },
       {
         path: "/admin/title/title-update/:id",
         element: <TitleUpdateForm />,
         loader: ({ params }) =>
-          fetch(`https://rbcwebsite.onrender.com/title/heading/${params.id}`),
+          fetch(`https://rbc-server.vercel.app/title/heading/${params.id}`),
       },
       {
         path: "/admin/due/post",
@@ -141,19 +141,19 @@ const router = createBrowserRouter([
       {
         path: "/admin/due/views",
         element: <AdminDueView />,
-        loader: () => fetch("https://rbcwebsite.onrender.com/due/details"),
+        loader: () => fetch("https://rbc-server.vercel.app/due/details"),
       },
       {
         path: "/admin/cada-update-form/:id",
         element: <CadaUpdateForm />,
         loader: ({ params }) =>
-          fetch(`https://rbcwebsite.onrender.com/cada/details/${params.id}`),
+          fetch(`https://rbc-server.vercel.app/cada/details/${params.id}`),
       },
       {
         path: "/admin/due/update/:id",
         element: <DueUpdateForm />,
         loader: ({ params }) =>
-          fetch(`https://rbcwebsite.onrender.com/due/details/${params.id}`),
+          fetch(`https://rbc-server.vercel.app/due/details/${params.id}`),
       },
     ],
   },
@@ -161,7 +161,7 @@ const router = createBrowserRouter([
     path: "/news/views/:id",
     element: <NewsViews />,
     loader: ({ params }) =>
-      fetch(`https://rbcwebsite.onrender.com/api/news/${params.id}`),
+      fetch(`https://rbc-server.vercel.app/api/news/${params.id}`),
   },
 ]);
 const queryClient = new QueryClient();

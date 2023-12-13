@@ -13,7 +13,7 @@ const TitleUpdateForm = () => {
     const formValues = { title };
     axios
       .put(
-        `https://rbcwebsite.onrender.com/title/heading/update/${oldData.payload.dataValue._id}`,
+        `https://rbc-server.vercel.app/title/heading/update/${oldData.payload.dataValue._id}`,
         formValues,
         {
           headers: {

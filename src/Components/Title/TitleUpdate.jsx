@@ -10,7 +10,7 @@ const TitleUpdate = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://rbcwebsite.onrender.com/title/heading")
+      .get("https://rbc-server.vercel.app/title/heading")
       .then((res) => {
         const cadaValue = res.data.payload.data;
         setTitleLists(cadaValue), setLoading(false);
@@ -28,7 +28,7 @@ const TitleUpdate = () => {
       confirmButtonText: "হ্যা! আমি নিশ্চিত",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`https://rbcwebsite.onrender.com/title/heading/${id}`);
+        axios.delete(`https://rbc-server.vercel.app/title/heading/${id}`);
         Swal.fire("ডিলেটেট!", "ডিলেট করা হয়েছে পেজটি রিলোড দিন", "সফলভাবে");
       }
     });

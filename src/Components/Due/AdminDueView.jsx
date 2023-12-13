@@ -15,7 +15,7 @@ const AdminDueView = () => {
       confirmButtonText: "হ্যা! আমি নিশ্চিত",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`https://rbcwebsite.onrender.com/due/details/${id}`);
+        axios.delete(`https://rbc-server.vercel.app/due/details/${id}`);
         Swal.fire("ডিলেটেট!", "ডিলেট করা হয়েছে পেজটি রিলোড দিন", "সফলভাবে");
       }
     });

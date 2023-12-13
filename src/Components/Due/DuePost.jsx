@@ -14,7 +14,7 @@ const DueCreateForm = () => {
     const due = form.get("due");
     const formValues = { name, source, fixedTk, paidTk, due };
     axios
-      .post("https://rbcwebsite.onrender.com/due/details/create", formValues, {
+      .post("https://rbc-server.vercel.app/due/details/create", formValues, {
         headers: {
           accept: "application/json",
           "content-type": "application/x-www-form-urlencoded",

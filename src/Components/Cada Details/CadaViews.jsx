@@ -7,7 +7,7 @@ const CadaViews = () => {
     queryKey: ["cadaViews"],
     queryFn: async () => {
       const resData = await axios
-        .get("https://rbcwebsite.onrender.com/cada/details")
+        .get("https://rbc-server.vercel.app/cada/details")
         .then((res) => {
           const ArraysData = res.data.payload.data;
           return ArraysData;

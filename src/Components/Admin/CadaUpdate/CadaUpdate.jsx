@@ -10,7 +10,7 @@ const CardUpdate = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://rbcwebsite.onrender.com/cada/details")
+      .get("https://rbc-server.vercel.app/cada/details")
       .then((res) => {
         const cadaValue = res.data.payload.data;
         setCadaLists(cadaValue), setLoading(false);
@@ -29,7 +29,7 @@ const CardUpdate = () => {
       confirmButtonText: "হ্যা! আমি নিশ্চিত",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`https://rbcwebsite.onrender.com/cada/details/${id}`);
+        axios.delete(`https://rbc-server.vercel.app/cada/details/${id}`);
         Swal.fire("ডিলেটেট!", "ডিলেট করা হয়েছে পেজটি রিলোড দিন", "সফলভাবে");
       }
     });

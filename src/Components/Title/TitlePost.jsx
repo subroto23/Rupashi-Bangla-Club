@@ -10,16 +10,12 @@ const TaitelPost = () => {
     const title = form.get("title");
     const formValues = { title };
     axios
-      .post(
-        "https://rbcwebsite.onrender.com/title/heading/create",
-        formValues,
-        {
-          headers: {
-            accept: "application/json",
-            "content-type": "application/x-www-form-urlencoded",
-          },
-        }
-      )
+      .post("https://rbc-server.vercel.app/title/heading/create", formValues, {
+        headers: {
+          accept: "application/json",
+          "content-type": "application/x-www-form-urlencoded",
+        },
+      })
       .then(() => {
         setMessage("সফলভাবে সংযুক্ত হয়েছে"), e.target.reset();
       })

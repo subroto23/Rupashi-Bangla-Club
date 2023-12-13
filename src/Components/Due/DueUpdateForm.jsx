@@ -14,7 +14,7 @@ const DueUpdateForm = () => {
     const formValues = { paidTk, due };
     axios
       .put(
-        `https://rbcwebsite.onrender.com/due/details/update/${updateValue.payload.dataValue._id}`,
+        `https://rbc-server.vercel.app/due/details/update/${updateValue.payload.dataValue._id}`,
         formValues,
         {
           headers: {

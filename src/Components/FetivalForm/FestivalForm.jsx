@@ -13,7 +13,7 @@ const FestivalForm = () => {
     const date = form.get("date");
     const formValues = { title, subtitle, about, date };
     axios
-      .post("https://rbcwebsite.onrender.com/events/create", formValues, {
+      .post("https://rbc-server.vercel.app/events/create", formValues, {
         headers: {
           "Content-Type":
             'multipart/form-data; charset=utf-8; boundary="another cool boundary";',

@@ -8,7 +8,7 @@ const TitleViews = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://rbcwebsite.onrender.com/title/heading")
+      .get("https://rbc-server.vercel.app/title/heading")
       .then((res) => {
         const titleValue = res.data.payload.data;
         setTitleLists(titleValue), setLoading(false);

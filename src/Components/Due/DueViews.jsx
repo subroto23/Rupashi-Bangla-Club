@@ -6,7 +6,7 @@ const DueViews = () => {
     queryKey: ["dueViews"],
     queryFn: async () => {
       const resData = await axios
-        .get("https://rbcwebsite.onrender.com/due/details")
+        .get("https://rbc-server.vercel.app/due/details")
         .then((res) => {
           const ArraysData = res.data.payload.data;
           return ArraysData;

@@ -15,7 +15,7 @@ const CadaUpdateForm = () => {
     const formValues = { name, fixedTk, paidTk };
     axios
       .put(
-        `https://rbcwebsite.onrender.com/cada/details/update/${oldData.payload.dataValue._id}`,
+        `https://rbc-server.vercel.app/cada/details/update/${oldData.payload.dataValue._id}`,
         formValues,
         {
           headers: {

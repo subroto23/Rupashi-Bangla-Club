@@ -22,7 +22,7 @@ const NewsUpdateForm = () => {
     }
     axios
       .put(
-        `https://rbcwebsite.onrender.com/api/news/update/${loader.payload.newsDetails._id}`,
+        `https://rbc-server.vercel.app/api/news/update/${loader.payload.newsDetails._id}`,
         formValues,
         {
           headers: {

@@ -10,7 +10,7 @@ const AllNewsViews = () => {
     queryKey: ["allNews"],
     queryFn: async () => {
       const resData = await axios
-        .get(`https://rbcwebsite.onrender.com/api/news/view/?page=${page}`)
+        .get(`https://rbc-server.vercel.app/api/news/view/?page=${page}`)
         .then((res) => {
           const ArraysData = res.data.payload.allNews;
           setPagination(res.data.payload);

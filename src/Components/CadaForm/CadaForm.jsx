@@ -12,7 +12,7 @@ const CadaForm = () => {
     const paidTk = form.get("paidTk");
     const formValues = { name, fixedTk, paidTk };
     axios
-      .post("https://rbcwebsite.onrender.com/cada/details/create", formValues, {
+      .post("https://rbc-server.vercel.app/cada/details/create", formValues, {
         headers: {
           accept: "application/json",
           "content-type": "application/x-www-form-urlencoded",

@@ -10,7 +10,7 @@ const Marque = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://rbcwebsite.onrender.com/title/heading")
+      .get("https://rbc-server.vercel.app/title/heading")
       .then((res) => {
         const titleValue = res.data.payload.data;
         titleValue.shift();
@@ -19,7 +19,7 @@ const Marque = () => {
       .catch((err) => console.log(err));
   }, []);
   useEffect(() => {
-    axios.get("https://rbcwebsite.onrender.com/events").then((res) => {
+    axios.get("https://rbc-server.vercel.app/events").then((res) => {
       const currentDate = moment().format("YYYY-MM-DD");
       const EventsDateArrs = res.data.payload.event;
       const filtedDate = EventsDateArrs.filter(

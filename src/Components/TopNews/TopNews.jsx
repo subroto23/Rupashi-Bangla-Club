@@ -7,7 +7,7 @@ const TopNews = () => {
     queryKey: ["newArray"],
     queryFn: async () => {
       const resData = await axios
-        .get("https://rbcwebsite.onrender.com/api/news/view")
+        .get("https://rbc-server.vercel.app/api/news/view")
         .then((res) => {
           const newsArrays = res.data.payload.allNews;
           return newsArrays.slice(0, 6);

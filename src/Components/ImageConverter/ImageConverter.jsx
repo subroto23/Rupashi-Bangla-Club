@@ -6,7 +6,7 @@ const ImageConverter = () => {
   const [images, setimages] = useState(null);
   useEffect(() => {
     axios
-      .get("https://rbcwebsite.onrender.com/api/users/")
+      .get("https://rbc-server.vercel.app/api/users/")
       .then((res) => {
         let user = res.data.payload.users[0].image;
         setimages(`${Buffer.from(user.data).toString("ascii")} `);

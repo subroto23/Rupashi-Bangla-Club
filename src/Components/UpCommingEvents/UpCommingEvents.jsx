@@ -13,7 +13,7 @@ const UpCommingEvents = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
-      .get("https://rbcwebsite.onrender.com/events")
+      .get("https://rbc-server.vercel.app/events")
       .then((res) => {
         const currentDate = moment().format("YYYY-MM-DD");
         const EventsDateArrs = res.data.payload.event;

@@ -18,7 +18,7 @@ const HeaderSlider = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://rbcwebsite.onrender.com/events")
+      .get("https://rbc-server.vercel.app/events")
       .then((res) => {
         const CurrentDay = new Date().getDate();
         const CurrentMonth = new Date().getMonth();
@@ -74,9 +74,7 @@ const HeaderSlider = () => {
       {loading ? (
         ""
       ) : (
-        <div
-          className="md:absolute md:right-4 md:bottom-2 z-30 "
-        >
+        <div className="md:absolute md:right-4 md:bottom-2 z-30 ">
           <div className=" bg-white md:border-red-600 my-4 md:my-0  mx-auto border text-center">
             <span className="text-green-800 mt-2 font-bold">
               {`${eventsTitle}`} বাকি আর মাত্র

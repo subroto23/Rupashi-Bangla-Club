@@ -9,7 +9,7 @@ const NewsUpdate = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://rbcwebsite.onrender.com/api/news/view/")
+      .get("https://rbc-server.vercel.app/api/news/view/")
       .then((res) => {
         const newsArrays = res.data.payload.allNews;
         setnewsArrs(newsArrays.slice(0, 6)), setLoading(false);
@@ -28,7 +28,7 @@ const NewsUpdate = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`https://rbcwebsite.onrender.com/api/news/${id}`)
+          .delete(`https://rbc-server.vercel.app/api/news/${id}`)
           .then(() => {
             const filter = newsArrs.filter((data) => data._id !== id);
             Swal.fire("সফলভাবে ডিলেট করা হয়েছে");
