@@ -4,32 +4,43 @@ import { useState } from "react";
 import { AuthContext } from "../AuthContext/AuthContext.config";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const CreatedNews = () => {
   const { user } = useContext(AuthContext);
   const [message, setMessage] = useState("");
   const [details, setDetails] = useState("");
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setMessage("");
-    const form = new FormData(e.currentTarget);
-    const title = form.get("title");
-    const image = form.get("image");
+  const { handleSubmit, register } = useForm();
+
+  //Event Handler
+  const onSubmit = async (data) => {
     const createdBy = user.name;
-    const formValues = { title, value: details, createdBy, image };
-    if (title.length > 60) {
-      setMessage("দয়া করে টাইটেল 60 অক্ষরের মধ্যে লিখুন");
-    }
-    axios
-      .post("https://rbc-server.vercel.app/api/news/create", formValues, {
+    const imageFile = { image: data.image[0] };
+
+    const res = await axios.post(
+      `https://api.imgbb.com/1/upload?key=${
+        import.meta.env.VITE_IMAGE_HOSTING_API_KEY
+      }`,
+      imageFile,
+      {
         headers: {
-          "Content-Type":
-            'multipart/form-data; charset=utf-8; boundary="another cool boundary";',
+          "Content-Type": "multipart/form-data",
         },
-      })
+      }
+    );
+    const formValues = {
+      title: data.title,
+      details,
+      createdBy,
+      image: res?.data?.data?.display_url,
+    };
+    axios
+      .post("https://rbc-server.vercel.app/api/news/create", formValues)
       .then(() => {
-        setMessage("নিউজটি সফলভাবে পাবলিশ করা হয়েছে");
-        e.target.reset();
+        setMessage("");
+        Swal.fire("নিউজটি সফলভাবে পাবলিশ করা হয়েছে");
+        data.target.reset();
       })
       .catch(() => setMessage("দুঃখিত এই মূহুর্তে নিউজটি পাবলিশ করা সম্ভব নয়"));
   };
@@ -39,7 +50,10 @@ const CreatedNews = () => {
       <div data-aos="flip-left" className="max-w-7xl mx-auto bg-gray-100 py-4">
         <div className="flex justify-center  items-center flex-col">
           <h1 className="text-xl mt-2 mb-4">খবর তৈরির ফর্ম </h1>
-          <form onSubmit={handleSubmit} className="md:w-3/4 max-w-5xl">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="md:w-3/4 max-w-5xl"
+          >
             <div className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 border px-4">
               <div className="my-1">
                 <label htmlFor="title">খবরের টাইটেল</label>
@@ -47,7 +61,7 @@ const CreatedNews = () => {
                   className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   type="text"
                   name="title"
-                  id=""
+                  {...register("title", { required: true })}
                   placeholder="টাইটেল"
                   required
                 />
@@ -61,27 +75,21 @@ const CreatedNews = () => {
                   onChange={setDetails}
                 />
               </div>
+              {/*  Image */}
               <div>
-                <label htmlFor="image">খবরের ছবি লিংক</label>
+                <label
+                  className="text-gray-700 dark:text-gray-200"
+                  htmlFor="mealImage"
+                >
+                  ছবি সংযোজন করুন
+                </label>
                 <input
                   name="image"
-                  type="text"
-                  required
-                  className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  placeholder="https://www.i.hajhah.com"
+                  type="file"
+                  {...register("image", { required: true })}
+                  className="block w-full file-input mt-2 text-gray-700 bg-white border border-gray-400 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                 />
               </div>
-              <span>
-                ছবির লিংক{" "}
-                <a
-                  href="https://imgbb.com/"
-                  target="blank"
-                  className="text-red-600"
-                >
-                  এখান
-                </a>
-                <span className="px-2">থেকে তৈরি করুন</span>
-              </span>
 
               {message && (
                 <div className="my-4 text-center text-red-600">

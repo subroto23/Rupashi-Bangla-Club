@@ -22,9 +22,9 @@ const NewsViews = () => {
           property="og:type"
           content="https://rupashi-bangla-club.vercel.app/"
         />
-        <meta property='og:image:width' content='1200' />
-        <meta property='og:image:height' content='627' />
-        <meta property="og:type" content='website'/>
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="627" />
+        <meta property="og:type" content="website" />
       </Helmet>
       <div
         data-aos="flip-up"
