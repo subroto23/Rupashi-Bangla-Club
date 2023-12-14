@@ -17,18 +17,18 @@ const NewsViews = () => {
         <title>{title}</title>
         <meta
           property="'og:image"
-          content="https://avatars.mds.yandex.net/i?id=fb2532799019dd100c8a5f0cb856b096b3673ff6-10491961-images-thumbs&n=13"
+          content="https://media.istockphoto.com/id/1369150014/vector/breaking-news-with-world-map-background-vector.jpg?s=1024x1024&w=is&k=20&c=blBt3PJbOSEZF5_zB5YgKYeq9Zx_RMOLntX_nI3lliQ="
         />
         <meta name="description" content={details} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={details} />
         <meta
           property="og:image"
-          content="https://avatars.mds.yandex.net/i?id=fb2532799019dd100c8a5f0cb856b096b3673ff6-10491961-images-thumbs&n=13"
+          content="https://media.istockphoto.com/id/1369150014/vector/breaking-news-with-world-map-background-vector.jpg?s=1024x1024&w=is&k=20&c=blBt3PJbOSEZF5_zB5YgKYeq9Zx_RMOLntX_nI3lliQ="
         />
         <meta
           property="og:image:secure_url"
-          content="https://avatars.mds.yandex.net/i?id=fb2532799019dd100c8a5f0cb856b096b3673ff6-10491961-images-thumbs&n=13"
+          content="https://media.istockphoto.com/id/1369150014/vector/breaking-news-with-world-map-background-vector.jpg?s=1024x1024&w=is&k=20&c=blBt3PJbOSEZF5_zB5YgKYeq9Zx_RMOLntX_nI3lliQ="
         />
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content="400" />
