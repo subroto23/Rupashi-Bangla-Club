@@ -14,11 +14,13 @@ const NewsViews = () => {
       <Navbar />
       <Outlet />
       <Helmet>
-        <meta property="og:title" content={title} />
+        <title>শ্রী শ্রী কালী পূজা</title>
+        <meta property="og:title" content="শ্রী শ্রী কালী পূজা ২০২৩" />
         <meta property="og:description" content={details} />
         <meta property="og:image" content={image} />
         <meta property="og:url" content={pageURL} />
         <meta property="og:type" content="website" />
+        <meta property="fb:app_id" content="209791452118337" />
       </Helmet>
       <div
         data-aos="flip-up"
