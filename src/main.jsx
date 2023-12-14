@@ -32,6 +32,7 @@ import DueUpdateForm from "./Components/Due/DueUpdateForm";
 import AllNewsViews from "./Components/NewsViews/AllNewsViews";
 import NewsUpdate from "./Components/AdminNews/NewsUpdate";
 import NewsUpdateForm from "./Components/AdminNews/NewsUpdateForm";
+import { HelmetProvider } from "react-helmet-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // App.js
 const router = createBrowserRouter([
@@ -166,12 +167,14 @@ const router = createBrowserRouter([
 const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <ThemeProvider>
-          <RouterProvider router={router} />
-        </ThemeProvider>
-      </AuthProvider>
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <ThemeProvider>
+            <RouterProvider router={router} />
+          </ThemeProvider>
+        </AuthProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
   </React.StrictMode>
 );
