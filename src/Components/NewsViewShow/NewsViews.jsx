@@ -20,8 +20,8 @@ const NewsViews = () => {
           content="https://avatars.mds.yandex.net/i?id=fb2532799019dd100c8a5f0cb856b096b3673ff6-10491961-images-thumbs&n=13"
         />
         <meta name="description" content={details} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={details} />
+        <meta property="og:title" content={String(title)} />
+        <meta property="og:description" content={String(details)} />
         <meta
           property="og:image"
           content="https://avatars.mds.yandex.net/i?id=fb2532799019dd100c8a5f0cb856b096b3673ff6-10491961-images-thumbs&n=13"
