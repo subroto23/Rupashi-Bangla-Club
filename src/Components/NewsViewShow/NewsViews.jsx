@@ -14,10 +14,25 @@ const NewsViews = () => {
       <Navbar />
       <Outlet />
       <Helmet>
-        <title>শ্রী শ্রী কালী পূজা</title>
-        <meta property="og:title" content="শ্রী শ্রী কালী পূজা ২০২৩" />
+        <title>{title}</title>
+        <meta
+          property="'og:image"
+          content="https://avatars.mds.yandex.net/i?id=fb2532799019dd100c8a5f0cb856b096b3673ff6-10491961-images-thumbs&n=13"
+        />
+        <meta name="description" content={details} />
+        <meta property="og:title" content={title} />
         <meta property="og:description" content={details} />
-        <meta property="og:image" content={image} />
+        <meta
+          property="og:image"
+          content="https://avatars.mds.yandex.net/i?id=fb2532799019dd100c8a5f0cb856b096b3673ff6-10491961-images-thumbs&n=13"
+        />
+        <meta
+          property="og:image:secure_url"
+          content="https://avatars.mds.yandex.net/i?id=fb2532799019dd100c8a5f0cb856b096b3673ff6-10491961-images-thumbs&n=13"
+        />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="400" />
+        <meta property="og:image:height" content="300" />
         <meta property="og:url" content={pageURL} />
         <meta property="og:type" content="website" />
         <meta property="fb:app_id" content="209791452118337" />
