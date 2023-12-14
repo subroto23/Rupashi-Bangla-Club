@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+// import { Helmet } from "react-helmet-async";
 import Navbar from "../../Layout/Header/Navbar";
 import Footer from "../Footer/Footer";
 // import { Buffer } from "buffer";
@@ -8,13 +8,13 @@ const NewsViews = () => {
   const newsData = useLoaderData();
   const { createdBy, title, date, details, image } =
     newsData.payload.newsDetails;
-  const pageURL = window.location.href;
+  // const pageURL = window.location.href;
   const DateTime = date.slice(0, 10);
   useEffect(() => {
     document.title = `${title}`;
     const metaDescription = document.createElement("meta");
-    metaDescription.name = "description";
-    metaDescription.content = `${details}`;
+    metaDescription.property = "og:title";
+    metaDescription.content = `${title}`;
     document.head.appendChild(metaDescription);
 
     // Other head elements can be added similarly
@@ -30,7 +30,7 @@ const NewsViews = () => {
     <div>
       <Navbar />
       <Outlet />
-      <Helmet>
+      {/* <Helmet>
         <title>{title}</title>
         <meta name="description" content={details} />
         <meta property="og:title" content={title} />
@@ -48,7 +48,7 @@ const NewsViews = () => {
         <meta property="og:image:height" content="630" />
         <meta property="og:url" content={pageURL} />
         <meta property="og:type" content="website" />
-      </Helmet>
+      </Helmet> */}
       <div
         data-aos="flip-up"
         className="max-w-6xl pb-12 mx-auto px-4  text-justify"
