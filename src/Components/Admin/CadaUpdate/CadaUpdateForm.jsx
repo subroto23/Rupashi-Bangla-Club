@@ -15,14 +15,8 @@ const CadaUpdateForm = () => {
     const formValues = { name, fixedTk, paidTk };
     axios
       .put(
-        `https://rbc-server.vercel.app/cada/details/update/${oldData.payload.dataValue._id}`,
-        formValues,
-        {
-          headers: {
-            accept: "application/json",
-            "content-type": "application/x-www-form-urlencoded",
-          },
-        }
+        `https://rbc-server.vercel.app/cada/details/update/${oldData.payload._id}`,
+        formValues
       )
       .then(() => {
         setMessage("সফলভাবে আপডেট হয়েছে"), e.target.reset();
@@ -41,7 +35,7 @@ const CadaUpdateForm = () => {
                 className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 type="text"
                 name="name"
-                defaultValue={oldData.payload.dataValue.name}
+                defaultValue={oldData.payload.name}
               />
             </div>
             <div className="my-1">
@@ -50,7 +44,7 @@ const CadaUpdateForm = () => {
                 className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 type="text"
                 name="fixedTk"
-                defaultValue={oldData.payload.dataValue.fixedTk}
+                defaultValue={oldData.payload.fixedTk}
               />
             </div>
             <div className="my-1">
@@ -59,7 +53,7 @@ const CadaUpdateForm = () => {
                 className="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 type="text"
                 name="paidTk"
-                defaultValue={oldData.payload.dataValue.paidTk}
+                defaultValue={oldData.payload.paidTk}
               />
             </div>
             <div className="my-1">

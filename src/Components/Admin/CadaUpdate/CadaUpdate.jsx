@@ -58,18 +58,18 @@ const CardUpdate = () => {
           {loading ? (
             <span className="loading loading-spinner text-success"></span>
           ) : (
-            cadaLists.map((list) => {
+            cadaLists?.map((list) => {
               return (
                 <tr
                   key={list._id}
                   className="border odd:bg-white text-center bg-neutral-100 dark:border-neutral-500 dark:bg-neutral-700"
                 >
-                  <td className="whitespace-nowrap py-4 border">{list.name}</td>
+                  <td className="whitespace-nowrap py-4 border">{list?.name}</td>
                   <td className="whitespace-nowrap py-4 border">
                     {list.paidTk}
                   </td>
                   <td className="whitespace-nowrap py-4 border font-medium">
-                    <Link to={`/admin/cada-update-form/${list._id}`}>
+                    <Link to={`/admin/cada-update-form/${list?._id}`}>
                       <button className="btn btn-gost text-primary">
                         Edit
                       </button>
@@ -77,7 +77,7 @@ const CardUpdate = () => {
                   </td>
                   <td className="whitespace-nowrap px-6 py-4 border font-medium">
                     <button
-                      onClick={() => handleDelete(list._id)}
+                      onClick={() => handleDelete(list?._id)}
                       className="btn btn-gost text-red-600"
                     >
                       X

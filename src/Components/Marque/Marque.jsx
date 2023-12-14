@@ -23,7 +23,7 @@ const Marque = () => {
       const currentDate = moment().format("YYYY-MM-DD");
       const EventsDateArrs = res?.data?.payload?.event;
       const filtedDate = EventsDateArrs.filter(
-        (data) => data.date.slice(0, 10) === currentDate.slice(0, 10)
+        (data) => data?.date?.slice(0, 10) === currentDate.slice(0, 10)
       );
       setEvents(filtedDate);
       setLoading(false);
@@ -36,7 +36,7 @@ const Marque = () => {
       ) : (
         <div className="py-1">
           <Marquee>
-            {titleLists.map((data) => {
+            {titleLists?.map((data) => {
               return (
                 <div key={data._id} className="mr-8">
                   <span className="text-red-600 mx-1 font-bold animate-ping">

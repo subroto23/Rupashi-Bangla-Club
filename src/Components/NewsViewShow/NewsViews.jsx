@@ -7,23 +7,17 @@ const NewsViews = () => {
   const newsData = useLoaderData();
   const { createdBy, title, date, details, image } =
     newsData.payload.newsDetails;
+  const pageURL = window.location.href;
   const DateTime = date.slice(0, 10);
   return (
     <div>
       <Navbar />
       <Outlet />
       <Helmet>
-        <title>{title}</title>
         <meta property="og:title" content={title} />
         <meta property="og:description" content={details} />
         <meta property="og:image" content={image} />
-        <meta property="og:url" content={window.location.href} />
-        <meta
-          property="og:type"
-          content="https://rupashi-bangla-club.vercel.app/"
-        />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="627" />
+        <meta property="og:url" content={pageURL} />
         <meta property="og:type" content="website" />
       </Helmet>
       <div
