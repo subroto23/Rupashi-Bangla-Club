@@ -7,7 +7,6 @@ const NewsViews = () => {
   const newsData = useLoaderData();
   const { createdBy, title, date, details, image } =
     newsData.payload.newsDetails;
-  // const pageURL = window.location.href;
   const DateTime = date.slice(0, 10);
 
   useEffect(() => {
