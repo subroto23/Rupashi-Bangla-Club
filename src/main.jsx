@@ -33,6 +33,7 @@ import AllNewsViews from "./Components/NewsViews/AllNewsViews";
 import NewsUpdate from "./Components/AdminNews/NewsUpdate";
 import NewsUpdateForm from "./Components/AdminNews/NewsUpdateForm";
 import { HelmetProvider } from "react-helmet-async";
+import { hydrate, render } from "react-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 // App.js
 const router = createBrowserRouter([
@@ -165,7 +166,7 @@ const router = createBrowserRouter([
   },
 ]);
 const queryClient = new QueryClient();
-ReactDOM.createRoot(document.getElementById("root")).render(
+const App = (
   <React.StrictMode>
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
@@ -178,3 +179,22 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </HelmetProvider>
   </React.StrictMode>
 );
+const rootElement = document.getElementById("root");
+if (rootElement.hasChildNodes()) {
+  hydrate(App, rootElement);
+} else {
+  render(App, rootElement);
+}
+// ReactDOM.createRoot(document.getElementById("root")).render(
+//   <React.StrictMode>
+//     <HelmetProvider>
+//       <QueryClientProvider client={queryClient}>
+//         <AuthProvider>
+//           <ThemeProvider>
+//             <RouterProvider router={router} />
+//           </ThemeProvider>
+//         </AuthProvider>
+//       </QueryClientProvider>
+//     </HelmetProvider>
+//   </React.StrictMode>
+// );

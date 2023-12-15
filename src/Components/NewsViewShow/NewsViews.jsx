@@ -2,29 +2,12 @@ import { Helmet } from "react-helmet-async";
 import Navbar from "../../Layout/Header/Navbar";
 import Footer from "../Footer/Footer";
 import { Outlet, useLoaderData } from "react-router-dom";
-import { useEffect } from "react";
 const NewsViews = () => {
   const newsData = useLoaderData();
   const { createdBy, title, date, details, image } =
     newsData.payload.newsDetails;
   const pageURL = window.location.href;
   const DateTime = date.slice(0, 10);
-  useEffect(() => {
-    document.title = `${title}`;
-    const metaDescription = document.createElement("meta");
-    metaDescription.property = "og:title";
-    metaDescription.content = `${title}`;
-    document.head.appendChild(metaDescription);
-
-    // Other head elements can be added similarly
-
-    // Cleanup on component unmount
-    return () => {
-      document.title = "";
-      document.head.removeChild(metaDescription);
-      // Cleanup other head elements
-    };
-  }, [details, title]);
   return (
     <div>
       <Navbar />
