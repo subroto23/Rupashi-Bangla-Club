@@ -2,12 +2,40 @@ import { Helmet } from "react-helmet-async";
 import Navbar from "../../Layout/Header/Navbar";
 import Footer from "../Footer/Footer";
 import { Outlet, useLoaderData } from "react-router-dom";
+import { useEffect } from "react";
 const NewsViews = () => {
   const newsData = useLoaderData();
   const { createdBy, title, date, details, image } =
     newsData.payload.newsDetails;
   const pageURL = window.location.href;
   const DateTime = date.slice(0, 10);
+
+  useEffect(() => {
+    // Create meta elements
+    const titleMeta = document.createElement("meta");
+    titleMeta.setAttribute("property", "og:title");
+    titleMeta.content = title;
+
+    const imageMeta = document.createElement("meta");
+    imageMeta.setAttribute("property", "og:image");
+    imageMeta.content = details;
+
+    const descriptionMeta = document.createElement("meta");
+    descriptionMeta.setAttribute("property", "og:description");
+    descriptionMeta.content = image;
+
+    // Append meta elements to the head
+    document.head.appendChild(titleMeta);
+    document.head.appendChild(imageMeta);
+    document.head.appendChild(descriptionMeta);
+
+    // Clean up the added meta tags on component unmount
+    return () => {
+      document.head.removeChild(titleMeta);
+      document.head.removeChild(imageMeta);
+      document.head.removeChild(descriptionMeta);
+    };
+  }, [title, details, image]);
   return (
     <div>
       <Navbar />
@@ -15,7 +43,7 @@ const NewsViews = () => {
       <Helmet>
         <title>{title}</title>
         {/* <meta name="description" content={details} /> */}
-        <meta property="og:title" content={title} data-react-helmet="true" />
+        {/* <meta property="og:title" content={title} data-react-helmet="true" />
         <meta
           property="og:description"
           content={details}
@@ -32,10 +60,8 @@ const NewsViews = () => {
           property="og:image:secure_url"
           content="https://media.istockphoto.com/id/1369150014/vector/breaking-news-with-world-map-background-vector.jpg?s=1024x1024&w=is&k=20&c=blBt3PJbOSEZF5_zB5YgKYeq9Zx_RMOLntX_nI3lliQ="
           data-react-helmet="true"
-        />
+        /> */}
         <meta property="og:image:type" content="image/jpeg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
         <meta property="og:url" content={pageURL} />
         <meta property="og:type" content="website" />
       </Helmet>
