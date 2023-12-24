@@ -2,45 +2,20 @@ import { Helmet } from "react-helmet-async";
 import Navbar from "../../Layout/Header/Navbar";
 import Footer from "../Footer/Footer";
 import { Outlet, useLoaderData } from "react-router-dom";
-import { useEffect } from "react";
 const NewsViews = () => {
   const newsData = useLoaderData();
   const { createdBy, title, date, details, image } =
     newsData.payload.newsDetails;
   const DateTime = date.slice(0, 10);
-
-  useEffect(() => {
-    // Create meta elements
-    const titleMeta = document.createElement("meta");
-    titleMeta.setAttribute("property", "og:title");
-    titleMeta.content = title;
-
-    const imageMeta = document.createElement("meta");
-    imageMeta.setAttribute("property", "og:image");
-    imageMeta.content = details;
-
-    const descriptionMeta = document.createElement("meta");
-    descriptionMeta.setAttribute("property", "og:description");
-    descriptionMeta.content = image;
-
-    // Append meta elements to the head
-    document.head.appendChild(titleMeta);
-    document.head.appendChild(imageMeta);
-    document.head.appendChild(descriptionMeta);
-
-    // Clean up the added meta tags on component unmount
-    return () => {
-      document.head.removeChild(titleMeta);
-      document.head.removeChild(imageMeta);
-      document.head.removeChild(descriptionMeta);
-    };
-  }, [title, details, image]);
   return (
     <div>
       <Navbar />
       <Outlet />
       <Helmet>
         <title>{title}</title>
+        <meta property="og:title" content={`${title}`} />
+        <meta property="og:description" content={`${details}`} />
+        <meta property="og:image" content={`${image}`} />
       </Helmet>
       <div
         data-aos="flip-up"

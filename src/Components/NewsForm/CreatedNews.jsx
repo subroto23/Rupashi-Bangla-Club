@@ -40,7 +40,6 @@ const CreatedNews = () => {
       .then(() => {
         setMessage("");
         Swal.fire("নিউজটি সফলভাবে পাবলিশ করা হয়েছে");
-        data.target.reset();
       })
       .catch(() => setMessage("দুঃখিত এই মূহুর্তে নিউজটি পাবলিশ করা সম্ভব নয়"));
   };
