@@ -24,7 +24,7 @@ const TopNews = () => {
           data-aos="zoom-in"
           className="text-xl mb-8 text-primary font-extrabold md:block hidden"
         >
-          সংবাদ পড়ুন
+          পোস্টসমূহ
         </h1>
       )}
       <div className="grid md:grid-cols-3 gap-4 grid-cols-1">
