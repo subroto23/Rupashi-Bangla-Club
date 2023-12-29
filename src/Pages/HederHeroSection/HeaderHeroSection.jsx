@@ -10,14 +10,14 @@ import OurServices from "../../Components/OurServices/OurServices";
 // import PromoSection from "../../Components/PromoSection/PromoSection";
 import TopNews from "../../Components/TopNews/TopNews";
 // import TrustPartner from "../../Components/TrustPartner/TrustPartner";
-// import UpCommingEvents from "../../Components/UpCommingEvents/UpCommingEvents";
+import UpCommingEvents from "../../Components/UpCommingEvents/UpCommingEvents";
 // import RbcMember from "../../Components/rbcMember/rbcMember";
 // import DateTimeHtml from "../../Services/DateTimeHtml";
 const HeaderHeroSection = () => {
   return (
     <div>
       <HeaderSlider />
-      {/* <UpCommingEvents /> */}
+      <UpCommingEvents />
       <TopNews />
       <BottomBanner />
       <OurServices />
