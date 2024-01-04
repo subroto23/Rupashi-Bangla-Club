@@ -11,6 +11,7 @@ import TimerCountdown from "../DateEnBn/DateEnBn";
 import { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
+import moment from "moment";
 const HeaderSlider = () => {
   const [eventsData, setEventsData] = useState([]);
   const [eventsTitle, setEventsTitle] = useState("");
@@ -20,10 +21,7 @@ const HeaderSlider = () => {
     axios
       .get("https://rbc-server.vercel.app/events")
       .then((res) => {
-        const CurrentDay = new Date().getDate();
-        const CurrentMonth = new Date().getMonth();
-        const CurrentYear = new Date().getFullYear();
-        const currentDate = `${CurrentYear}-${CurrentMonth + 1}-${CurrentDay}`;
+        const currentDate = moment().format().slice(0, 10);
         const EventsDate = res?.data?.payload?.event.filter(
           (event) => event.date > currentDate
         );
